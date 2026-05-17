@@ -1,0 +1,15 @@
+# BEST LOG-FIB CONFIGURATION FOR BTCUSDT 5-MIN
+# Optimized on BINANCE_BTCUSDT_5.csv (37 trades)
+
+lookback=14
+multiplier=0.786
+entry_ratio=0.382
+take_profit_ratio=1.0
+stop_loss_ratio=1.414
+
+# Performance Metrics
+win_rate=94.59
+profit_factor=3.79
+total_pnl=29047.01905
+avg_pnl=785.05457
+max_drawdown=7585.14569

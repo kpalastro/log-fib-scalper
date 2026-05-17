@@ -90,3 +90,96 @@ ALL_CONFIGS = {
 
 # Default configuration (Gold 5-min - highest profit factor)
 DEFAULT_CONFIG = XAUUSD_5MIN
+
+# ═══════════════════════════════════════════════════════════════
+# CRYPTO CONFIGURATIONS (Gate.io)
+# ═══════════════════════════════════════════════════════════════
+
+# BITCOIN (BTCUSDT) 5-MINUTE ⭐ BEST CRYPTO
+BTCUSDT_5MIN = {
+    "instrument": "BTCUSDT",
+    "timeframe": "5min",
+    "gate_pair": "BTC_USDT",
+    "config": {
+        "lookback": 14,
+        "multiplier": 0.786,
+        "entry_ratio": 0.382,
+        "take_profit_ratio": 1.0,
+        "stop_loss_ratio": 1.414,
+    },
+    "performance": {
+        "win_rate": 94.59,
+        "profit_factor": 3.79,
+        "total_pnl": 29047.02,
+        "total_trades": 37,
+        "avg_pnl_per_trade": 785.05,
+        "max_drawdown": 7585.15,
+    }
+}
+
+# ETHEREUM (ETHUSDT) 5-MINUTE - PLACEHOLDER
+ETHUSDT_5MIN = {
+    "instrument": "ETHUSDT",
+    "timeframe": "5min",
+    "gate_pair": "ETH_USDT",
+    "config": {
+        "lookback": 14,
+        "multiplier": 0.786,
+        "entry_ratio": 0.382,
+        "take_profit_ratio": 1.0,
+        "stop_loss_ratio": 1.414,
+    },
+    "performance": {
+        "win_rate": 0.0,
+        "profit_factor": 0.0,
+        "total_pnl": 0.0,
+        "total_trades": 0,
+        "avg_pnl_per_trade": 0.0,
+        "max_drawdown": 0.0,
+        "note": "Pending optimization - using BTC params as starting point"
+    }
+}
+
+# RIPPLE (XRPUSDT) 5-MINUTE - PLACEHOLDER
+XRPUSDT_5MIN = {
+    "instrument": "XRPUSDT",
+    "timeframe": "5min",
+    "gate_pair": "XRP_USDT",
+    "config": {
+        "lookback": 14,
+        "multiplier": 0.786,
+        "entry_ratio": 0.382,
+        "take_profit_ratio": 1.0,
+        "stop_loss_ratio": 1.414,
+    },
+    "performance": {
+        "win_rate": 0.0,
+        "profit_factor": 0.0,
+        "total_pnl": 0.0,
+        "total_trades": 0,
+        "avg_pnl_per_trade": 0.0,
+        "max_drawdown": 0.0,
+        "note": "Pending optimization - using BTC params as starting point"
+    }
+}
+
+# ═══════════════════════════════════════════════════════════════
+# ALL CRYPTO CONFIGURATIONS
+# ═══════════════════════════════════════════════════════════════
+CRYPTO_CONFIGS = {
+    "BTCUSDT_5MIN": BTCUSDT_5MIN,
+    "ETHUSDT_5MIN": ETHUSDT_5MIN,
+    "XRPUSDT_5MIN": XRPUSDT_5MIN,
+}
+
+# ═══════════════════════════════════════════════════════════════
+# ALL CONFIGURATIONS (UPDATED WITH CRYPTO)
+# ═══════════════════════════════════════════════════════════════
+ALL_CONFIGS = {
+    "XAGUSD_1MIN": XAGUSD_1MIN,
+    "XAUUSD_5MIN": XAUUSD_5MIN,
+    "XAUUSD_1MIN": XAUUSD_1MIN,
+    "BTCUSDT_5MIN": BTCUSDT_5MIN,
+    "ETHUSDT_5MIN": ETHUSDT_5MIN,
+    "XRPUSDT_5MIN": XRPUSDT_5MIN,
+}
