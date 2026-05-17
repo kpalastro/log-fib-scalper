@@ -1,0 +1,15 @@
+# BEST LOG-FIB CONFIGURATION FOR GOLD (XAUUSD 5-MIN)
+# Optimized on OANDA_XAUUSD_5.csv (191 trades)
+
+lookback=10
+multiplier=0.786
+entry_ratio=0.5
+take_profit_ratio=0.618
+stop_loss_ratio=1.414
+
+# Performance Metrics
+win_rate=98.43
+profit_factor=4.45
+total_pnl=1558.08307
+avg_pnl=8.15750
+max_drawdown=253.70531
