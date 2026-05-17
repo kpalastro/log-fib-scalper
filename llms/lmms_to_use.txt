@@ -1,0 +1,4 @@
+minimax-m2.7:cloud 
+kimi-k2.6:cloud
+deepseek-v4-flash:cloud
+qwen3.5:397b-cloud

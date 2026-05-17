@@ -1,0 +1,15 @@
+# BEST LOG-FIB SCALPING CONFIGURATION
+# Optimized on OANDA_XAGUSD1.csv (653 trades)
+
+lookback=12
+multiplier=0.382
+entry_ratio=0.5
+take_profit_ratio=0.786
+stop_loss_ratio=1.0
+
+# Performance Metrics
+win_rate=95.25
+profit_factor=2.56
+total_pnl=35.41087
+avg_pnl=0.05423
+max_drawdown=2.33393

@@ -1,0 +1,187 @@
+//@version=5
+// strategy_archetype: first_principles
+indicator("Pal Log-Fib Range Projection - MTF", overlay=true, max_lines_count=500)
+
+// --- Inputs ---
+lookback_period = input.int(6, "Lookback Period (bars)", minval=1, maxval=60, tooltip="Number of bars on the Swing Timeframe to look back for swing highs/lows")
+swing_tf = input.string("60", "Swing Timeframe", options=["1", "5", "15", "30", "60", "240", "D", "W", "M"], tooltip="Timeframe for swing detection")
+range_mult = input.string("0.382", "Range Multiplier", options=["0.382", "0.5", "0.618", "0.786", "1.0"], tooltip="Scales the effective log range. Multiplies the log10 formula result.")
+proj_mode = input.string("Both", "Display Projections", options=["Top", "Bottom", "Both"])
+show_1_125 = input.bool(false, "Show 1.125 Level")
+show_1_272 = input.bool(false, "Show 1.272 Level")
+show_1_414 = input.bool(false, "Show 1.414 Level")
+show_1_618 = input.bool(false, "Show 1.618 Level")
+
+show_top    = proj_mode == "Top" or proj_mode == "Both"
+show_bottom = proj_mode == "Bottom" or proj_mode == "Both"
+
+mult_val = switch range_mult
+    "0.382" => 0.382
+    "0.5"   => 0.5
+    "0.618" => 0.618
+    "0.786" => 0.786
+    "1.0"   => 1.0
+    => 0.618
+
+// --- Multi-Timeframe Data ---
+htf_high = request.security(syminfo.tickerid, swing_tf, high)
+htf_low  = request.security(syminfo.tickerid, swing_tf, low)
+htf_open = request.security(syminfo.tickerid, swing_tf, open)
+htf_close = request.security(syminfo.tickerid, swing_tf, close)
+
+// Compute chart-to-HTF bars ratio for lookback translation
+chart_tf_sec = timeframe.in_seconds()
+selected_tf_sec = switch swing_tf
+    "1"   => 60.0
+    "5"   => 300.0
+    "15"  => 900.0
+    "30"  => 1800.0
+    "60"  => 3600.0
+    "240" => 14400.0
+    "D"   => 86400.0
+    "W"   => 604800.0
+    "M"   => 2592000.0
+    => 14400.0
+
+// Convert lookback from HTF bars to chart bars
+chart_bars = int(math.max(math.ceil(lookback_period * (selected_tf_sec / chart_tf_sec)), 3))
+
+// =================== SWING HIGH DETECTION ===================
+// Find highest high in the lookback window on the HTF
+highest_htf = ta.highest(htf_high, chart_bars)
+highest_htf_offset = ta.highestbars(htf_high, chart_bars)
+high_idx = math.abs(highest_htf_offset)
+
+// --- Swing High and its Anchored Low ---
+swing_high_price = htf_high[high_idx]
+// The anchored low = the LOW of the EXACT bar that produced the SwingHigh
+anchored_low = htf_low[high_idx]
+
+// =================== SWING LOW DETECTION ===================
+lowest_htf = ta.lowest(htf_low, chart_bars)
+lowest_htf_offset = ta.lowestbars(htf_low, chart_bars)
+low_idx = math.abs(lowest_htf_offset)
+
+// --- Swing Low and its Anchored High ---
+swing_low_price = htf_low[low_idx]
+anchored_high = htf_high[low_idx]
+
+// =================== CORE FORMULA ===================
+// TOP-DOWN: effective_range = log10(SwingHigh) * ABS(SwingHigh - AnchoredLow) * mult_val * 4
+// The *4 is a fixed scaling multiplier
+// projection_level = SwingHigh - effective_range (for the 1.0 fib)
+// Then fib subdivisions of that effective_range
+
+effective_range_top = math.log10(swing_high_price) * math.abs(swing_high_price - anchored_low) * mult_val * 4.0
+effective_range_bot = math.log10(swing_low_price) * math.abs(swing_low_price - anchored_high) * mult_val * 4.0
+
+// --- Fibonacci Ratios ---
+f0_0   = 0.0
+f0_125 = 0.125
+f0_236 = 0.236
+f0_382 = 0.382
+f0_5   = 0.5
+f0_618 = 0.618
+f0_786 = 0.786
+f1_0   = 1.0
+f1_125 = 1.125
+f1_272 = 1.272
+f1_414 = 1.414
+f1_618 = 1.618
+
+// --- Level Calculations ---
+top_level(ratio) => swing_high_price - (ratio * effective_range_top)
+bottom_level(ratio) => swing_low_price + (ratio * effective_range_bot)
+
+// --- Colors ---
+// Per-level colors match TradingView's built-in Fibonacci tool palette
+
+// ===================== TOP PROJECTIONS =====================
+// TradingView standard Fibonacci palette (per-level colors)
+// 0.0 — Purple, fully opaque
+plot(show_top ? top_level(f0_0) : na, "Top 0.0", color.new(#9C27B0, 0), linewidth=2)
+// 0.125 — Gray
+plot(show_top ? top_level(f0_125) : na, "Top 0.125", color.new(#9E9E9E, 35), style=plot.style_linebr)
+// 0.236 — Blue
+plot(show_top ? top_level(f0_236) : na, "Top 0.236", color.new(#2196F3, 40), style=plot.style_linebr)
+// 0.382 — Cyan
+plot(show_top ? top_level(f0_382) : na, "Top 0.382", color.new(#00BCD4, 40), style=plot.style_linebr)
+// 0.5 — Green
+plot(show_top ? top_level(f0_5) : na, "Top 0.5", color.new(#4CAF50, 40), style=plot.style_linebr)
+// 0.618 — Orange
+plot(show_top ? top_level(f0_618) : na, "Top 0.618", color.new(#FF9800, 25), style=plot.style_linebr)
+// 0.786 — Red
+plot(show_top ? top_level(f0_786) : na, "Top 0.786", color.new(#F44336, 45), style=plot.style_linebr)
+// 1.0 — Purple, fully opaque
+plot(show_top ? top_level(f1_0) : na, "Top 1.0", color.new(#9C27B0, 0), linewidth=2)
+// 1.125 — Blue-gray
+plot(show_top and show_1_125 ? top_level(f1_125) : na, "Top 1.125", color.new(#607D8B, 45), style=plot.style_linebr)
+// 1.272 — Blue
+plot(show_top and show_1_272 ? top_level(f1_272) : na, "Top 1.272", color.new(#2196F3, 45), style=plot.style_linebr)
+// 1.414 — Cyan
+plot(show_top and show_1_414 ? top_level(f1_414) : na, "Top 1.414", color.new(#00BCD4, 45), style=plot.style_linebr)
+// 1.618 — Green
+plot(show_top and show_1_618 ? top_level(f1_618) : na, "Top 1.618", color.new(#4CAF50, 45), style=plot.style_linebr)
+
+// ===================== BOTTOM PROJECTIONS =====================
+// Same per-level palette as Top projections
+plot(show_bottom ? bottom_level(f0_0) : na, "Bot 0.0", color.new(#9C27B0, 0), linewidth=2)
+plot(show_bottom ? bottom_level(f0_125) : na, "Bot 0.125", color.new(#9E9E9E, 35), style=plot.style_linebr)
+plot(show_bottom ? bottom_level(f0_236) : na, "Bot 0.236", color.new(#2196F3, 40), style=plot.style_linebr)
+plot(show_bottom ? bottom_level(f0_382) : na, "Bot 0.382", color.new(#00BCD4, 40), style=plot.style_linebr)
+plot(show_bottom ? bottom_level(f0_5) : na, "Bot 0.5", color.new(#4CAF50, 40), style=plot.style_linebr)
+plot(show_bottom ? bottom_level(f0_618) : na, "Bot 0.618", color.new(#FF9800, 25), style=plot.style_linebr)
+plot(show_bottom ? bottom_level(f0_786) : na, "Bot 0.786", color.new(#F44336, 45), style=plot.style_linebr)
+plot(show_bottom ? bottom_level(f1_0) : na, "Bot 1.0", color.new(#9C27B0, 0), linewidth=2)
+plot(show_bottom and show_1_125 ? bottom_level(f1_125) : na, "Bot 1.125", color.new(#607D8B, 45), style=plot.style_linebr)
+plot(show_bottom and show_1_272 ? bottom_level(f1_272) : na, "Bot 1.272", color.new(#2196F3, 45), style=plot.style_linebr)
+plot(show_bottom and show_1_414 ? bottom_level(f1_414) : na, "Bot 1.414", color.new(#00BCD4, 45), style=plot.style_linebr)
+plot(show_bottom and show_1_618 ? bottom_level(f1_618) : na, "Bot 1.618", color.new(#4CAF50, 45), style=plot.style_linebr)
+
+// ===================== SUPPORTING MARKERS =====================
+// Swing point markers (only on bars where the pivot is found)
+plotshape(highest_htf_offset == 0 and show_top, style=shape.triangledown, location=location.abovebar, color=#9C27B0, size=size.tiny)
+plotshape(lowest_htf_offset == 0 and show_bottom, style=shape.triangleup, location=location.belowbar, color=#9C27B0, size=size.tiny)
+
+// Swing High / Low reference lines (dashed yellow) — only shown when their projection side is active
+plot(show_top ? swing_high_price : na, "Swing High", color=color.yellow, style=plot.style_linebr, linewidth=1)
+plot(show_bottom ? swing_low_price : na,  "Swing Low",  color=color.yellow, style=plot.style_linebr, linewidth=1)
+
+// Anchored Low / Anchored High reference lines (fuchsia dashed) — only shown when their projection side is active
+plot(show_top ? anchored_low : na,  "Anchored Low (of SwingHigh bar)",  color=color.new(color.fuchsia, 0), style=plot.style_linebr, linewidth=1)
+plot(show_bottom ? anchored_high : na, "Anchored High (of SwingLow bar)", color=color.new(color.fuchsia, 0), style=plot.style_linebr, linewidth=1)
+
+// ===================== VALIDATION VIEW / INFO TABLE =====================
+var table infoTable = table.new(position.top_right, 6, 4, bgcolor=color.new(color.gray, 90), border_color=color.gray)
+if barstate.islast
+    // Row 0: Lookback | TF | Mult
+    table.cell(infoTable, 0, 0, "Lookback", text_color=color.white, text_size=size.small)
+    table.cell(infoTable, 1, 0, str.tostring(lookback_period) + " bars", text_color=color.white, text_size=size.small)
+    table.cell(infoTable, 2, 0, "TF", text_color=color.white, text_size=size.small)
+    table.cell(infoTable, 3, 0, swing_tf, text_color=color.white, text_size=size.small)
+    table.cell(infoTable, 4, 0, "Mult", text_color=color.white, text_size=size.small)
+    table.cell(infoTable, 5, 0, range_mult, text_color=color.white, text_size=size.small)
+
+    // Row 1: Swing High | Anchored Low | log10(SH)
+    table.cell(infoTable, 0, 1, "Swing High", text_color=color.white, text_size=size.small)
+    table.cell(infoTable, 1, 1, str.tostring(swing_high_price, "#.##"), text_color=color.white, text_size=size.small)
+    table.cell(infoTable, 2, 1, "Anch Low", text_color=color.white, text_size=size.small)
+    table.cell(infoTable, 3, 1, str.tostring(anchored_low, "#.##"), text_color=color.white, text_size=size.small)
+    table.cell(infoTable, 4, 1, "log10(SH)", text_color=color.white, text_size=size.small)
+    table.cell(infoTable, 5, 1, str.tostring(math.log10(swing_high_price), "#.#####"), text_color=color.white, text_size=size.small)
+
+    // Row 2: Swing Low | Anchored High | Eff Range (Top)
+    table.cell(infoTable, 0, 2, "Swing Low", text_color=color.white, text_size=size.small)
+    table.cell(infoTable, 1, 2, str.tostring(swing_low_price, "#.##"), text_color=color.white, text_size=size.small)
+    table.cell(infoTable, 2, 2, "Anch High", text_color=color.white, text_size=size.small)
+    table.cell(infoTable, 3, 2, str.tostring(anchored_high, "#.##"), text_color=color.white, text_size=size.small)
+    table.cell(infoTable, 4, 2, "Eff Top", text_color=color.white, text_size=size.small)
+    table.cell(infoTable, 5, 2, str.tostring(effective_range_top, "#.##"), text_color=color.white, text_size=size.small)
+
+    // Row 3: Eff Range (Bottom)
+    table.cell(infoTable, 0, 3, "", text_color=color.white, text_size=size.small)
+    table.cell(infoTable, 1, 3, "", text_color=color.white, text_size=size.small)
+    table.cell(infoTable, 2, 3, "", text_color=color.white, text_size=size.small)
+    table.cell(infoTable, 3, 3, "", text_color=color.white, text_size=size.small)
+    table.cell(infoTable, 4, 3, "Eff Bot", text_color=color.white, text_size=size.small)
+    table.cell(infoTable, 5, 3, str.tostring(effective_range_bot, "#.##"), text_color=color.white, text_size=size.small)
