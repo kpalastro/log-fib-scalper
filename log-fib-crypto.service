@@ -1,0 +1,19 @@
+[Unit]
+Description=Log-Fib Scalper - Crypto Trading Agent
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root/log-fib-scalper
+Environment="PATH=/usr/bin:/usr/local/bin"
+Environment="CRYPTO_INSTRUMENT=BTCUSDT_5MIN"
+ExecStart=/usr/bin/python3 -m live_trading.crypto.crypto_agent.py
+Restart=always
+RestartSec=10
+StandardOutput=append:/var/log/log-fib-crypto.log
+StandardError=append:/var/log/log-fib-crypto.error.log
+
+[Install]
+WantedBy=multi-user.target

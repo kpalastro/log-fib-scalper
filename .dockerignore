@@ -1,0 +1,44 @@
+# ═══════════════════════════════════════════════════════════════
+# DOCKER IGNORE
+# ═══════════════════════════════════════════════════════════════
+
+# Git
+.git
+.gitignore
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+.venv/
+*.egg-info/
+dist/
+build/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+logs/
+*.log
+
+# Data (don't commit large CSV files to cloud)
+data/*.csv
+data/*.ddb
+
+# Environment files (sensitive!)
+.env
+*.env
+!*.env.example
+
+# Documentation
+*.md
+!README.md

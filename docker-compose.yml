@@ -1,0 +1,70 @@
+# ═══════════════════════════════════════════════════════════════
+# LOG-FIB SCALPER - DOCKER COMPOSE
+# ═══════════════════════════════════════════════════════════════
+# Multi-service deployment for live trading
+
+version: "3.8"
+
+services:
+  # ═══════════════════════════════════════════════════════════════
+  # CRYPTO TRADING (Gate.io) - Bitcoin
+  # ═══════════════════════════════════════════════════════════════
+  crypto-btc:
+    build: .
+    container_name: log-fib-btc
+    restart: unless-stopped
+    environment:
+      - CRYPTO_INSTRUMENT=BTCUSDT_5MIN
+      - GATE_API_KEY=${GATE_API_KEY}
+      - GATE_API_SECRET=${GATE_API_SECRET}
+      - CRYPTO_POSITION_SIZE_PCT=0.02
+      - CRYPTO_MAX_DAILY_TRADES=50
+    volumes:
+      - ./logs:/app/logs
+      - ./live_trading/crypto/.env:/app/live_trading/crypto/.env
+    networks:
+      - trading-network
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  # ═══════════════════════════════════════════════════════════════
+  # FOREX TRADING (IG Markets) - Gold 5-min
+  # ═══════════════════════════════════════════════════════════════
+  forex-gold:
+    build: .
+    container_name: log-fib-gold
+    restart: unless-stopped
+    environment:
+      - IG_INSTRUMENT=XAUUSD_5MIN
+      - IG_API_KEY=${IG_API_KEY}
+      - IG_USERNAME=${IG_USERNAME}
+      - IG_PASSWORD=${IG_PASSWORD}
+      - IG_ACCOUNT_ID=${IG_ACCOUNT_ID}
+      - IG_DEMO=true
+    volumes:
+      - ./logs:/app/logs
+      - ./live_trading/.env:/app/live_trading/.env
+    networks:
+      - trading-network
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    depends_on:
+      - crypto-btc
+
+  # ═══════════════════════════════════════════════════════════════
+  # MONITORING & LOGS
+  # ═══════════════════════════════════════════════════════════════
+  # Optional: Add Prometheus/Grafana for monitoring
+
+networks:
+  trading-network:
+    driver: bridge
+
+volumes:
+  logs:
