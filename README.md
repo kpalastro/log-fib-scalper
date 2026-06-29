@@ -182,5 +182,3 @@ MIT License — See LICENSE file
 For issues or questions, open a GitHub issue.
 
 ---
-
-*Built with ❤️ by Hermes Quant Squad*
