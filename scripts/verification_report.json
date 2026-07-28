@@ -1,0 +1,349 @@
+{
+  "timestamp": "2026-05-19T02:29:21.779560",
+  "configurations_tested": {
+    "claimed_silver": {
+      "params": {
+        "lookback": 12,
+        "multiplier": 0.382,
+        "entry_ratio": 0.5,
+        "take_profit_ratio": 0.786,
+        "stop_loss_ratio": 1.0,
+        "direction": "both"
+      },
+      "metrics": {
+        "total_trades": 296,
+        "wins": 264,
+        "losses": 32,
+        "win_rate": 89.1891891891892,
+        "total_pnl": 22.18388307840047,
+        "avg_pnl": 0.07494555094054213,
+        "profit_factor": 1.634551146636977,
+        "max_drawdown": 6.222125277234383,
+        "walk_forward": {
+          "avg_win_rate": 88.71796769022075,
+          "avg_profit_factor": 2.060251958147485,
+          "total_trades": 296,
+          "total_pnl": 22.18388307840047,
+          "avg_drawdown": 2.7600994544374458,
+          "fold_results": [
+            {
+              "total_trades": 36,
+              "wins": 33,
+              "losses": 3,
+              "win_rate": 91.66666666666666,
+              "total_pnl": 3.2983941924325535,
+              "avg_pnl": 0.09162206090090426,
+              "profit_factor": 2.3231453123234966,
+              "max_drawdown": 1.456227629158704,
+              "fold": 0,
+              "test_period": "2026-04-24T14:40:00-04:00 to 2026-04-29T19:15:00-04:00"
+            },
+            {
+              "total_trades": 53,
+              "wins": 46,
+              "losses": 7,
+              "win_rate": 86.79245283018868,
+              "total_pnl": -1.185277477310379,
+              "avg_pnl": -0.02236372598698828,
+              "profit_factor": 0.8749746539929986,
+              "max_drawdown": 4.151527861793298,
+              "fold": 1,
+              "test_period": "2026-04-29T19:20:00-04:00 to 2026-05-04T22:55:00-04:00"
+            },
+            {
+              "total_trades": 54,
+              "wins": 42,
+              "losses": 12,
+              "win_rate": 77.77777777777779,
+              "total_pnl": -2.4683225589400735,
+              "avg_pnl": -0.045709677017408766,
+              "profit_factor": 0.7514038364687421,
+              "max_drawdown": 3.5615767509501097,
+              "fold": 2,
+              "test_period": "2026-05-04T23:00:00-04:00 to 2026-05-08T02:35:00-04:00"
+            },
+            {
+              "total_trades": 85,
+              "wins": 78,
+              "losses": 7,
+              "win_rate": 91.76470588235294,
+              "total_pnl": 7.407031970071074,
+              "avg_pnl": 0.08714155258907146,
+              "profit_factor": 1.8475335909056088,
+              "max_drawdown": 2.683088722855402,
+              "fold": 3,
+              "test_period": "2026-05-08T02:40:00-04:00 to 2026-05-13T06:15:00-04:00"
+            },
+            {
+              "total_trades": 68,
+              "wins": 65,
+              "losses": 3,
+              "win_rate": 95.58823529411765,
+              "total_pnl": 15.132056952147295,
+              "avg_pnl": 0.22253024929628373,
+              "profit_factor": 4.50420239704658,
+              "max_drawdown": 1.9480763074297158,
+              "fold": 4,
+              "test_period": "2026-05-13T06:20:00-04:00 to 2026-05-18T10:10:00-04:00"
+            }
+          ]
+        }
+      }
+    },
+    "optimal_silver": {
+      "params": {
+        "lookback": 14,
+        "multiplier": 0.618,
+        "entry_ratio": 0.786,
+        "take_profit_ratio": 1.272,
+        "stop_loss_ratio": 1.272,
+        "direction": "both"
+      },
+      "metrics": {
+        "total_trades": 87,
+        "wins": 80,
+        "losses": 7,
+        "win_rate": 91.95402298850574,
+        "total_pnl": 28.77439187815824,
+        "avg_pnl": 0.3307401365305545,
+        "profit_factor": 3.0313085325714195,
+        "max_drawdown": 3.7803423248733026,
+        "walk_forward": {
+          "avg_win_rate": 91.9513276578494,
+          "avg_profit_factor": 3.9302690353177354,
+          "total_trades": 87,
+          "total_pnl": 28.77439187815824,
+          "avg_drawdown": 2.235565329625831,
+          "fold_results": [
+            {
+              "total_trades": 24,
+              "wins": 23,
+              "losses": 1,
+              "win_rate": 95.83333333333334,
+              "total_pnl": 3.8602347872593157,
+              "avg_pnl": 0.16084311613580482,
+              "profit_factor": 2.0211336581505726,
+              "max_drawdown": 3.7803423248733026,
+              "fold": 0,
+              "test_period": "2026-04-24T14:50:00-04:00 to 2026-04-29T19:20:00-04:00"
+            },
+            {
+              "total_trades": 16,
+              "wins": 15,
+              "losses": 1,
+              "win_rate": 93.75,
+              "total_pnl": 5.553267775519885,
+              "avg_pnl": 0.3470792359699928,
+              "profit_factor": 3.751107439388576,
+              "max_drawdown": 2.0185572166363954,
+              "fold": 1,
+              "test_period": "2026-04-29T19:25:00-04:00 to 2026-05-04T22:55:00-04:00"
+            },
+            {
+              "total_trades": 23,
+              "wins": 20,
+              "losses": 3,
+              "win_rate": 86.95652173913044,
+              "total_pnl": 3.61739900115829,
+              "avg_pnl": 0.15727821744166479,
+              "profit_factor": 1.6657310936574645,
+              "max_drawdown": 2.4461043469997463,
+              "fold": 2,
+              "test_period": "2026-05-04T23:00:00-04:00 to 2026-05-08T02:30:00-04:00"
+            },
+            {
+              "total_trades": 11,
+              "wins": 10,
+              "losses": 1,
+              "win_rate": 90.9090909090909,
+              "total_pnl": 4.269335080825726,
+              "avg_pnl": 0.38812137098415694,
+              "profit_factor": 4.461096015052189,
+              "max_drawdown": 1.2335211338427285,
+              "fold": 3,
+              "test_period": "2026-05-08T02:35:00-04:00 to 2026-05-13T06:05:00-04:00"
+            },
+            {
+              "total_trades": 13,
+              "wins": 12,
+              "losses": 1,
+              "win_rate": 92.3076923076923,
+              "total_pnl": 11.474155233395024,
+              "avg_pnl": 0.8826273256457711,
+              "profit_factor": 7.7522769703398735,
+              "max_drawdown": 1.6993016257769824,
+              "fold": 4,
+              "test_period": "2026-05-13T06:10:00-04:00 to 2026-05-18T10:00:00-04:00"
+            }
+          ]
+        }
+      }
+    },
+    "optimal_gold": {
+      "params": {
+        "lookback": 14,
+        "multiplier": 0.382,
+        "entry_ratio": 0.618,
+        "take_profit_ratio": 1.0,
+        "stop_loss_ratio": 1.272,
+        "direction": "short"
+      },
+      "metrics": {
+        "total_trades": 16,
+        "wins": 15,
+        "losses": 1,
+        "win_rate": 93.75,
+        "total_pnl": 140.1919933608624,
+        "avg_pnl": 8.7619995850539,
+        "profit_factor": 2.6615720500674698,
+        "max_drawdown": 84.37310518985305,
+        "walk_forward": {
+          "avg_win_rate": 95.83333333333334,
+          "avg_profit_factor": 0.5450528630106796,
+          "total_trades": 16,
+          "total_pnl": 140.1919933608624,
+          "avg_drawdown": 21.093276297463262,
+          "fold_results": [
+            {
+              "total_trades": 6,
+              "wins": 5,
+              "losses": 1,
+              "win_rate": 83.33333333333334,
+              "total_pnl": -38.38530264502242,
+              "avg_pnl": -6.39755044083707,
+              "profit_factor": 0.5450528630106796,
+              "max_drawdown": 84.37310518985305,
+              "fold": 0,
+              "test_period": "2026-05-10T19:30:00-04:00 to 2026-05-11T22:20:00-04:00"
+            },
+            {
+              "total_trades": 2,
+              "wins": 2,
+              "losses": 0,
+              "win_rate": 100.0,
+              "total_pnl": 43.865612937605874,
+              "avg_pnl": 21.932806468802937,
+              "profit_factor": Infinity,
+              "max_drawdown": 0,
+              "fold": 1,
+              "test_period": "2026-05-11T22:25:00-04:00 to 2026-05-13T01:15:00-04:00"
+            },
+            {
+              "total_trades": 4,
+              "wins": 4,
+              "losses": 0,
+              "win_rate": 100.0,
+              "total_pnl": 81.80210807255298,
+              "avg_pnl": 20.450527018138246,
+              "profit_factor": Infinity,
+              "max_drawdown": 0,
+              "fold": 3,
+              "test_period": "2026-05-14T04:15:00-04:00 to 2026-05-15T07:05:00-04:00"
+            },
+            {
+              "total_trades": 4,
+              "wins": 4,
+              "losses": 0,
+              "win_rate": 100.0,
+              "total_pnl": 52.90957499572596,
+              "avg_pnl": 13.22739374893149,
+              "profit_factor": Infinity,
+              "max_drawdown": 0,
+              "fold": 4,
+              "test_period": "2026-05-15T07:10:00-04:00 to 2026-05-18T10:05:00-04:00"
+            }
+          ]
+        }
+      }
+    },
+    "alt_silver": {
+      "params": {
+        "lookback": 12,
+        "multiplier": 0.5,
+        "entry_ratio": 0.618,
+        "take_profit_ratio": 1.0,
+        "stop_loss_ratio": 1.272,
+        "direction": "both"
+      },
+      "metrics": {
+        "total_trades": 123,
+        "wins": 110,
+        "losses": 13,
+        "win_rate": 89.43089430894308,
+        "total_pnl": 15.857809066639064,
+        "avg_pnl": 0.12892527696454523,
+        "profit_factor": 1.6468673024602711,
+        "max_drawdown": 6.751273382671883,
+        "walk_forward": {
+          "avg_win_rate": 88.1439393939394,
+          "avg_profit_factor": 3.351309505475921,
+          "total_trades": 123,
+          "total_pnl": 15.857809066639064,
+          "avg_drawdown": 3.026453490865137,
+          "fold_results": [
+            {
+              "total_trades": 24,
+              "wins": 23,
+              "losses": 1,
+              "win_rate": 95.83333333333334,
+              "total_pnl": 5.796168580764672,
+              "avg_pnl": 0.241507024198528,
+              "profit_factor": 10.022071202849371,
+              "max_drawdown": 0.6424432317641333,
+              "fold": 0,
+              "test_period": "2026-04-24T14:40:00-04:00 to 2026-04-29T19:15:00-04:00"
+            },
+            {
+              "total_trades": 11,
+              "wins": 8,
+              "losses": 3,
+              "win_rate": 72.72727272727273,
+              "total_pnl": -4.697133263994857,
+              "avg_pnl": -0.4270121149086234,
+              "profit_factor": 0.3507633167138333,
+              "max_drawdown": 4.860969072386084,
+              "fold": 1,
+              "test_period": "2026-04-29T19:20:00-04:00 to 2026-05-04T22:55:00-04:00"
+            },
+            {
+              "total_trades": 33,
+              "wins": 30,
+              "losses": 3,
+              "win_rate": 90.9090909090909,
+              "total_pnl": 5.120236838276867,
+              "avg_pnl": 0.15515869206899596,
+              "profit_factor": 2.2372664020021857,
+              "max_drawdown": 2.8775817675035853,
+              "fold": 2,
+              "test_period": "2026-05-04T23:00:00-04:00 to 2026-05-08T02:35:00-04:00"
+            },
+            {
+              "total_trades": 32,
+              "wins": 26,
+              "losses": 6,
+              "win_rate": 81.25,
+              "total_pnl": -2.5606089633639186,
+              "avg_pnl": -0.08001903010512246,
+              "profit_factor": 0.7951371003382952,
+              "max_drawdown": 6.751273382671883,
+              "fold": 3,
+              "test_period": "2026-05-08T02:40:00-04:00 to 2026-05-13T06:15:00-04:00"
+            },
+            {
+              "total_trades": 23,
+              "wins": 23,
+              "losses": 0,
+              "win_rate": 100.0,
+              "total_pnl": 12.1991458749563,
+              "avg_pnl": 0.5303976467372304,
+              "profit_factor": Infinity,
+              "max_drawdown": 0,
+              "fold": 4,
+              "test_period": "2026-05-13T06:20:00-04:00 to 2026-05-18T10:10:00-04:00"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

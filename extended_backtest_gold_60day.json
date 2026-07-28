@@ -1,0 +1,69 @@
+{
+  "instrument": "gold",
+  "config": {
+    "vector_lookback": 30,
+    "confluence_threshold": 50,
+    "logfib_config": {
+      "lookback": 8,
+      "mult": 0.618,
+      "entry": 0.5,
+      "tp": 1.0,
+      "sl": 1.618,
+      "win_rate": 98.21,
+      "profit_factor": 7.59
+    }
+  },
+  "data_range": {
+    "start": "2026-03-10 04:00:00+00:00",
+    "end": "2026-05-19 14:45:00+00:00",
+    "total_bars": 13550,
+    "days": 70
+  },
+  "performance": {
+    "total_trades": 1,
+    "wins": 1,
+    "losses": 0,
+    "win_rate": 100.0,
+    "total_pnl": 212.46111599019866,
+    "final_capital": 100212.4611159902,
+    "return_pct": 0.21246111599019785,
+    "profit_factor": Infinity,
+    "recovery_factor": Infinity,
+    "sharpe_ratio": 0.1365855464150131,
+    "max_drawdown": 0,
+    "expected_value": 212.46111599019866
+  },
+  "trade_stats": {
+    "avg_win": 212.46111599019866,
+    "avg_loss": 0,
+    "largest_win": 212.46111599019866,
+    "largest_loss": 0,
+    "avg_bars_held": 999.0,
+    "avg_duration_hours": 83.25,
+    "max_consec_wins": 1,
+    "max_consec_losses": 0
+  },
+  "confluence_stats": {
+    "avg_confluence": 80.0,
+    "avg_confluence_wins": 80.0,
+    "avg_confluence_losses": 0
+  },
+  "daily_pnl": {
+    "2026-03-15": 212.46111599019866
+  },
+  "trades": [
+    {
+      "entry_time": "2026-03-10 07:55:00+00:00",
+      "exit_time": "2026-03-15 23:20:00+00:00",
+      "direction": "SHORT",
+      "entry_price": 5081.0898541395345,
+      "exit_price": 4970.87990359157,
+      "size": 1.9277852402059943,
+      "pnl": 212.46111599019866,
+      "exit_reason": "TP",
+      "confluence": 80.0,
+      "bars_held": 999,
+      "duration_hours": 83.25
+    }
+  ]
+}

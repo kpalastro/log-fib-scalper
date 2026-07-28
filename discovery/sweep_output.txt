@@ -1,0 +1,258 @@
+================================================================================
+🧪 LOG-FIB STRATEGY DISCOVERY - COMPREHENSIVE SWEEP
+================================================================================
+
+Testing all combinations of:
+  Lookback: 6, 8, 10, 12, 15, 20
+  Multiplier: 0.382, 0.5, 0.618, 0.786
+  Entry: 0.382, 0.5, 0.618, 0.786
+  Take-Profit: 0.786, 1.0, 1.272, 1.618
+  Stop-Loss: 1.0, 1.272, 1.618
+  Direction: LONG, SHORT, BOTH
+
+
+================================================================================
+🔬 PARAMETER SWEEP: Silver
+================================================================================
+   Candles: 4387
+   Range: 2026-04-24 13:40:00 to 2026-05-18 11:10:00
+   Price: 70.87 - 89.38
+
+   Testing 3456 configurations...
+   Progress: 500/3456 (14.5%)
+   Progress: 1000/3456 (28.9%)
+   Progress: 1500/3456 (43.4%)
+   Progress: 2000/3456 (57.9%)
+   Progress: 2500/3456 (72.3%)
+   Progress: 3000/3456 (86.8%)
+
+================================================================================
+🏆 TOP 20 CONFIGURATIONS: Silver
+================================================================================
+
+#1: WR=98.7%, PF=48.25, Trades=1186, PnL=+726.99
+    LB=6, Mult=0.5, Entry=0.382, TP=1.272, SL=1.618, Dir=BOTH
+
+#2: WR=98.0%, PF=43.79, Trades=1299, PnL=+838.17
+    LB=6, Mult=0.382, Entry=0.382, TP=1.618, SL=1.0, Dir=BOTH
+
+#3: WR=98.5%, PF=43.50, Trades=1764, PnL=+870.47
+    LB=6, Mult=0.382, Entry=0.382, TP=1.272, SL=1.0, Dir=BOTH
+
+#4: WR=98.4%, PF=42.56, Trades=1369, PnL=+716.45
+    LB=6, Mult=0.382, Entry=0.618, TP=1.618, SL=1.0, Dir=BOTH
+
+#5: WR=98.5%, PF=41.34, Trades=1349, PnL=+708.78
+    LB=6, Mult=0.382, Entry=0.618, TP=1.618, SL=1.272, Dir=BOTH
+
+#6: WR=98.5%, PF=41.14, Trades=1187, PnL=+690.64
+    LB=6, Mult=0.5, Entry=0.382, TP=1.272, SL=1.272, Dir=BOTH
+
+#7: WR=98.2%, PF=41.09, Trades=1321, PnL=+767.54
+    LB=6, Mult=0.382, Entry=0.5, TP=1.618, SL=1.0, Dir=BOTH
+
+#8: WR=98.3%, PF=40.78, Trades=1209, PnL=+709.34
+    LB=6, Mult=0.5, Entry=0.382, TP=1.272, SL=1.0, Dir=BOTH
+
+#9: WR=98.4%, PF=40.40, Trades=1279, PnL=+730.76
+    LB=6, Mult=0.382, Entry=0.5, TP=1.618, SL=1.272, Dir=BOTH
+
+#10: WR=98.9%, PF=39.57, Trades=1589, PnL=+723.17
+    LB=6, Mult=0.5, Entry=0.382, TP=1.0, SL=1.618, Dir=BOTH
+
+#11: WR=98.6%, PF=39.53, Trades=1902, PnL=+702.78
+    LB=6, Mult=0.382, Entry=0.618, TP=1.272, SL=1.0, Dir=BOTH
+
+#12: WR=97.9%, PF=39.52, Trades=1217, PnL=+770.71
+    LB=6, Mult=0.382, Entry=0.382, TP=1.618, SL=1.272, Dir=BOTH
+
+#13: WR=98.4%, PF=39.49, Trades=1264, PnL=+714.18
+    LB=6, Mult=0.382, Entry=0.5, TP=1.618, SL=1.618, Dir=BOTH
+
+#14: WR=98.2%, PF=39.28, Trades=1058, PnL=+541.35
+    LB=20, Mult=0.382, Entry=0.382, TP=1.272, SL=1.0, Dir=SHORT
+
+#15: WR=97.6%, PF=39.19, Trades=723, PnL=+554.14
+    LB=8, Mult=0.618, Entry=0.382, TP=1.618, SL=1.618, Dir=BOTH
+
+#16: WR=98.8%, PF=38.99, Trades=1401, PnL=+528.63
+    LB=20, Mult=0.382, Entry=0.382, TP=1.0, SL=1.0, Dir=SHORT
+
+#17: WR=98.7%, PF=38.98, Trades=1291, PnL=+671.70
+    LB=6, Mult=0.618, Entry=0.382, TP=1.0, SL=1.618, Dir=BOTH
+
+#18: WR=98.4%, PF=38.94, Trades=1321, PnL=+680.33
+    LB=6, Mult=0.5, Entry=0.5, TP=1.272, SL=1.0, Dir=BOTH
+
+#19: WR=98.5%, PF=38.88, Trades=1338, PnL=+699.46
+    LB=6, Mult=0.618, Entry=0.382, TP=1.0, SL=1.0, Dir=BOTH
+
+#20: WR=98.5%, PF=38.86, Trades=1337, PnL=+699.07
+    LB=6, Mult=0.382, Entry=0.618, TP=1.618, SL=1.618, Dir=BOTH
+
+================================================================================
+💎 HIGH WIN-RATE CONFIGS (WR≥90%, PF≥2.0, Trades≥20): 3206 found
+================================================================================
+
+#1: WR=98.7%, PF=48.25, Trades=1186
+    LB=6, Mult=0.500, Entry=0.382, TP=1.272, SL=1.618, Dir=BOTH
+
+#2: WR=98.0%, PF=43.79, Trades=1299
+    LB=6, Mult=0.382, Entry=0.382, TP=1.618, SL=1.000, Dir=BOTH
+
+#3: WR=98.5%, PF=43.50, Trades=1764
+    LB=6, Mult=0.382, Entry=0.382, TP=1.272, SL=1.000, Dir=BOTH
+
+#4: WR=98.4%, PF=42.56, Trades=1369
+    LB=6, Mult=0.382, Entry=0.618, TP=1.618, SL=1.000, Dir=BOTH
+
+#5: WR=98.5%, PF=41.34, Trades=1349
+    LB=6, Mult=0.382, Entry=0.618, TP=1.618, SL=1.272, Dir=BOTH
+
+#6: WR=98.5%, PF=41.14, Trades=1187
+    LB=6, Mult=0.500, Entry=0.382, TP=1.272, SL=1.272, Dir=BOTH
+
+#7: WR=98.2%, PF=41.09, Trades=1321
+    LB=6, Mult=0.382, Entry=0.500, TP=1.618, SL=1.000, Dir=BOTH
+
+#8: WR=98.3%, PF=40.78, Trades=1209
+    LB=6, Mult=0.500, Entry=0.382, TP=1.272, SL=1.000, Dir=BOTH
+
+#9: WR=98.4%, PF=40.40, Trades=1279
+    LB=6, Mult=0.382, Entry=0.500, TP=1.618, SL=1.272, Dir=BOTH
+
+#10: WR=98.9%, PF=39.57, Trades=1589
+    LB=6, Mult=0.500, Entry=0.382, TP=1.000, SL=1.618, Dir=BOTH
+
+💾 Saved to: discovery_Silver.json
+
+================================================================================
+🔬 PARAMETER SWEEP: Gold
+================================================================================
+   Candles: 1584
+   Range: 2026-05-10 18:20:00 to 2026-05-18 11:15:00
+   Price: 4480.41 - 4773.57
+
+   Testing 3456 configurations...
+   Progress: 500/3456 (14.5%)
+   Progress: 1000/3456 (28.9%)
+   Progress: 1500/3456 (43.4%)
+   Progress: 2000/3456 (57.9%)
+   Progress: 2500/3456 (72.3%)
+   Progress: 3000/3456 (86.8%)
+
+================================================================================
+🏆 TOP 20 CONFIGURATIONS: Gold
+================================================================================
+
+#1: WR=96.6%, PF=57.00, Trades=116, PnL=+2410.86
+    LB=8, Mult=0.618, Entry=0.5, TP=1.0, SL=1.618, Dir=BOTH
+
+#2: WR=96.2%, PF=56.92, Trades=26, PnL=+523.99
+    LB=20, Mult=0.382, Entry=0.786, TP=1.618, SL=1.0, Dir=SHORT
+
+#3: WR=96.2%, PF=56.92, Trades=26, PnL=+523.99
+    LB=20, Mult=0.382, Entry=0.786, TP=1.618, SL=1.272, Dir=SHORT
+
+#4: WR=96.2%, PF=56.92, Trades=26, PnL=+523.99
+    LB=20, Mult=0.382, Entry=0.786, TP=1.618, SL=1.618, Dir=SHORT
+
+#5: WR=96.2%, PF=56.88, Trades=26, PnL=+523.53
+    LB=20, Mult=0.786, Entry=0.382, TP=0.786, SL=1.0, Dir=SHORT
+
+#6: WR=96.2%, PF=56.88, Trades=26, PnL=+523.53
+    LB=20, Mult=0.786, Entry=0.382, TP=0.786, SL=1.272, Dir=SHORT
+
+#7: WR=96.2%, PF=56.88, Trades=26, PnL=+523.53
+    LB=20, Mult=0.786, Entry=0.382, TP=0.786, SL=1.618, Dir=SHORT
+
+#8: WR=98.1%, PF=56.38, Trades=52, PnL=+427.92
+    LB=20, Mult=0.618, Entry=0.618, TP=0.786, SL=1.0, Dir=SHORT
+
+#9: WR=98.1%, PF=56.38, Trades=52, PnL=+427.92
+    LB=20, Mult=0.618, Entry=0.618, TP=0.786, SL=1.272, Dir=SHORT
+
+#10: WR=98.1%, PF=56.38, Trades=52, PnL=+427.92
+    LB=20, Mult=0.618, Entry=0.618, TP=0.786, SL=1.618, Dir=SHORT
+
+#11: WR=96.6%, PF=51.29, Trades=116, PnL=+2473.67
+    LB=8, Mult=0.786, Entry=0.382, TP=0.786, SL=1.272, Dir=BOTH
+
+#12: WR=96.6%, PF=51.29, Trades=116, PnL=+2473.67
+    LB=8, Mult=0.786, Entry=0.382, TP=0.786, SL=1.618, Dir=BOTH
+
+#13: WR=96.6%, PF=48.73, Trades=59, PnL=+1039.94
+    LB=10, Mult=0.618, Entry=0.618, TP=1.0, SL=1.618, Dir=LONG
+
+#14: WR=96.6%, PF=48.73, Trades=59, PnL=+1039.94
+    LB=12, Mult=0.618, Entry=0.618, TP=1.0, SL=1.618, Dir=LONG
+
+#15: WR=96.5%, PF=47.50, Trades=144, PnL=+2675.76
+    LB=12, Mult=0.618, Entry=0.5, TP=1.0, SL=1.618, Dir=BOTH
+
+#16: WR=96.7%, PF=47.24, Trades=60, PnL=+1007.44
+    LB=8, Mult=0.618, Entry=0.618, TP=1.0, SL=1.618, Dir=LONG
+
+#17: WR=96.4%, PF=46.52, Trades=140, PnL=+2619.12
+    LB=10, Mult=0.618, Entry=0.5, TP=1.0, SL=1.618, Dir=BOTH
+
+#18: WR=97.9%, PF=45.10, Trades=47, PnL=+386.36
+    LB=20, Mult=0.5, Entry=0.786, TP=1.0, SL=1.0, Dir=SHORT
+
+#19: WR=97.9%, PF=45.10, Trades=47, PnL=+386.36
+    LB=20, Mult=0.5, Entry=0.786, TP=1.0, SL=1.272, Dir=SHORT
+
+#20: WR=97.9%, PF=45.10, Trades=47, PnL=+386.36
+    LB=20, Mult=0.5, Entry=0.786, TP=1.0, SL=1.618, Dir=SHORT
+
+================================================================================
+💎 HIGH WIN-RATE CONFIGS (WR≥90%, PF≥2.0, Trades≥20): 1555 found
+================================================================================
+
+#1: WR=96.6%, PF=57.00, Trades=116
+    LB=8, Mult=0.618, Entry=0.500, TP=1.000, SL=1.618, Dir=BOTH
+
+#2: WR=96.2%, PF=56.92, Trades=26
+    LB=20, Mult=0.382, Entry=0.786, TP=1.618, SL=1.000, Dir=SHORT
+
+#3: WR=96.2%, PF=56.92, Trades=26
+    LB=20, Mult=0.382, Entry=0.786, TP=1.618, SL=1.272, Dir=SHORT
+
+#4: WR=96.2%, PF=56.92, Trades=26
+    LB=20, Mult=0.382, Entry=0.786, TP=1.618, SL=1.618, Dir=SHORT
+
+#5: WR=96.2%, PF=56.88, Trades=26
+    LB=20, Mult=0.786, Entry=0.382, TP=0.786, SL=1.000, Dir=SHORT
+
+#6: WR=96.2%, PF=56.88, Trades=26
+    LB=20, Mult=0.786, Entry=0.382, TP=0.786, SL=1.272, Dir=SHORT
+
+#7: WR=96.2%, PF=56.88, Trades=26
+    LB=20, Mult=0.786, Entry=0.382, TP=0.786, SL=1.618, Dir=SHORT
+
+#8: WR=98.1%, PF=56.38, Trades=52
+    LB=20, Mult=0.618, Entry=0.618, TP=0.786, SL=1.000, Dir=SHORT
+
+#9: WR=98.1%, PF=56.38, Trades=52
+    LB=20, Mult=0.618, Entry=0.618, TP=0.786, SL=1.272, Dir=SHORT
+
+#10: WR=98.1%, PF=56.38, Trades=52
+    LB=20, Mult=0.618, Entry=0.618, TP=0.786, SL=1.618, Dir=SHORT
+
+💾 Saved to: discovery_Gold.json
+
+================================================================================
+📊 CROSS-INSTRUMENT COMPARISON
+================================================================================
+
+Silver:
+  Best: WR=98.7%, PF=48.25, Trades=1186
+  Config: LB=6, Mult=0.5, Entry=0.382, TP=1.272, SL=1.618
+
+Gold:
+  Best: WR=100.0%, PF=inf, Trades=112
+  Config: LB=20, Mult=0.382, Entry=0.786, TP=1.0, SL=1.0
+
+================================================================================
+✅ Discovery complete
+================================================================================

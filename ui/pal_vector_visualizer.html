@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pal Vector + Log-Fib Confluence Visualizer</title>
+    <script src="https://unpkg.com/lightweight-charts@4.1.0/dist/lightweight-charts.standalone.production.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+            color: #00d4ff;
+            font-size: 24px;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #888;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        
+        .controls {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        
+        .control-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        label {
+            font-size: 13px;
+            color: #aaa;
+        }
+        
+        select, input[type="number"], button {
+            padding: 8px 12px;
+            border: 1px solid #333;
+            border-radius: 4px;
+            background: #1a1a1a;
+            color: #e0e0e0;
+            font-size: 13px;
+        }
+        
+        button {
+            background: #0066cc;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        
+        button:hover {
+            background: #0088ff;
+        }
+        
+        .chart-container {
+            background: #111;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        
+        #chart {
+            width: 100%;
+            height: 600px;
+        }
+        
+        .stats-panel {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .stat-card {
+            background: #1a1a1a;
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 3px solid #00d4ff;
+        }
+        
+        .stat-card.bullish {
+            border-left-color: #00ff88;
+        }
+        
+        .stat-card.bearish {
+            border-left-color: #ff4444;
+        }
+        
+        .stat-label {
+            font-size: 12px;
+            color: #888;
+            margin-bottom: 5px;
+        }
+        
+        .stat-value {
+            font-size: 20px;
+            font-weight: bold;
+            color: #e0e0e0;
+        }
+        
+        .stat-value.up {
+            color: #00ff88;
+        }
+        
+        .stat-value.down {
+            color: #ff4444;
+        }
+        
+        .signal-panel {
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .signal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .signal-title {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        .signal-badge {
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+        
+        .signal-badge.long {
+            background: #00ff8833;
+            color: #00ff88;
+        }
+        
+        .signal-badge.short {
+            background: #ff444433;
+            color: #ff4444;
+        }
+        
+        .signal-badge.wait {
+            background: #66666633;
+            color: #aaa;
+        }
+        
+        .levels-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .level-column {
+            background: #111;
+            padding: 15px;
+            border-radius: 6px;
+        }
+        
+        .level-column h3 {
+            font-size: 14px;
+            margin-bottom: 10px;
+            color: #00d4ff;
+        }
+        
+        .level-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 0;
+            border-bottom: 1px solid #222;
+            font-size: 13px;
+        }
+        
+        .level-item:last-child {
+            border-bottom: none;
+        }
+        
+        .level-name {
+            color: #aaa;
+        }
+        
+        .level-price {
+            color: #e0e0e0;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .confluence-meter {
+            margin-top: 15px;
+        }
+        
+        .meter-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            font-size: 13px;
+        }
+        
+        .meter-bar {
+            height: 20px;
+            background: #333;
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .meter-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ff4444, #ffaa00, #00ff88);
+            transition: width 0.3s;
+        }
+        
+        .meter-value {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 12px;
+            font-weight: bold;
+            color: #000;
+            text-shadow: 0 0 2px #fff;
+        }
+        
+        .trade-log {
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 8px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        
+        .trade-log h3 {
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+        
+        .trade-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12px;
+        }
+        
+        .trade-table th {
+            text-align: left;
+            padding: 8px;
+            background: #111;
+            color: #888;
+            font-weight: normal;
+        }
+        
+        .trade-table td {
+            padding: 8px;
+            border-bottom: 1px solid #222;
+        }
+        
+        .trade-table .win {
+            color: #00ff88;
+        }
+        
+        .trade-table .loss {
+            color: #ff4444;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #888;
+        }
+        
+        .error {
+            background: #ff444433;
+            color: #ff4444;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 Pal Vector + Log-Fib Confluence Visualizer</h1>
+        <p class="subtitle">Geometric Vector Projections × Log-Fibonacci Range Forecasting</p>
+        
+        <div class="controls">
+            <div class="control-group">
+                <label>Instrument:</label>
+                <select id="instrument">
+                    <option value="silver">Silver (XAGUSD)</option>
+                    <option value="gold">Gold (XAUUSD)</option>
+                </select>
+            </div>
+            
+            <div class="control-group">
+                <label>Vector Lookback:</label>
+                <input type="number" id="vectorLookback" value="100" min="10" max="500" step="10" style="width: 80px;">
+            </div>
+            
+            <div class="control-group">
+                <label>Log-Fib Lookback:</label>
+                <input type="number" id="logfibLookback" value="6" min="3" max="50" step="1" style="width: 60px;">
+            </div>
+            
+            <button onclick="loadData()">🔄 Load Data</button>
+            <button onclick="toggleVectors()">📐 Toggle Vectors</button>
+            <button onclick="toggleLogFib()">🔮 Toggle Log-Fib</button>
+        </div>
+        
+        <div id="error-container"></div>
+        
+        <div class="stats-panel" id="stats-panel" style="display: none;">
+            <div class="stat-card" id="price-card">
+                <div class="stat-label">Current Price</div>
+                <div class="stat-value" id="current-price">-</div>
+            </div>
+            <div class="stat-card" id="trend-card">
+                <div class="stat-label">Vector Trend</div>
+                <div class="stat-value" id="vector-trend">-</div>
+            </div>
+            <div class="stat-card" id="confluence-card">
+                <div class="stat-label">Confluence Score</div>
+                <div class="stat-value" id="confluence-score">-</div>
+            </div>
+            <div class="stat-card" id="signal-card">
+                <div class="stat-label">Signal</div>
+                <div class="stat-value" id="signal-value">-</div>
+            </div>
+        </div>
+        
+        <div class="chart-container">
+            <div id="chart"></div>
+        </div>
+        
+        <div class="signal-panel" id="signal-panel" style="display: none;">
+            <div class="signal-header">
+                <div class="signal-title">🎯 Current Setup</div>
+                <div class="signal-badge wait" id="signal-badge">WAIT</div>
+            </div>
+            
+            <div class="levels-grid">
+                <div class="level-column">
+                    <h3>📈 Vector Resistance (from High)</h3>
+                    <div id="resistance-level"></div>
+                </div>
+                <div class="level-column">
+                    <h3>📉 Vector Support (from Low)</h3>
+                    <div id="support-levels"></div>
+                </div>
+                <div class="level-column">
+                    <h3>🔮 Log-Fib Levels</h3>
+                    <div id="logfib-levels"></div>
+                </div>
+            </div>
+            
+            <div class="confluence-meter">
+                <div class="meter-label">
+                    <span>Confluence Strength</span>
+                    <span id="meter-text">0/100</span>
+                </div>
+                <div class="meter-bar">
+                    <div class="meter-fill" id="meter-fill" style="width: 0%;"></div>
+                    <div class="meter-value" id="meter-value">0</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="trade-log" id="trade-log" style="display: none;">
+            <h3>📊 Backtest Trade Log</h3>
+            <table class="trade-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Entry Time</th>
+                        <th>Exit Time</th>
+                        <th>Direction</th>
+                        <th>Entry</th>
+                        <th>Exit</th>
+                        <th>P&L</th>
+                        <th>Confluence</th>
+                    </tr>
+                </thead>
+                <tbody id="trade-log-body"></tbody>
+            </table>
+        </div>
+    </div>
+    
+    <script>
+        // Global state
+        let chart = null;
+        let candleSeries = null;
+        let vectorLines = [];
+        let logfibLines = [];
+        let candleData = [];
+        let showVectors = true;
+        let showLogFib = true;
+        
+        // Initialize chart
+        function initChart() {
+            const container = document.getElementById('chart');
+            chart = LightweightCharts.createChart(container, {
+                width: container.clientWidth,
+                height: 600,
+                layout: {
+                    background: { color: '#111' },
+                    textColor: '#e0e0e0',
+                },
+                grid: {
+                    vertLines: { color: '#222' },
+                    horzLines: { color: '#222' },
+                },
+                crosshair: {
+                    mode: LightweightCharts.CrosshairMode.Normal,
+                },
+                timeScale: {
+                    timeVisible: true,
+                    secondsVisible: false,
+                },
+            });
+            
+            candleSeries = chart.addCandlestickSeries({
+                upColor: '#00ff88',
+                downColor: '#ff4444',
+                borderVisible: false,
+                wickUpColor: '#00ff88',
+                wickDownColor: '#ff4444',
+            });
+            
+            // Handle resize
+            window.addEventListener('resize', () => {
+                chart.resize(container.clientWidth, 600);
+            });
+        }
+        
+        // Load data from backend
+        async function loadData() {
+            const instrument = document.getElementById('instrument').value;
+            const vectorLookback = parseInt(document.getElementById('vectorLookback').value);
+            const logfibLookback = parseInt(document.getElementById('logfibLookback').value);
+            
+            try {
+                const response = await fetch(`/api/analyze?instrument=${instrument}&vector_lb=${vectorLookback}&logfib_lb=${logfibLookback}`);
+                const data = await response.json();
+                
+                if (data.error) {
+                    showError(data.error);
+                    return;
+                }
+                
+                // Store data
+                candleData = data.candles;
+                
+                // Update chart
+                updateChart(candleData);
+                
+                // Update stats
+                updateStats(data.analysis);
+                
+                // Update signal panel
+                updateSignalPanel(data.analysis);
+                
+                // Update trade log
+                if (data.backtest && data.backtest.trades) {
+                    updateTradeLog(data.backtest);
+                }
+                
+                // Draw vector lines
+                if (showVectors && data.vector_levels) {
+                    drawVectorLines(data.vector_levels);
+                }
+                
+                // Draw Log-Fib lines
+                if (showLogFib && data.logfib_levels) {
+                    drawLogFibLines(data.logfib_levels);
+                }
+                
+            } catch (error) {
+                showError('Failed to load data: ' + error.message);
+            }
+        }
+        
+        // Update candlestick chart
+        function updateChart(candles) {
+            const formattedCandles = candles.map(c => ({
+                time: new Date(c.datetime).getTime() / 1000,
+                open: c.open,
+                high: c.high,
+                low: c.low,
+                close: c.close,
+            }));
+            
+            candleSeries.setData(formattedCandles);
+            chart.timeScale().fitContent();
+        }
+        
+        // Update statistics panel
+        function updateStats(analysis) {
+            document.getElementById('stats-panel').style.display = 'grid';
+            
+            const priceCard = document.getElementById('price-card');
+            const trendCard = document.getElementById('trend-card');
+            const confluenceCard = document.getElementById('confluence-card');
+            const signalCard = document.getElementById('signal-card');
+            
+            document.getElementById('current-price').textContent = analysis.current_price.toFixed(4);
+            
+            const trend = analysis.vector_analysis.trend;
+            document.getElementById('vector-trend').textContent = trend;
+            
+            if (trend.includes('BULLISH')) {
+                trendCard.className = 'stat-card bullish';
+                document.getElementById('vector-trend').className = 'stat-value up';
+            } else if (trend.includes('BEARISH')) {
+                trendCard.className = 'stat-card bearish';
+                document.getElementById('vector-trend').className = 'stat-value down';
+            } else {
+                trendCard.className = 'stat-card';
+                document.getElementById('vector-trend').className = 'stat-value';
+            }
+            
+            const confluence = analysis.confluence_score.toFixed(1);
+            document.getElementById('confluence-score').textContent = confluence + '/100';
+            
+            const signal = analysis.signal;
+            document.getElementById('signal-value').textContent = signal.direction + ' (' + signal.strength + ')';
+            
+            if (signal.direction === 'LONG') {
+                signalCard.className = 'stat-card bullish';
+                document.getElementById('signal-value').className = 'stat-value up';
+            } else if (signal.direction === 'SHORT') {
+                signalCard.className = 'stat-card bearish';
+                document.getElementById('signal-value').className = 'stat-value down';
+            } else {
+                signalCard.className = 'stat-card';
+                document.getElementById('signal-value').className = 'stat-value';
+            }
+        }
+        
+        // Update signal panel
+        function updateSignalPanel(analysis) {
+            document.getElementById('signal-panel').style.display = 'block';
+            
+            const signal = analysis.signal;
+            const badge = document.getElementById('signal-badge');
+            
+            badge.textContent = signal.action;
+            badge.className = 'signal-badge ' + (signal.action === 'ENTER' ? (signal.direction === 'LONG' ? 'long' : 'short') : 'wait');
+            
+            // Resistance levels
+            const resistanceHtml = Object.entries(analysis.vector_analysis.high_projections)
+                .map(([name, price]) => `
+                    <div class="level-item">
+                        <span class="level-name">${name}</span>
+                        <span class="level-price">${price.toFixed(4)}</span>
+                    </div>
+                `).join('');
+            document.getElementById('resistance-level').innerHTML = resistanceHtml;
+            
+            // Support levels
+            const supportHtml = Object.entries(analysis.vector_analysis.low_projections)
+                .map(([name, price]) => `
+                    <div class="level-item">
+                        <span class="level-name">${name}</span>
+                        <span class="level-price">${price.toFixed(4)}</span>
+                    </div>
+                `).join('');
+            document.getElementById('support-levels').innerHTML = supportHtml;
+            
+            // Log-Fib levels
+            if (analysis.logfib_analysis && !analysis.logfib_analysis.error) {
+                const logfibHtml = `
+                    <div class="level-item">
+                        <span class="level-name">Pivot</span>
+                        <span class="level-price">${analysis.logfib_analysis.pivot.toFixed(4)}</span>
+                    </div>
+                    <div class="level-item">
+                        <span class="level-name">Entry (${(analysis.logfib_analysis.entry_ratio || 0.382) * 100}%)</span>
+                        <span class="level-price">${analysis.logfib_analysis.entry.toFixed(4)}</span>
+                    </div>
+                    <div class="level-item">
+                        <span class="level-name">TP (${(analysis.logfib_analysis.tp_ratio || 1.272) * 100}%)</span>
+                        <span class="level-price">${analysis.logfib_analysis.tp.toFixed(4)}</span>
+                    </div>
+                    <div class="level-item">
+                        <span class="level-name">SL (${(analysis.logfib_analysis.sl_ratio || 1.618) * 100}%)</span>
+                        <span class="level-price">${analysis.logfib_analysis.sl.toFixed(4)}</span>
+                    </div>
+                `;
+                document.getElementById('logfib-levels').innerHTML = logfibHtml;
+            }
+            
+            // Confluence meter
+            const score = analysis.confluence_score;
+            document.getElementById('meter-fill').style.width = score + '%';
+            document.getElementById('meter-value').textContent = score.toFixed(0);
+            document.getElementById('meter-text').textContent = score.toFixed(1) + '/100';
+        }
+        
+        // Update trade log
+        function updateTradeLog(backtest) {
+            document.getElementById('trade-log').style.display = 'block';
+            
+            const tbody = document.getElementById('trade-log-body');
+            tbody.innerHTML = backtest.trades.slice(0, 50).map((trade, i) => `
+                <tr>
+                    <td>${i + 1}</td>
+                    <td>${new Date(trade.entry_time).toLocaleString()}</td>
+                    <td>${new Date(trade.exit_time).toLocaleString()}</td>
+                    <td>${trade.direction}</td>
+                    <td>${trade.entry_price.toFixed(4)}</td>
+                    <td>${trade.exit_price.toFixed(4)}</td>
+                    <td class="${trade.pnl >= 0 ? 'win' : 'loss'}">${trade.pnl >= 0 ? '+' : ''}${trade.pnl.toFixed(2)}</td>
+                    <td>${trade.confluence.toFixed(0)}</td>
+                </tr>
+            `).join('');
+        }
+        
+        // Draw vector projection lines
+        function drawVectorLines(levels) {
+            // Remove existing lines
+            vectorLines.forEach(line => chart.removeSeries(line));
+            vectorLines = [];
+            
+            // Draw lines from swing high (resistance)
+            const highColor = '#0066ff';
+            const lowColor = '#00ff88';
+            
+            // Add line series for each projection level
+            // (Implementation would add horizontal lines at projection levels)
+        }
+        
+        // Draw Log-Fib levels
+        function drawLogFibLines(levels) {
+            // Remove existing lines
+            logfibLines.forEach(line => chart.removeSeries(line));
+            logfibLines = [];
+            
+            // Add line series for each Fib level
+        }
+        
+        // Toggle vector display
+        function toggleVectors() {
+            showVectors = !showVectors;
+            if (showVectors) {
+                drawVectorLines(window.currentVectorLevels);
+            } else {
+                vectorLines.forEach(line => chart.removeSeries(line));
+                vectorLines = [];
+            }
+        }
+        
+        // Toggle Log-Fib display
+        function toggleLogFib() {
+            showLogFib = !showLogFib;
+            if (showLogFib) {
+                drawLogFibLines(window.currentLogFibLevels);
+            } else {
+                logfibLines.forEach(line => chart.removeSeries(line));
+                logfibLines = [];
+            }
+        }
+        
+        // Show error
+        function showError(message) {
+            document.getElementById('error-container').innerHTML = `
+                <div class="error">${message}</div>
+            `;
+        }
+        
+        // Initialize on load
+        initChart();
+        
+        // Auto-load silver data
+        loadData();
+    </script>
+</body>
+</html>

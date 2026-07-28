@@ -1,0 +1,344 @@
+[
+  {
+    "instrumentData": {
+      "dynamicHierarchyEpic": null,
+      "currencies": [
+        {
+          "code": "A$",
+          "name": "AUD",
+          "symbol": "A$",
+          "ticketDefault": true,
+          "exchangeRate": "0.55",
+          "baseExchangeRate": 1,
+          "exchangeRateEpic": "CI.U.GBPAUD.IP",
+          "isDefault": true
+        }
+      ],
+      "dmaTradeable": false,
+      "chartEpic": null,
+      "dmaMarketData": null,
+      "optionType": null,
+      "strikeLevel": null,
+      "forceOpenAllowed": true,
+      "epic": "CS.D.CFAGOLD.CFA.IP",
+      "isin": null,
+      "igInstrumentId": "FX-C-9596-101851",
+      "displayPrompt": "-",
+      "lotSize": 1.0,
+      "bungee": false,
+      "option": false,
+      "binary": false,
+      "share": false,
+      "usShare": false,
+      "knockout": false,
+      "currency": true,
+      "cryptocurrency": false,
+      "stopsLimitsAllowed": true,
+      "stopAllowed": true,
+      "limitAllowed": true,
+      "editable": true,
+      "marketName": "Spot Gold (A$1 Contract)",
+      "prompt": "  DEC29",
+      "unit": "C",
+      "newsAccessible": true,
+      "betslipType": "Currencies",
+      "instrumentType": "CURRENCIES",
+      "marketOrderPreference": "SHOW_ENABLED_DEFAULT_OFF",
+      "controlledRiskAllowed": true,
+      "ignoreNonControlledRisk": false,
+      "exchangeId": "FUT_CFDA$_AU",
+      "floor": 0.0,
+      "ceiling": 0.0,
+      "alertsAllowed": true,
+      "marketAnalysisAvailable": true,
+      "marketId": "GC",
+      "newsCode": "GOL",
+      "chartCode": "GOLD",
+      "limitedRiskPremium": {
+        "value": 1,
+        "unit": "pts"
+      },
+      "countryCode": null,
+      "atQuoteEnabled": true,
+      "openingHours": null,
+      "expiryDetails": null,
+      "rolloverDetails": null,
+      "valueOfOnePip": "1.00",
+      "onePipMeans": "1 $/Troy Ounce",
+      "contractSize": "1",
+      "specialInfo": null,
+      "collateralHaircut": 0.5,
+      "firstFxCurrency": {
+        "code": "$.",
+        "name": "USD",
+        "symbol": "$",
+        "ticketDefault": false,
+        "exchangeRate": null,
+        "baseExchangeRate": null,
+        "exchangeRateEpic": null,
+        "isDefault": false
+      },
+      "otcTradeable": true,
+      "barrier": null,
+      "tokenizedName": "Spot Gold (A$1 Contract)",
+      "instrumentExpiryTimestamp": null,
+      "auctionable": false
+    },
+    "marketSnapshotData": {
+      "controlledMarketStatus": "DEAL",
+      "controlledSpread": "-",
+      "marketStatus": "DEAL",
+      "netChange": "-34.15",
+      "percentageChange": "-0.75",
+      "updateTime": "14:02:36",
+      "decimalPlacesFactor": 2,
+      "delayTime": 0,
+      "scalingFactor": 1.0,
+      "scaled": false,
+      "bidFormatted": "4509.99",
+      "offerFormatted": "4510.49",
+      "bestBidFormatted": "4509.99",
+      "bestOfferFormatted": "4510.49",
+      "bidQuoteId": "1779368556285719893",
+      "offerQuoteId": "1779368556285722895",
+      "highFormatted": "4571.11",
+      "lowFormatted": "4499.65",
+      "midFormatted": "4510.24",
+      "referenceEpic": "",
+      "viewPermission": "l1",
+      "priceLadder": [
+        {
+          "bid": "4509.99",
+          "ask": "4510.49"
+        },
+        {
+          "bid": "4509.94",
+          "ask": "4510.54"
+        },
+        {
+          "bid": "4509.89",
+          "ask": "4510.59"
+        },
+        {
+          "bid": "4509.84",
+          "ask": "4510.64"
+        },
+        {
+          "bid": "4509.79",
+          "ask": "4510.69"
+        }
+      ],
+      "currencyLadders": [
+        {
+          "currency": "AUD",
+          "bidSizes": [
+            1900.0,
+            3800.0,
+            4750.0,
+            5700.0,
+            7600.0
+          ],
+          "askSizes": [
+            1900.0,
+            3800.0,
+            4750.0,
+            5700.0,
+            7600.0
+          ]
+        }
+      ],
+      "instrumentVersion": ""
+    },
+    "metaData": {
+      "controlledRisk": false,
+      "timezoneOffset": 9,
+      "currencyOffset": 0.7
+    },
+    "dealSettings": {
+      "lastTradedDealSize": "9",
+      "lastTradedDealCurrency": "AUD",
+      "lastTradedStopType": null,
+      "lastTradedStopDistance": null,
+      "lastTradedLimitDistance": null,
+      "lastTradedPointsThroughCurrent": null,
+      "lastTradedTrailingStopIncrement": null,
+      "lastTradedOrderType": null,
+      "lastTradedOrderExpiry": null,
+      "defaultStopType": "NON_GUARANTEED",
+      "defaultOrderType": "LIMIT",
+      "defaultOrderExpiry": "GOOD_FOR_DAY",
+      "defaultDealSize": null
+    }
+  },
+  {
+    "instrumentData": {
+      "dynamicHierarchyEpic": null,
+      "currencies": [
+        {
+          "code": "NZ",
+          "name": "NZD",
+          "symbol": "NZ",
+          "ticketDefault": false,
+          "exchangeRate": "0.52",
+          "baseExchangeRate": 1.217295487354,
+          "exchangeRateEpic": "CI.U.GBPNZD.IP",
+          "isDefault": false
+        }
+      ],
+      "dmaTradeable": false,
+      "chartEpic": null,
+      "dmaMarketData": null,
+      "optionType": null,
+      "strikeLevel": null,
+      "forceOpenAllowed": true,
+      "epic": "CS.D.AUDNZD.CFD.IP",
+      "isin": null,
+      "igInstrumentId": "FX-C-9613-1167961",
+      "displayPrompt": "-",
+      "lotSize": 10.0,
+      "bungee": false,
+      "option": false,
+      "binary": false,
+      "share": false,
+      "usShare": false,
+      "knockout": false,
+      "currency": true,
+      "cryptocurrency": false,
+      "stopsLimitsAllowed": true,
+      "stopAllowed": true,
+      "limitAllowed": true,
+      "editable": true,
+      "marketName": "AUD/NZD",
+      "prompt": "  DEC29",
+      "unit": "C",
+      "newsAccessible": true,
+      "betslipType": "Currencies",
+      "instrumentType": "CURRENCIES",
+      "marketOrderPreference": "SHOW_ENABLED_DEFAULT_OFF",
+      "controlledRiskAllowed": true,
+      "ignoreNonControlledRisk": false,
+      "exchangeId": "FX_C_MAIN_ST",
+      "floor": 0.0,
+      "ceiling": 0.0,
+      "alertsAllowed": true,
+      "marketAnalysisAvailable": true,
+      "marketId": "AUDNZD",
+      "newsCode": "AUDNZD=",
+      "chartCode": "AUDNZD",
+      "limitedRiskPremium": {
+        "value": 6,
+        "unit": "pts"
+      },
+      "countryCode": null,
+      "atQuoteEnabled": true,
+      "openingHours": null,
+      "expiryDetails": null,
+      "rolloverDetails": null,
+      "valueOfOnePip": "10.00",
+      "onePipMeans": "0.0001 NZD/AUD",
+      "contractSize": "100000",
+      "specialInfo": null,
+      "collateralHaircut": 0.5,
+      "firstFxCurrency": {
+        "code": "A$",
+        "name": "AUD",
+        "symbol": "A$",
+        "ticketDefault": false,
+        "exchangeRate": null,
+        "baseExchangeRate": null,
+        "exchangeRateEpic": null,
+        "isDefault": false
+      },
+      "otcTradeable": true,
+      "barrier": null,
+      "tokenizedName": "AUD/NZD",
+      "instrumentExpiryTimestamp": null,
+      "auctionable": false
+    },
+    "marketSnapshotData": {
+      "controlledMarketStatus": "DEAL",
+      "controlledSpread": "-",
+      "marketStatus": "DEAL",
+      "netChange": "-0.0011",
+      "percentageChange": "-0.09",
+      "updateTime": "14:02:35",
+      "decimalPlacesFactor": 5,
+      "delayTime": 0,
+      "scalingFactor": 10000.0,
+      "scaled": true,
+      "bidFormatted": "1.21718",
+      "offerFormatted": "1.21743",
+      "bestBidFormatted": "1.21718",
+      "bestOfferFormatted": "1.21743",
+      "bidQuoteId": "1779368555322102439",
+      "offerQuoteId": "1779368555322105440",
+      "highFormatted": "1.22055",
+      "lowFormatted": "1.21344",
+      "midFormatted": "1.21730",
+      "referenceEpic": "",
+      "viewPermission": "l1",
+      "priceLadder": [
+        {
+          "bid": "1.21718",
+          "ask": "1.21743"
+        },
+        {
+          "bid": "1.21715",
+          "ask": "1.21746"
+        },
+        {
+          "bid": "1.21712",
+          "ask": "1.21749"
+        },
+        {
+          "bid": "1.21709",
+          "ask": "1.21752"
+        },
+        {
+          "bid": "1.21706",
+          "ask": "1.21755"
+        }
+      ],
+      "currencyLadders": [
+        {
+          "currency": "NZD",
+          "bidSizes": [
+            87.0,
+            174.0,
+            261.0,
+            348.0,
+            435.0
+          ],
+          "askSizes": [
+            87.0,
+            174.0,
+            261.0,
+            348.0,
+            435.0
+          ]
+        }
+      ],
+      "instrumentVersion": ""
+    },
+    "metaData": {
+      "controlledRisk": false,
+      "timezoneOffset": 9,
+      "currencyOffset": 0.7
+    },
+    "dealSettings": {
+      "lastTradedDealSize": null,
+      "lastTradedDealCurrency": null,
+      "lastTradedStopType": null,
+      "lastTradedStopDistance": null,
+      "lastTradedLimitDistance": null,
+      "lastTradedPointsThroughCurrent": null,
+      "lastTradedTrailingStopIncrement": null,
+      "lastTradedOrderType": null,
+      "lastTradedOrderExpiry": null,
+      "defaultStopType": "NON_GUARANTEED",
+      "defaultOrderType": "LIMIT",
+      "defaultOrderExpiry": "GOOD_FOR_DAY",
+      "defaultDealSize": null
+    }
+  }
+]

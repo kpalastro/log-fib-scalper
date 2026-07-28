@@ -1,0 +1,41 @@
+{
+  "silver_best": {
+    "total_trades": 89,
+    "wins": 86,
+    "losses": 3,
+    "win_rate": 96.62921348314607,
+    "total_pnl": 40.21404280113201,
+    "avg_pnl": 0.4518431775408091,
+    "profit_factor": 10.407684624785437,
+    "max_drawdown": 1.9079052705710637,
+    "lookback": 14,
+    "multiplier": 0.618,
+    "entry_ratio": 0.786,
+    "take_profit_ratio": 1.272,
+    "stop_loss_ratio": 1.272,
+    "direction": "both",
+    "wf_win_rate": 97.38181818181818,
+    "wf_profit_factor": Infinity,
+    "wf_trades": 89
+  },
+  "gold_best": {
+    "total_trades": 23,
+    "wins": 23,
+    "losses": 0,
+    "win_rate": 100.0,
+    "total_pnl": 256.5570598442473,
+    "avg_pnl": 11.154654775836839,
+    "profit_factor": Infinity,
+    "max_drawdown": 0,
+    "lookback": 14,
+    "multiplier": 0.382,
+    "entry_ratio": 0.618,
+    "take_profit_ratio": 1.0,
+    "stop_loss_ratio": 1.272,
+    "direction": "short",
+    "wf_win_rate": 100.0,
+    "wf_profit_factor": Infinity,
+    "wf_trades": 23
+  },
+  "timestamp": "2026-05-19T02:27:31.812709"
+}

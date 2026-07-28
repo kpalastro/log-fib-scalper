@@ -1,0 +1,117 @@
+{
+  "generated_at": "2026-05-19T09:32:07.867343",
+  "instruments": {
+    "silver": {
+      "statistics": {
+        "high_to_high": {
+          "mean": 14.051282051282051,
+          "median": 12.0,
+          "std": 6.472619720689005,
+          "min": "7",
+          "max": "38",
+          "fib_count": 9,
+          "fib_percentage": 23.076923076923077,
+          "total": 39,
+          "hh_count": 16,
+          "lh_count": 23
+        },
+        "low_to_low": {
+          "mean": 13.7,
+          "median": 11.5,
+          "std": 6.504613747179766,
+          "min": "7",
+          "max": "34",
+          "fib_count": 9,
+          "fib_percentage": 22.5,
+          "total": 40,
+          "hl_count": 22,
+          "ll_count": 18
+        },
+        "retracements": {
+          "mean": 0.44295209731183555,
+          "median": 0.2510427857443163,
+          "std": 0.5302811163767397,
+          "min": 0.002597878908287641,
+          "max": 2.5029758289809343,
+          "total": 44,
+          "fib_0.382_hits": 31,
+          "fib_0.382_percentage": 70.45454545454545,
+          "fib_0.5_hits": 2,
+          "fib_0.5_percentage": 4.545454545454546,
+          "fib_0.618_hits": 1,
+          "fib_0.618_percentage": 2.272727272727273,
+          "fib_0.786_hits": 10,
+          "fib_0.786_percentage": 22.727272727272727
+        },
+        "price_distances": {
+          "mean": 1.0600753026793894,
+          "median": 0.8598894504673253,
+          "std": 0.692134898108977,
+          "min": 0.03730173139452343,
+          "max": 4.872029138358153,
+          "total": 360
+        }
+      },
+      "swing_counts": {
+        "highs": 220,
+        "lows": 220
+      }
+    },
+    "gold": {
+      "statistics": {
+        "high_to_high": {
+          "mean": 20.363636363636363,
+          "median": 19.0,
+          "std": 10.011563562135422,
+          "min": "9",
+          "max": "45",
+          "fib_count": 1,
+          "fib_percentage": 9.090909090909092,
+          "total": 11,
+          "hh_count": 5,
+          "lh_count": 6
+        },
+        "low_to_low": {
+          "mean": 17.0,
+          "median": 15.5,
+          "std": 6.841052550594828,
+          "min": "9",
+          "max": "33",
+          "fib_count": 1,
+          "fib_percentage": 10.0,
+          "total": 10,
+          "hl_count": 6,
+          "ll_count": 4
+        },
+        "retracements": {
+          "mean": 0.3307331795719758,
+          "median": 0.3706473761647836,
+          "std": 0.2268870827529098,
+          "min": 0.01286720077685974,
+          "max": 0.7677688504326485,
+          "total": 11,
+          "fib_0.382_hits": 9,
+          "fib_0.382_percentage": 81.81818181818183,
+          "fib_0.5_hits": 0,
+          "fib_0.5_percentage": 0.0,
+          "fib_0.618_hits": 1,
+          "fib_0.618_percentage": 9.090909090909092,
+          "fib_0.786_hits": 1,
+          "fib_0.786_percentage": 9.090909090909092
+        },
+        "price_distances": {
+          "mean": 0.5783922856224367,
+          "median": 0.48587479026919445,
+          "std": 0.3200886420499866,
+          "min": 0.13189831374552266,
+          "max": 1.744282581705332,
+          "total": 96
+        }
+      },
+      "swing_counts": {
+        "highs": 60,
+        "lows": 58
+      }
+    }
+  }
+}

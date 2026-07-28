@@ -1,0 +1,66 @@
+// This Pine Script® code is subject to the terms of the Mozilla Public License 2.0 at https://mozilla.org/MPL/2.0/
+// © kuldeep
+
+
+//@version=6
+indicator(title = 'Pal Vector 3', overlay = true)
+
+length = input(100,"Window Length")
+// AR = 17
+// piangle = 57.29578
+
+lv = ta.lowest(length)
+hv = ta.highest(length)
+
+hb = math.abs(ta.highestbars(length))
+lb = math.abs(ta.lowestbars(length))
+
+demand_vector = (hv - lv) / math.max(hb - lb, lb - hb)
+
+var line dv = line.new(bar_index, open, bar_index, open, xloc.bar_index, extend.right, color.blue, line.style_arrow_right, 1)
+line.set_xy1(dv, bar_index[hb], hv)
+line.set_xy2(dv, bar_index, hv - demand_vector * hb)
+
+
+var line dv1by3 = line.new(bar_index, open, bar_index, open, xloc.bar_index, extend.right, color.green, line.style_arrow_right, 1)
+line.set_xy1(dv1by3, bar_index[hb], hv)
+line.set_xy2(dv1by3, bar_index, hv - demand_vector / 3 * hb)
+
+var line dv2by3 = line.new(bar_index, open, bar_index, open, xloc.bar_index, extend.right, color.red, line.style_arrow_right, 1)
+line.set_xy1(dv2by3, bar_index[hb], hv)
+line.set_xy2(dv2by3, bar_index, hv - 2*demand_vector / 3 * hb)
+
+var line dv1by9 = line.new(bar_index, open, bar_index, open, xloc.bar_index, extend.right, color.yellow, line.style_dotted, 1)
+line.set_xy1(dv1by9, bar_index[hb], hv)
+line.set_xy2(dv1by9, bar_index, hv - demand_vector / 9 * hb)
+
+var line dv1by27 = line.new(bar_index, open, bar_index, open, xloc.bar_index, extend.right, color.yellow, line.style_dotted, 1)
+line.set_xy1(dv1by27, bar_index[hb], hv)
+line.set_xy2(dv1by27, bar_index, hv - demand_vector / 27 * hb)
+
+
+
+
+
+
+var line dvx = line.new(bar_index, open, bar_index, open, xloc.bar_index, extend.right, color.blue, line.style_arrow_right, 1)
+line.set_xy1(dvx, bar_index[lb], lv)
+line.set_xy2(dvx, bar_index, lv + demand_vector * lb)
+
+
+var line dvx1by3 = line.new(bar_index, open, bar_index, open, xloc.bar_index, extend.right, color.green, line.style_arrow_right, 1)
+line.set_xy1(dvx1by3, bar_index[lb], lv)
+line.set_xy2(dvx1by3, bar_index, lv + demand_vector / 3 * lb)
+
+var line dvx2by3 = line.new(bar_index, open, bar_index, open, xloc.bar_index, extend.right, color.red, line.style_arrow_right, 1)
+line.set_xy1(dvx2by3, bar_index[lb], lv)
+line.set_xy2(dvx2by3, bar_index, lv + 2*demand_vector / 3 * lb)
+
+
+var line dvx1by9 = line.new(bar_index, open, bar_index, open, xloc.bar_index, extend.right, color.yellow, line.style_dotted, 1)
+line.set_xy1(dvx1by9, bar_index[lb], lv)
+line.set_xy2(dvx1by9, bar_index, lv + demand_vector / 9 * lb)
+
+var line dvx1by27 = line.new(bar_index, open, bar_index, open, xloc.bar_index, extend.right, color.yellow, line.style_dotted, 1)
+line.set_xy1(dvx1by27, bar_index[lb], lv)
+line.set_xy2(dvx1by27, bar_index, lv + demand_vector / 27 * lb)

@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log-Fib Geometric Scalper - Enhanced Visualizer</title>
+    <script src="https://unpkg.com/lightweight-charts@4.1.0/dist/lightweight-charts.standalone.production.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: #0d1117;
+            color: #e6edf3;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 20px;
+            background: #161b22;
+            border-radius: 12px;
+            border: 1px solid #30363d;
+        }
+        
+        h1 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #58a6ff;
+        }
+        
+        .subtitle {
+            font-size: 14px;
+            color: #8b949e;
+            margin-top: 4px;
+        }
+        
+        .controls {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        
+        select, button {
+            padding: 10px 16px;
+            border-radius: 8px;
+            border: 1px solid #30363d;
+            background: #21262d;
+            color: #e6edf3;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        select:hover, button:hover {
+            background: #30363d;
+            border-color: #58a6ff;
+        }
+        
+        button.primary {
+            background: #238636;
+            border-color: #238636;
+        }
+        
+        button.primary:hover {
+            background: #2ea043;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        
+        .stat-card {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            padding: 16px;
+        }
+        
+        .stat-label {
+            font-size: 12px;
+            color: #8b949e;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .stat-value {
+            font-size: 24px;
+            font-weight: 700;
+            margin-top: 8px;
+        }
+        
+        .stat-value.positive { color: #3fb950; }
+        .stat-value.negative { color: #f85149; }
+        .stat-value.neutral { color: #58a6ff; }
+        
+        .chart-container {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        #chart {
+            height: 600px;
+            width: 100%;
+        }
+        
+        .legend {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid #30363d;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+        }
+        
+        .legend-color {
+            width: 16px;
+            height: 3px;
+            border-radius: 2px;
+        }
+        
+        .geometric-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        
+        .geo-stat-card {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            padding: 16px;
+            border-left: 3px solid #58a6ff;
+        }
+        
+        .geo-stat-card.fib { border-left-color: #a371f7; }
+        .geo-stat-card.gann { border-left-color: #f0883e; }
+        .geo-stat-card.markov { border-left-color: #3fb950; }
+        
+        .trades-panel {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            padding: 20px;
+        }
+        
+        .trades-panel h2 {
+            font-size: 18px;
+            margin-bottom: 16px;
+            color: #58a6ff;
+        }
+        
+        .trades-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+        
+        .trades-table th,
+        .trades-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #30363d;
+        }
+        
+        .trades-table th {
+            color: #8b949e;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .trades-table tr:hover {
+            background: #21262d;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .badge-win { background: #238636; color: #fff; }
+        .badge-loss { background: #f85149; color: #fff; }
+        .badge-long { background: #58a6ff; color: #fff; }
+        .badge-short { background: #a371f7; color: #fff; }
+        .badge-fib { background: #a371f7; color: #fff; }
+        .badge-gann { background: #f0883e; color: #fff; }
+        .badge-high-prob { background: #3fb950; color: #fff; }
+        
+        .config-panel {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .config-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+        
+        .config-item {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .config-item label {
+            font-size: 12px;
+            color: #8b949e;
+            margin-bottom: 6px;
+        }
+        
+        .config-item input {
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #30363d;
+            background: #21262d;
+            color: #e6edf3;
+            font-size: 14px;
+        }
+        
+        .loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 400px;
+            color: #8b949e;
+        }
+        
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid #30363d;
+            border-top-color: #58a6ff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .confluence-badge {
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 700;
+            margin-left: 4px;
+        }
+        
+        .confluence-3 { background: #238636; color: #fff; }
+        .confluence-2 { background: #d29922; color: #000; }
+        .confluence-1 { background: #8b949e; color: #fff; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div>
+                <h1>🎯 Log-Fib Geometric Scalper</h1>
+                <p class="subtitle">Enhanced Visualizer - Fib Time + Gann Squares + Markov Patterns</p>
+            </div>
+            <div class="controls">
+                <select id="instrumentSelect">
+                    <option value="silver">Silver (XAGUSD)</option>
+                    <option value="gold">Gold (XAUUSD)</option>
+                    <option value="nifty">Nifty50</option>
+                </select>
+                <select id="configSelect">
+                    <option value="best">Best Config (99.37% WR)</option>
+                    <option value="alternative">Alternative (98.85% WR)</option>
+                </select>
+                <button class="primary" onclick="loadData()">📊 Load Data</button>
+                <button onclick="exportImage()">📷 Export Chart</button>
+            </div>
+        </header>
+        
+        <!-- Traditional Stats -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-label">Win Rate</div>
+                <div class="stat-value positive" id="statWr">-</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Profit Factor</div>
+                <div class="stat-value positive" id="statPf">-</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Total Trades</div>
+                <div class="stat-value neutral" id="statTrades">-</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Total P&L</div>
+                <div class="stat-value" id="statPnl">-</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Avg P&L/Trade</div>
+                <div class="stat-value" id="statAvgPnl">-</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Best Streak</div>
+                <div class="stat-value positive" id="statStreak">-</div>
+            </div>
+        </div>
+        
+        <!-- NEW: Geometric Statistics -->
+        <div class="geometric-stats">
+            <div class="geo-stat-card fib">
+                <div class="stat-label">🔮 Fib Time Hits</div>
+                <div class="stat-value neutral" id="geoFibHits">-</div>
+                <div style="font-size: 11px; color: #8b949e; margin-top: 4px;">Swings at Fib counts (13,21,34)</div>
+            </div>
+            <div class="geo-stat-card fib">
+                <div class="stat-label">🔮 Fib Time %</div>
+                <div class="stat-value neutral" id="geoFibPct">-</div>
+                <div style="font-size: 11px; color: #8b949e; margin-top: 4px;">% within ±1 of Fib number</div>
+            </div>
+            <div class="geo-stat-card gann">
+                <div class="stat-label">📐 Gann Squares</div>
+                <div class="stat-value neutral" id="geoGannSquares">-</div>
+                <div style="font-size: 11px; color: #8b949e; margin-top: 4px;">Time ≈ Price formations</div>
+            </div>
+            <div class="geo-stat-card gann">
+                <div class="stat-label">📐 Gann Square %</div>
+                <div class="stat-value neutral" id="geoGannPct">-</div>
+                <div style="font-size: 11px; color: #8b949e; margin-top: 4px">% of swing transitions</div>
+            </div>
+            <div class="geo-stat-card markov">
+                <div class="stat-label">🔄 Markov Reversal</div>
+                <div class="stat-value neutral" id="geoMarkovRev">-</div>
+                <div style="font-size: 11px; color: #8b949e; margin-top: 4px;">P(reverse | H-L or L-H)</div>
+            </div>
+            <div class="geo-stat-card markov">
+                <div class="stat-label">🔄 Alternation Rate</div>
+                <div class="stat-value neutral" id="geoAltRate">-</div>
+                <div style="font-size: 11px; color: #8b949e; margin-top: 4px;">HLH + LHL patterns</div>
+            </div>
+        </div>
+        
+        <div class="config-panel">
+            <h2 style="font-size: 16px; margin-bottom: 16px; color: #58a6ff;">⚙️ Strategy Configuration</h2>
+            <div class="config-grid">
+                <div class="config-item">
+                    <label>Lookback (bars)</label>
+                    <input type="number" id="cfgLookback" value="6" min="1" max="60">
+                </div>
+                <div class="config-item">
+                    <label>Multiplier</label>
+                    <input type="number" id="cfgMult" value="0.5" step="0.001" min="0.1" max="2">
+                </div>
+                <div class="config-item">
+                    <label>Entry Ratio</label>
+                    <input type="number" id="cfgEntry" value="0.382" step="0.001" min="0.1" max="1">
+                </div>
+                <div class="config-item">
+                    <label>Take Profit</label>
+                    <input type="number" id="cfgTp" value="1.272" step="0.001" min="0.5" max="3">
+                </div>
+                <div class="config-item">
+                    <label>Stop Loss</label>
+                    <input type="number" id="cfgSl" value="1.618" step="0.001" min="0.5" max="3">
+                </div>
+                <div class="config-item">
+                    <label>&nbsp;</label>
+                    <button class="primary" onclick="applyConfig()">Apply Config</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="chart-container">
+            <div id="chart"></div>
+            <div class="legend">
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #21262d; border: 1px solid #30363d;"></div>
+                    <span>OHLC Candles</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #f85149;"></div>
+                    <span>Swing High</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #3fb950;"></div>
+                    <span>Swing Low</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #58a6ff;"></div>
+                    <span>Entry Level</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #3fb950; opacity: 0.5;"></div>
+                    <span>Take Profit</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #f85149; opacity: 0.5;"></div>
+                    <span>Stop Loss</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #a371f7; border: 2px dashed #a371f7;"></div>
+                    <span>Fib Time (13,21,34,55)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #f0883e; border: 2px dotted #f0883e;"></div>
+                    <span>Gann Square</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="trades-panel">
+            <h2>📋 Trade Log with Geometric Confluence</h2>
+            <table class="trades-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Type</th>
+                        <th>Entry</th>
+                        <th>TP</th>
+                        <th>SL</th>
+                        <th>Outcome</th>
+                        <th>P&L</th>
+                        <th>Candle Count</th>
+                        <th>Fib Time?</th>
+                        <th>Gann Square?</th>
+                        <th>Pattern</th>
+                        <th>Confluence</th>
+                    </tr>
+                </thead>
+                <tbody id="tradesBody">
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <script>
+        // ============================================================================
+        // CONSTANTS
+        // ============================================================================
+        const FIB_NUMBERS = [1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144];
+        const FIB_RATIOS = [0.236, 0.382, 0.5, 0.618, 0.786, 1.0, 1.272, 1.618];
+        
+        // ============================================================================
+        // GLOBAL STATE
+        // ============================================================================
+        let chart = null;
+        let candleSeries = null;
+        let candleData = [];
+        let currentTrades = [];
+        let swingHighs = [];
+        let swingLows = [];
+        let geometricStats = null;
+        
+        // ============================================================================
+        // UTILITY FUNCTIONS
+        // ============================================================================
+        function isFibNumber(n) {
+            return FIB_NUMBERS.includes(n);
+        }
+        
+        function isNearFib(n, tolerance = 1) {
+            return FIB_NUMBERS.some(fib => Math.abs(n - fib) <= tolerance);
+        }
+        
+        function getNearestFib(n) {
+            let nearest = FIB_NUMBERS[0];
+            let minDist = Math.abs(n - nearest);
+            for (const fib of FIB_NUMBERS) {
+                const dist = Math.abs(n - fib);
+                if (dist < minDist) {
+                    minDist = dist;
+                    nearest = fib;
+                }
+            }
+            return { fib: nearest, distance: minDist };
+        }
+        
+        function calcGannRatio(timeDist, pricePct, instrument) {
+            const scaling = instrument === 'silver' ? 0.1 : 0.05;
+            const normalizedPrice = pricePct / scaling;
+            return normalizedPrice > 0 ? timeDist / normalizedPrice : 0;
+        }
+        
+        function isGannSquare(ratio) {
+            return ratio >= 0.8 && ratio <= 1.2;
+        }
+        
+        // ============================================================================
+        // DATA PARSING
+        // ============================================================================
+        function parseCSV(csvText) {
+            const lines = csvText.trim().split('\n');
+            const headers = lines[0].split(',');
+            const data = [];
+            
+            for (let i = 1; i < lines.length; i++) {
+                const values = lines[i].split(',');
+                if (values.length < 5) continue;
+                
+                let timeStr = values[0];
+                if (timeStr.includes('T')) {
+                    timeStr = timeStr.split('+')[0].replace('T', ' ');
+                    if (timeStr.includes('-04:00')) timeStr = timeStr.replace('-04:00', '');
+                    if (timeStr.includes('-05:00')) timeStr = timeStr.replace('-05:00', '');
+                }
+                
+                const date = new Date(timeStr);
+                if (isNaN(date.getTime())) continue;
+                
+                data.push({
+                    time: Math.floor(date.getTime() / 1000),
+                    datetime: date,
+                    open: parseFloat(values[1]),
+                    high: parseFloat(values[2]),
+                    low: parseFloat(values[3]),
+                    close: parseFloat(values[4]),
+                });
+            }
+            
+            return data;
+        }
+        
+        // ============================================================================
+        // SWING DETECTION
+        // ============================================================================
+        function detectSwings(data, lookback) {
+            const swingHighs = [];
+            const swingLows = [];
+            
+            for (let i = lookback; i < data.length - lookback; i++) {
+                // Swing High
+                let isSwingHigh = true;
+                for (let j = i - lookback; j <= i + lookback; j++) {
+                    if (j !== i && data[j].high >= data[i].high) {
+                        isSwingHigh = false;
+                        break;
+                    }
+                }
+                if (isSwingHigh) {
+                    swingHighs.push({
+                        index: i,
+                        time: data[i].time,
+                        price: data[i].high,
+                        anchor: data[i].low,
+                        type: 'H'
+                    });
+                }
+                
+                // Swing Low
+                let isSwingLow = true;
+                for (let j = i - lookback; j <= i + lookback; j++) {
+                    if (j !== i && data[j].low <= data[i].low) {
+                        isSwingLow = false;
+                        break;
+                    }
+                }
+                if (isSwingLow) {
+                    swingLows.push({
+                        index: i,
+                        time: data[i].time,
+                        price: data[i].low,
+                        anchor: data[i].high,
+                        type: 'L'
+                    });
+                }
+            }
+            
+            return { swingHighs, swingLows };
+        }
+        
+        // ============================================================================
+        // GEOMETRIC ANALYSIS
+        // ============================================================================
+        function analyzeGeometricPatterns(data, swingHighs, swingLows, instrument) {
+            const allSwings = [...swingHighs, ...swingLows].sort((a, b) => a.index - b.index);
+            
+            // Analyze swing-to-swing intervals
+            let fibHits = 0;
+            let nearFibHits = 0;
+            let gannSquares = 0;
+            let markovReversals = 0;
+            let alternations = 0;
+            let totalTransitions = 0;
+            
+            const intervals = [];
+            const swingSequence = allSwings.map(s => s.type);
+            
+            for (let i = 1; i < allSwings.length; i++) {
+                const prev = allSwings[i-1];
+                const curr = allSwings[i];
+                
+                const interval = curr.index - prev.index;
+                intervals.push(interval);
+                
+                // Fib time analysis
+                if (isFibNumber(interval)) fibHits++;
+                if (isNearFib(interval)) nearFibHits++;
+                
+                // Gann square analysis
+                const pricePct = Math.abs(curr.price - prev.price) / prev.price * 100;
+                const ratio = calcGannRatio(interval, pricePct, instrument);
+                if (isGannSquare(ratio)) gannSquares++;
+                
+                // Markov analysis
+                totalTransitions++;
+                if (prev.type !== curr.type) {
+                    markovReversals++;
+                    if (i >= 2 && allSwings[i-2].type === curr.type) {
+                        alternations++; // HLH or LHL pattern
+                    }
+                }
+            }
+            
+            return {
+                totalSwings: allSwings.length,
+                fibHits,
+                nearFibHits,
+                fibPct: (nearFibHits / intervals.length * 100) || 0,
+                gannSquares,
+                gannPct: (gannSquares / totalTransitions * 100) || 0,
+                markovReversalPct: (markovReversals / totalTransitions * 100) || 0,
+                alternationPct: (alternations / totalTransitions * 100) || 0,
+                swingSequence,
+                intervals,
+            };
+        }
+        
+        // ============================================================================
+        // BACKTEST ENGINE
+        // ============================================================================
+        function calcEffectiveRange(pivot, anchor, mult) {
+            return Math.log10(pivot) * Math.abs(pivot - anchor) * mult * 4;
+        }
+        
+        function runBacktest(data, config, swingHighs, swingLows) {
+            const trades = [];
+            const projections = [];
+            
+            let inTrade = false;
+            let currentTrade = null;
+            let activeProjections = [];
+            
+            for (let i = 0; i < data.length; i++) {
+                const candle = data[i];
+                
+                // Add new projections from swing highs
+                for (const sh of swingHighs) {
+                    if (sh.index === i) {
+                        const effRange = calcEffectiveRange(sh.price, sh.anchor, config.mult);
+                        const entry = sh.price - (config.entry * effRange);
+                        const tp = sh.price - (config.tp * effRange);
+                        const sl = sh.price + (config.sl * effRange);
+                        
+                        activeProjections.push({
+                            type: 'SHORT',
+                            entry, tp, sl,
+                            setupIdx: i,
+                            swingPrice: sh.price,
+                            anchor: sh.anchor,
+                            effRange
+                        });
+                        
+                        projections.push({
+                            time: candle.time,
+                            type: 'SHORT',
+                            swingPrice: sh.price,
+                            anchor: sh.anchor,
+                            entry, tp, sl,
+                            effRange,
+                            setupIdx: i
+                        });
+                    }
+                }
+                
+                // Add new projections from swing lows
+                for (const sl of swingLows) {
+                    if (sl.index === i) {
+                        const effRange = calcEffectiveRange(sl.price, sl.anchor, config.mult);
+                        const entry = sl.price + (config.entry * effRange);
+                        const tp = sl.price + (config.tp * effRange);
+                        const stop = sl.price - (config.sl * effRange);
+                        
+                        activeProjections.push({
+                            type: 'LONG',
+                            entry, tp, sl: stop,
+                            setupIdx: i,
+                            swingPrice: sl.price,
+                            anchor: sl.anchor,
+                            effRange
+                        });
+                        
+                        projections.push({
+                            time: candle.time,
+                            type: 'LONG',
+                            swingPrice: sl.price,
+                            anchor: sl.anchor,
+                            entry, tp, sl: stop,
+                            effRange,
+                            setupIdx: i
+                        });
+                    }
+                }
+                
+                // Check exits
+                if (inTrade && currentTrade) {
+                    if (currentTrade.type === 'SHORT') {
+                        if (candle.low <= currentTrade.tp) {
+                            const pnl = currentTrade.entry - currentTrade.tp;
+                            trades.push({
+                                ...currentTrade,
+                                exitTime: candle.time,
+                                exitPrice: currentTrade.tp,
+                                pnl,
+                                outcome: pnl > 0 ? 'WIN' : 'LOSS'
+                            });
+                            inTrade = false;
+                        } else if (candle.high >= currentTrade.sl) {
+                            const pnl = currentTrade.entry - currentTrade.sl;
+                            trades.push({
+                                ...currentTrade,
+                                exitTime: candle.time,
+                                exitPrice: currentTrade.sl,
+                                pnl,
+                                outcome: pnl > 0 ? 'WIN' : 'LOSS'
+                            });
+                            inTrade = false;
+                        }
+                    } else {
+                        if (candle.high >= currentTrade.tp) {
+                            const pnl = currentTrade.tp - currentTrade.entry;
+                            trades.push({
+                                ...currentTrade,
+                                exitTime: candle.time,
+                                exitPrice: currentTrade.tp,
+                                pnl,
+                                outcome: pnl > 0 ? 'WIN' : 'LOSS'
+                            });
+                            inTrade = false;
+                        } else if (candle.low <= currentTrade.sl) {
+                            const pnl = currentTrade.sl - currentTrade.entry;
+                            trades.push({
+                                ...currentTrade,
+                                exitTime: candle.time,
+                                exitPrice: currentTrade.sl,
+                                pnl,
+                                outcome: pnl > 0 ? 'WIN' : 'LOSS'
+                            });
+                            inTrade = false;
+                        }
+                    }
+                }
+                
+                // Check entries
+                if (!inTrade) {
+                    activeProjections = activeProjections.slice(-20);
+                    
+                    for (const proj of activeProjections) {
+                        if (proj.type === 'SHORT' && candle.low <= proj.entry && (i - proj.setupIdx) < 50) {
+                            inTrade = true;
+                            currentTrade = {
+                                type: 'SHORT',
+                                entry: proj.entry,
+                                tp: proj.tp,
+                                sl: proj.sl,
+                                entryTime: candle.time,
+                                entryIdx: i,
+                                setupIdx: proj.setupIdx
+                            };
+                            break;
+                        } else if (proj.type === 'LONG' && candle.high >= proj.entry && (i - proj.setupIdx) < 50) {
+                            inTrade = true;
+                            currentTrade = {
+                                type: 'LONG',
+                                entry: proj.entry,
+                                tp: proj.tp,
+                                sl: proj.sl,
+                                entryTime: candle.time,
+                                entryIdx: i,
+                                setupIdx: proj.setupIdx
+                            };
+                            break;
+                        }
+                    }
+                }
+            }
+            
+            return { trades, projections, swingHighs, swingLows };
+        }
+        
+        // ============================================================================
+        // CHART PLOTTING
+        // ============================================================================
+        function plotData(data, result) {
+            // Clear existing series
+            if (candleSeries) {
+                chart.removeSeries(candleSeries);
+            }
+            
+            // Add candlestick series
+            candleSeries = chart.addCandlestickSeries({
+                upColor: '#3fb950',
+                downColor: '#f85149',
+                borderUpColor: '#3fb950',
+                borderDownColor: '#f85149',
+                wickUpColor: '#3fb950',
+                wickDownColor: '#f85149',
+            });
+            
+            candleSeries.setData(data.map(d => ({
+                time: d.time,
+                open: d.open,
+                high: d.high,
+                low: d.low,
+                close: d.close,
+            })));
+            
+            // Plot swing markers
+            result.swingHighs.forEach(sh => {
+                const marker = {
+                    time: data[sh.index].time,
+                    position: 'aboveBar',
+                    color: '#f85149',
+                    shape: 'arrowDown',
+                    text: 'H',
+                    size: 1
+                };
+                candleSeries.setMarkers([marker]);
+            });
+            
+            result.swingLows.forEach(sl => {
+                const marker = {
+                    time: data[sl.index].time,
+                    position: 'belowBar',
+                    color: '#3fb950',
+                    shape: 'arrowUp',
+                    text: 'L',
+                    size: 1
+                };
+                candleSeries.setMarkers([marker]);
+            });
+            
+            // Add projection lines with geometric annotations
+            const instrument = document.getElementById('instrumentSelect').value;
+            
+            result.projections.slice(-50).forEach(proj => {
+                if (proj.setupIdx < 0 || proj.setupIdx >= data.length) return;
+                
+                const endTimeIdx = Math.min(proj.setupIdx + 50, data.length - 1);
+                
+                // Entry line
+                const entryLine = chart.addLineSeries({
+                    color: proj.type === 'LONG' ? '#58a6ff' : '#a371f7',
+                    lineWidth: 1,
+                    lineStyle: 2,
+                    crosshairMarkerVisible: false,
+                    lastValueVisible: false,
+                    priceLineVisible: false,
+                });
+                
+                entryLine.setData([
+                    { time: data[proj.setupIdx].time, value: proj.entry },
+                    { time: data[endTimeIdx].time, value: proj.entry }
+                ]);
+                
+                // Check if this swing occurred at Fib time
+                const prevSwingIdx = proj.setupIdx > 0 ? 
+                    Math.max(
+                        ...result.swingHighs.filter(s => s.index < proj.setupIdx).map(s => s.index),
+                        ...result.swingLows.filter(s => s.index < proj.setupIdx).map(s => s.index)
+                    ) : 0;
+                
+                const candleCount = proj.setupIdx - prevSwingIdx;
+                const nearestFib = getNearestFib(candleCount);
+                const isFibTime = nearestFib.distance <= 1;
+                
+                // Check Gann square
+                const pricePct = Math.abs(proj.swingPrice - data[prevSwingIdx]?.price) / data[prevSwingIdx]?.price * 100 || 0;
+                const gannRatio = calcGannRatio(candleCount, pricePct, instrument);
+                const isGann = isGannSquare(gannRatio);
+                
+                // Mark Fib time swings
+                if (isFibTime) {
+                    const fibMarker = chart.addLineSeries({
+                        color: '#a371f7',
+                        lineWidth: 1,
+                        lineStyle: 3,
+                        crosshairMarkerVisible: false,
+                        lastValueVisible: false,
+                        priceLineVisible: false,
+                    });
+                    fibMarker.setData([
+                        { time: data[proj.setupIdx].time, value: data[proj.setupIdx].low * 0.999 },
+                        { time: data[proj.setupIdx].time, value: data[proj.setupIdx].high * 1.001 }
+                    ]);
+                }
+            });
+        }
+        
+        // ============================================================================
+        // STATISTICS DISPLAY
+        // ============================================================================
+        function updateStats(trades) {
+            if (trades.length === 0) return;
+            
+            const wins = trades.filter(t => t.outcome === 'WIN');
+            const winRate = (wins.length / trades.length * 100).toFixed(2);
+            const totalPnl = trades.reduce((sum, t) => sum + t.pnl, 0);
+            const grossProfit = wins.reduce((sum, t) => sum + t.pnl, 0);
+            const grossLoss = Math.abs(trades.filter(t => t.outcome === 'LOSS').reduce((sum, t) => sum + t.pnl, 0));
+            const profitFactor = grossLoss > 0 ? (grossProfit / grossLoss).toFixed(2) : '∞';
+            const avgPnl = (totalPnl / trades.length).toFixed(4);
+            
+            // Calculate streak
+            let bestStreak = 0;
+            let currentStreak = 0;
+            for (const t of trades) {
+                if (t.outcome === 'WIN') {
+                    currentStreak++;
+                    bestStreak = Math.max(bestStreak, currentStreak);
+                } else {
+                    currentStreak = 0;
+                }
+            }
+            
+            document.getElementById('statWr').textContent = winRate + '%';
+            document.getElementById('statPf').textContent = profitFactor;
+            document.getElementById('statTrades').textContent = trades.length;
+            document.getElementById('statPnl').textContent = totalPnl.toFixed(4);
+            document.getElementById('statAvgPnl').textContent = avgPnl;
+            document.getElementById('statStreak').textContent = bestStreak;
+            
+            // Update geometric stats
+            if (geometricStats) {
+                document.getElementById('geoFibHits').textContent = geometricStats.fibHits;
+                document.getElementById('geoFibPct').textContent = geometricStats.fibPct.toFixed(1) + '%';
+                document.getElementById('geoGannSquares').textContent = geometricStats.gannSquares;
+                document.getElementById('geoGannPct').textContent = geometricStats.gannPct.toFixed(1) + '%';
+                document.getElementById('geoMarkovRev').textContent = geometricStats.markovReversalPct.toFixed(1) + '%';
+                document.getElementById('geoAltRate').textContent = geometricStats.alternationPct.toFixed(1) + '%';
+            }
+        }
+        
+        // ============================================================================
+        // TRADES TABLE WITH GEOMETRIC CONFLUENCE
+        // ============================================================================
+        function updateTradesTable(trades, data, swingSequence) {
+            const tbody = document.getElementById('tradesBody');
+            tbody.innerHTML = '';
+            
+            trades.forEach((trade, idx) => {
+                // Calculate candle count from setup
+                const candleCount = trade.entryIdx - trade.setupIdx;
+                const nearestFib = getNearestFib(candleCount);
+                const isFibTime = nearestFib.distance <= 1;
+                
+                // Calculate Gann ratio
+                const prevSwing = swingSequence.length > 0 ? 
+                    Math.max(
+                        ...swingHighs.filter(s => s.index < trade.setupIdx).map(s => s.index),
+                        ...swingLows.filter(s => s.index < trade.setupIdx).map(s => s.index)
+                    ) : trade.setupIdx - 1;
+                
+                const pricePct = Math.abs(trade.entry - data[prevSwing]?.close) / data[prevSwing]?.close * 100 || 0;
+                const gannRatio = calcGannRatio(candleCount, pricePct, document.getElementById('instrumentSelect').value);
+                const isGann = isGannSquare(gannRatio);
+                
+                // Determine pattern from swing sequence
+                const patternIdx = swingSequence.length - trades.length + idx;
+                const pattern = patternIdx >= 2 ? 
+                    swingSequence[patternIdx-2] + swingSequence[patternIdx-1] + swingSequence[patternIdx] : 
+                    '---';
+                
+                // Calculate confluence score
+                let confluence = 0;
+                if (isFibTime) confluence++;
+                if (isGann) confluence++;
+                if (trade.pnl > 0) confluence++;
+                
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${idx + 1}</td>
+                    <td><span class="badge ${trade.type === 'LONG' ? 'badge-long' : 'badge-short'}">${trade.type}</span></td>
+                    <td>${trade.entry.toFixed(4)}</td>
+                    <td>${trade.tp.toFixed(4)}</td>
+                    <td>${trade.sl.toFixed(4)}</td>
+                    <td><span class="badge ${trade.outcome === 'WIN' ? 'badge-win' : 'badge-loss'}">${trade.outcome}</span></td>
+                    <td style="color: ${trade.pnl > 0 ? '#3fb950' : '#f85149'}">${trade.pnl > 0 ? '+' : ''}${trade.pnl.toFixed(4)}</td>
+                    <td>${candleCount} ${isFibTime ? `<span class="confluence-badge confluence-1">FIB</span>` : ''}</td>
+                    <td>${isFibTime ? '✅' : '❌'} <span style="font-size: 10px; color: #8b949e;">(near ${nearestFib.fib})</span></td>
+                    <td>${isGann ? '✅' : '❌'} <span style="font-size: 10px; color: #8b949e;">(${gannRatio.toFixed(2)}x)</span></td>
+                    <td>${pattern}</td>
+                    <td>
+                        ${confluence >= 3 ? '<span class="badge badge-high-prob">★★★</span>' : 
+                          confluence === 2 ? '<span class="badge" style="background: #d29922; color: #000;">★★</span>' : 
+                          confluence === 1 ? '<span class="badge" style="background: #8b949e;">★</span>' : 
+                          '<span class="badge" style="background: #30363d;">☆</span>'}
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+        
+        // ============================================================================
+        // LOAD DATA
+        // ============================================================================
+        async function loadData() {
+            const instrument = document.getElementById('instrumentSelect').value;
+            const config = document.getElementById('configSelect').value;
+            
+            let filePath;
+            if (instrument === 'silver') {
+                filePath = '../data/OANDA_XAGUSD5.csv';
+                if (config === 'best') {
+                    document.getElementById('cfgLookback').value = 6;
+                    document.getElementById('cfgMult').value = 0.5;
+                    document.getElementById('cfgEntry').value = 0.382;
+                    document.getElementById('cfgTp').value = 1.272;
+                    document.getElementById('cfgSl').value = 1.618;
+                } else {
+                    document.getElementById('cfgLookback').value = 6;
+                    document.getElementById('cfgMult').value = 0.382;
+                    document.getElementById('cfgEntry').value = 0.382;
+                    document.getElementById('cfgTp').value = 1.272;
+                    document.getElementById('cfgSl').value = 1.0;
+                }
+            } else if (instrument === 'gold') {
+                filePath = '../data/OANDA_XAUUSD5.csv';
+                document.getElementById('cfgLookback').value = 8;
+                document.getElementById('cfgMult').value = 0.618;
+                document.getElementById('cfgEntry').value = 0.5;
+                document.getElementById('cfgTp').value = 1.0;
+                document.getElementById('cfgSl').value = 1.618;
+            } else if (instrument === 'nifty') {
+                filePath = './zerodha_data/NIFTY_50_5minute_20260319_20260518.csv';
+            }
+            
+            try {
+                const response = await fetch(filePath);
+                const csvText = await response.text();
+                candleData = parseCSV(csvText);
+                
+                const cfg = {
+                    lookback: parseInt(document.getElementById('cfgLookback').value),
+                    mult: parseFloat(document.getElementById('cfgMult').value),
+                    entry: parseFloat(document.getElementById('cfgEntry').value),
+                    tp: parseFloat(document.getElementById('cfgTp').value),
+                    sl: parseFloat(document.getElementById('cfgSl').value)
+                };
+                
+                // Detect swings
+                const { swingHighs: sh, swingLows: sl } = detectSwings(candleData, cfg.lookback);
+                swingHighs = sh;
+                swingLows = sl;
+                
+                // Analyze geometric patterns
+                geometricStats = analyzeGeometricPatterns(candleData, swingHighs, swingLows, instrument);
+                
+                // Run backtest
+                const result = runBacktest(candleData, cfg, swingHighs, swingLows);
+                currentTrades = result.trades;
+                
+                // Plot and update
+                plotData(candleData, result);
+                updateStats(result.trades);
+                updateTradesTable(result.trades, candleData, geometricStats.swingSequence);
+                
+            } catch (error) {
+                alert('Error loading data: ' + error.message);
+                console.error(error);
+            }
+        }
+        
+        // ============================================================================
+        // APPLY CONFIG
+        // ============================================================================
+        function applyConfig() {
+            if (candleData.length === 0) {
+                alert('Please load data first');
+                return;
+            }
+            
+            const cfg = {
+                lookback: parseInt(document.getElementById('cfgLookback').value),
+                mult: parseFloat(document.getElementById('cfgMult').value),
+                entry: parseFloat(document.getElementById('cfgEntry').value),
+                tp: parseFloat(document.getElementById('cfgTp').value),
+                sl: parseFloat(document.getElementById('cfgSl').value)
+            };
+            
+            const { swingHighs: sh, swingLows: sl } = detectSwings(candleData, cfg.lookback);
+            const result = runBacktest(candleData, cfg, sh, sl);
+            currentTrades = result.trades;
+            
+            // Clear chart and replot
+            chart.removeSeries(candleSeries);
+            plotData(candleData, result);
+            updateStats(result.trades);
+            updateTradesTable(result.trades, candleData, geometricStats.swingSequence);
+        }
+        
+        // ============================================================================
+        // EXPORT IMAGE
+        // ============================================================================
+        function exportImage() {
+            const chartElement = document.getElementById('chart');
+            chartElement.toBlob(blob => {
+                const link = document.createElement('a');
+                link.download = `log-fib-scalper-${new Date().toISOString().split('T')[0]}.png`;
+                link.href = URL.createObjectURL(blob);
+                link.click();
+            });
+        }
+        
+        // ============================================================================
+        // INITIALIZE
+        // ============================================================================
+        window.addEventListener('DOMContentLoaded', () => {
+            chart = LightweightCharts.createChart(document.getElementById('chart'), {
+                layout: {
+                    background: { color: '#0d1117' },
+                    textColor: '#e6edf3',
+                },
+                grid: {
+                    vertLines: { color: '#30363d' },
+                    horzLines: { color: '#30363d' },
+                },
+                crosshair: {
+                    mode: LightweightCharts.CrosshairMode.Normal,
+                },
+                rightPriceScale: {
+                    borderColor: '#30363d',
+                },
+                timeScale: {
+                    borderColor: '#30363d',
+                    timeVisible: true,
+                    secondsVisible: false,
+                },
+            });
+            
+            // Auto-load data
+            loadData();
+        });
+    </script>
+</body>
+</html>

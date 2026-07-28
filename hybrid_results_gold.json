@@ -1,0 +1,25 @@
+{
+  "instrument": "gold",
+  "total_trades": 1,
+  "wins": 1,
+  "losses": 0,
+  "win_rate": 100.0,
+  "total_pnl": 128.44714504611127,
+  "final_capital": 100128.44714504611,
+  "return_pct": 0.1284471450461133,
+  "profit_factor": Infinity,
+  "avg_pnl_per_trade": 128.44714504611127,
+  "trades": [
+    {
+      "entry_time": "2026-04-20 10:20:00+00:00",
+      "exit_time": "2026-04-21 19:40:00+00:00",
+      "direction": "SHORT",
+      "entry_price": 4759.287385674457,
+      "exit_price": 4697.3745760364145,
+      "size": 2.0746457122047013,
+      "pnl": 128.44714504611127,
+      "exit_reason": "TP",
+      "confluence": 80.0
+    }
+  ]
+}

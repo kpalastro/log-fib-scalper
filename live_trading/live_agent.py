@@ -392,7 +392,8 @@ if __name__ == "__main__":
         "username": os.getenv("IG_USERNAME", "YOUR_USERNAME"),
         "password": os.getenv("IG_PASSWORD", "YOUR_PASSWORD"),
         "account_id": os.getenv("IG_ACCOUNT_ID", "YOUR_ACCOUNT_ID"),
-        "demo": os.getenv("IG_DEMO", "true").lower() == "true"
+        "demo": os.getenv("IG_DEMO", "true").lower() == "true",
+        "australia": os.getenv("IG_REGION", "uk").lower() == "au"
     }
     
     # Select instrument from environment variable or default to Gold 5-min

@@ -1,0 +1,270 @@
+[
+  {
+    "timestamp": "2026-05-21T02:37:26.326901",
+    "instrument": "silver",
+    "bar": 975,
+    "datetime": "2026-05-20T16:25:00",
+    "price": 75.96499633789062,
+    "direction": "SHORT",
+    "score": 65.5,
+    "entry": 75.58660205871526,
+    "tp": 72.51494477777904,
+    "sl": 82.48920269003261,
+    "breakdown": {
+      "fib_time": {
+        "score": 66.66666666666667,
+        "candle_count": 14,
+        "nearest_fib": 13,
+        "distance": 1,
+        "is_fib": true
+      },
+      "gann_square": {
+        "score": 100,
+        "ratio": 1.1453906239854557,
+        "ratio_type": "1x1 (Perfect Square)",
+        "is_square": true
+      },
+      "markov_pattern": {
+        "score": 82.0,
+        "pattern": "LH",
+        "reversal_prob": 0.82
+      },
+      "fib_retracement": {
+        "score": 0,
+        "ratio": 1.0273240446590122,
+        "distance_to_0.382": 0.6453240446590122
+      }
+    },
+    "status": "expired",
+    "exit_reason": "timeout"
+  },
+  {
+    "timestamp": "2026-05-21T02:37:26.613300",
+    "instrument": "gold",
+    "bar": 975,
+    "datetime": "2026-05-20T16:25:00",
+    "price": 4528.60009765625,
+    "direction": "SHORT",
+    "score": 65.5,
+    "entry": 4420.017320791376,
+    "tp": 4206.35461487451,
+    "sl": 5006.205936247234,
+    "breakdown": {
+      "fib_time": {
+        "score": 66.66666666666667,
+        "candle_count": 14,
+        "nearest_fib": 13,
+        "distance": 1,
+        "is_fib": true
+      },
+      "gann_square": {
+        "score": 100,
+        "ratio": 1.070772095690644,
+        "ratio_type": "1x1 (Perfect Square)",
+        "is_square": true
+      },
+      "markov_pattern": {
+        "score": 82.0,
+        "pattern": "LH",
+        "reversal_prob": 0.82
+      },
+      "fib_retracement": {
+        "score": 0,
+        "ratio": 0.9738467184732483,
+        "distance_to_0.382": 0.5918467184732483
+      }
+    },
+    "status": "expired",
+    "exit_reason": "timeout"
+  },
+  {
+    "timestamp": "2026-05-21T09:00:36.513861",
+    "instrument": "silver",
+    "bar": 1039,
+    "datetime": "2026-05-20T22:45:00",
+    "price": 75.97000122070312,
+    "direction": "LONG",
+    "score": 73.78916917477427,
+    "entry": 76.35712435855963,
+    "tp": 78.17935837736204,
+    "sl": 72.26221645113849,
+    "breakdown": {
+      "fib_time": {
+        "score": 100.0,
+        "candle_count": 8,
+        "nearest_fib": 8,
+        "distance": 0,
+        "is_fib": true
+      },
+      "gann_square": {
+        "score": 100,
+        "ratio": 1.5306162938926877,
+        "ratio_type": "2x1 (Time Speed)",
+        "is_square": true
+      },
+      "markov_pattern": {
+        "score": 50,
+        "pattern": "LL",
+        "reversal_prob": 0.5
+      },
+      "fib_retracement": {
+        "score": 31.44584587387136,
+        "ratio": 0.7247707706306432,
+        "distance_to_0.382": 0.3427707706306432
+      }
+    },
+    "status": "active"
+  },
+  {
+    "timestamp": "2026-05-21T09:15:33.573490",
+    "instrument": "gold",
+    "bar": 1042,
+    "datetime": "2026-05-20T23:00:00",
+    "price": 4540.89990234375,
+    "direction": "LONG",
+    "score": 50.5,
+    "entry": 4552.723579917168,
+    "tp": 4578.544787309275,
+    "sl": 4481.882495388044,
+    "breakdown": {
+      "fib_time": {
+        "score": 100.0,
+        "candle_count": 8,
+        "nearest_fib": 8,
+        "distance": 0,
+        "is_fib": true
+      },
+      "gann_square": {
+        "score": 0,
+        "ratio": 3.7029309417040364,
+        "ratio_type": "3.70x (No Match)",
+        "is_square": false
+      },
+      "markov_pattern": {
+        "score": 82.0,
+        "pattern": "HL",
+        "reversal_prob": 0.82
+      },
+      "fib_retracement": {
+        "score": 0,
+        "ratio": 1.324228028503563,
+        "distance_to_0.382": 0.942228028503563
+      }
+    },
+    "status": "active"
+  },
+  {
+    "timestamp": "2026-05-21T10:15:30.951077",
+    "instrument": "gold",
+    "bar": 1055,
+    "datetime": "2026-05-21T00:05:00",
+    "price": 4543.39990234375,
+    "direction": "LONG",
+    "score": 67.5,
+    "entry": 4555.033497322815,
+    "tp": 4585.03866640799,
+    "sl": 4472.713616335247,
+    "breakdown": {
+      "fib_time": {
+        "score": 100.0,
+        "candle_count": 8,
+        "nearest_fib": 8,
+        "distance": 0,
+        "is_fib": true
+      },
+      "gann_square": {
+        "score": 100,
+        "ratio": 2.3260070113935147,
+        "ratio_type": "1x4 or 4x1 (Extreme)",
+        "is_square": true
+      },
+      "markov_pattern": {
+        "score": 50,
+        "pattern": "LL",
+        "reversal_prob": 0.5
+      },
+      "fib_retracement": {
+        "score": 0,
+        "ratio": 1.8139904610492845,
+        "distance_to_0.382": 1.4319904610492844
+      }
+    },
+    "status": "active"
+  },
+  {
+    "timestamp": "2026-05-21T11:21:11.487667",
+    "instrument": "gold",
+    "bar": 1067,
+    "datetime": "2026-05-21T01:05:00",
+    "price": 4545.2998046875,
+    "direction": "LONG",
+    "score": 53.58563329958912,
+    "entry": 4575.762603204493,
+    "tp": 4632.98696098973,
+    "sl": 4418.7662433740115,
+    "breakdown": {
+      "fib_time": {
+        "score": 100.0,
+        "candle_count": 8,
+        "nearest_fib": 8,
+        "distance": 0,
+        "is_fib": true
+      },
+      "gann_square": {
+        "score": 0,
+        "ratio": 2.750890204202427,
+        "ratio_type": "2.75x (No Match)",
+        "is_square": false
+      },
+      "markov_pattern": {
+        "score": 82.0,
+        "pattern": "HL",
+        "reversal_prob": 0.82
+      },
+      "fib_retracement": {
+        "score": 15.428166497945583,
+        "ratio": 0.8048591675102721,
+        "distance_to_0.382": 0.4228591675102721
+      }
+    },
+    "status": "active"
+  },
+  {
+    "timestamp": "2026-05-21T12:15:30.331640",
+    "instrument": "silver",
+    "bar": 1078,
+    "datetime": "2026-05-21T02:00:00",
+    "price": 76.73999786376953,
+    "direction": "SHORT",
+    "score": 65.5,
+    "entry": 76.71353287794453,
+    "tp": 75.33550667313872,
+    "sl": 79.81022097863172,
+    "breakdown": {
+      "fib_time": {
+        "score": 66.66666666666667,
+        "candle_count": 6,
+        "nearest_fib": 5,
+        "distance": 1,
+        "is_fib": true
+      },
+      "gann_square": {
+        "score": 100,
+        "ratio": 0.8209345090202009,
+        "ratio_type": "1x1 (Perfect Square)",
+        "is_square": true
+      },
+      "markov_pattern": {
+        "score": 82.0,
+        "pattern": "LH",
+        "reversal_prob": 0.82
+      },
+      "fib_retracement": {
+        "score": 0,
+        "ratio": 1.3780424264979532,
+        "distance_to_0.382": 0.9960424264979532
+      }
+    },
+    "status": "active"
+  }
+]

@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log-Fib Geometric Scalper - Strategy Visualizer</title>
+    <script src="https://unpkg.com/lightweight-charts@4.1.0/dist/lightweight-charts.standalone.production.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: #0d1117;
+            color: #e6edf3;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 20px;
+            background: #161b22;
+            border-radius: 12px;
+            border: 1px solid #30363d;
+        }
+        
+        h1 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #58a6ff;
+        }
+        
+        .subtitle {
+            font-size: 14px;
+            color: #8b949e;
+            margin-top: 4px;
+        }
+        
+        .controls {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        
+        select, button {
+            padding: 10px 16px;
+            border-radius: 8px;
+            border: 1px solid #30363d;
+            background: #21262d;
+            color: #e6edf3;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        select:hover, button:hover {
+            background: #30363d;
+            border-color: #58a6ff;
+        }
+        
+        button.primary {
+            background: #238636;
+            border-color: #238636;
+        }
+        
+        button.primary:hover {
+            background: #2ea043;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        
+        .stat-card {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            padding: 16px;
+        }
+        
+        .stat-label {
+            font-size: 12px;
+            color: #8b949e;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .stat-value {
+            font-size: 24px;
+            font-weight: 700;
+            margin-top: 8px;
+        }
+        
+        .stat-value.positive { color: #3fb950; }
+        .stat-value.negative { color: #f85149; }
+        .stat-value.neutral { color: #58a6ff; }
+        
+        .chart-container {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        #chart {
+            height: 600px;
+            width: 100%;
+        }
+        
+        .legend {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid #30363d;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+        }
+        
+        .legend-color {
+            width: 16px;
+            height: 3px;
+            border-radius: 2px;
+        }
+        
+        .trades-panel {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            padding: 20px;
+        }
+        
+        .trades-panel h2 {
+            font-size: 18px;
+            margin-bottom: 16px;
+            color: #58a6ff;
+        }
+        
+        .trades-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+        
+        .trades-table th,
+        .trades-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #30363d;
+        }
+        
+        .trades-table th {
+            color: #8b949e;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .trades-table tr:hover {
+            background: #21262d;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .badge-win { background: #238636; color: #fff; }
+        .badge-loss { background: #f85149; color: #fff; }
+        .badge-long { background: #58a6ff; color: #fff; }
+        .badge-short { background: #a371f7; color: #fff; }
+        
+        .config-panel {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .config-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+        
+        .config-item {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .config-item label {
+            font-size: 12px;
+            color: #8b949e;
+            margin-bottom: 6px;
+        }
+        
+        .config-item input {
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #30363d;
+            background: #21262d;
+            color: #e6edf3;
+            font-size: 14px;
+        }
+        
+        .loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 400px;
+            color: #8b949e;
+        }
+        
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid #30363d;
+            border-top-color: #58a6ff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div>
+                <h1>🎯 Log-Fib Geometric Scalper</h1>
+                <p class="subtitle">Strategy Visualizer - Pure Mathematics & Geometry Based Trading</p>
+            </div>
+            <div class="controls">
+                <select id="instrumentSelect">
+                    <option value="silver">Silver (XAGUSD)</option>
+                    <option value="gold">Gold (XAUUSD)</option>
+                    <option value="nifty">Nifty50</option>
+                </select>
+                <select id="configSelect">
+                    <option value="best">Best Config (99.37% WR)</option>
+                    <option value="alternative">Alternative (98.85% WR)</option>
+                </select>
+                <button class="primary" onclick="loadData()">📊 Load Data</button>
+                <button onclick="exportImage()">📷 Export Chart</button>
+            </div>
+        </header>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-label">Win Rate</div>
+                <div class="stat-value positive" id="statWr">-</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Profit Factor</div>
+                <div class="stat-value positive" id="statPf">-</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Total Trades</div>
+                <div class="stat-value neutral" id="statTrades">-</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Total P&L</div>
+                <div class="stat-value" id="statPnl">-</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Avg P&L/Trade</div>
+                <div class="stat-value" id="statAvgPnl">-</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Best Streak</div>
+                <div class="stat-value positive" id="statStreak">-</div>
+            </div>
+        </div>
+        
+        <div class="config-panel">
+            <h2 style="font-size: 16px; margin-bottom: 16px; color: #58a6ff;">⚙️ Strategy Configuration</h2>
+            <div class="config-grid">
+                <div class="config-item">
+                    <label>Lookback (bars)</label>
+                    <input type="number" id="cfgLookback" value="6" min="1" max="60">
+                </div>
+                <div class="config-item">
+                    <label>Multiplier</label>
+                    <input type="number" id="cfgMult" value="0.5" step="0.001" min="0.1" max="2">
+                </div>
+                <div class="config-item">
+                    <label>Entry Ratio</label>
+                    <input type="number" id="cfgEntry" value="0.382" step="0.001" min="0.1" max="1">
+                </div>
+                <div class="config-item">
+                    <label>Take Profit</label>
+                    <input type="number" id="cfgTp" value="1.272" step="0.001" min="0.5" max="3">
+                </div>
+                <div class="config-item">
+                    <label>Stop Loss</label>
+                    <input type="number" id="cfgSl" value="1.618" step="0.001" min="0.5" max="3">
+                </div>
+                <div class="config-item">
+                    <label>&nbsp;</label>
+                    <button class="primary" onclick="applyConfig()">Apply Config</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="chart-container">
+            <div id="chart"></div>
+            <div class="legend">
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #21262d; border: 1px solid #30363d;"></div>
+                    <span>OHLC Candles</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #f85149;"></div>
+                    <span>Swing High</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #3fb950;"></div>
+                    <span>Swing Low</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #58a6ff;"></div>
+                    <span>LONG Entry</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #a371f7;"></div>
+                    <span>SHORT Entry</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #3fb950; opacity: 0.5;"></div>
+                    <span>Take Profit Level</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #f85149; opacity: 0.5;"></div>
+                    <span>Stop Loss Level</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="trades-panel">
+            <h2>📈 Trade History</h2>
+            <table class="trades-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Type</th>
+                        <th>Entry Time</th>
+                        <th>Exit Time</th>
+                        <th>Entry Price</th>
+                        <th>Exit Price</th>
+                        <th>P&L</th>
+                        <th>Result</th>
+                    </tr>
+                </thead>
+                <tbody id="tradesBody">
+                    <tr><td colspan="8" style="text-align: center; color: #8b949e;">Load data to see trades</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <script>
+        // Global variables
+        let chart, candleSeries, swingHighMarkers, swingLowMarkers, tradeMarkers;
+        let candleData = [];
+        let currentTrades = [];
+        
+        // Initialize chart
+        function initChart() {
+            chart = LightweightCharts.createChart(document.getElementById('chart'), {
+                layout: {
+                    background: { type: 'solid', color: '#161b22' },
+                    textColor: '#e6edf3',
+                },
+                grid: {
+                    vertLines: { color: '#30363d' },
+                    horzLines: { color: '#30363d' },
+                },
+                crosshair: {
+                    mode: LightweightCharts.CrosshairMode.Normal,
+                },
+                timeScale: {
+                    borderColor: '#30363d',
+                    timeVisible: true,
+                    secondsVisible: false,
+                },
+                rightPriceScale: {
+                    borderColor: '#30363d',
+                },
+            });
+            
+            candleSeries = chart.addCandlestickSeries({
+                upColor: '#3fb950',
+                downColor: '#f85149',
+                borderUpColor: '#3fb950',
+                borderDownColor: '#f85149',
+                wickUpColor: '#3fb950',
+                wickDownColor: '#f85149',
+            });
+            
+            // Handle resize
+            window.addEventListener('resize', () => {
+                chart.resize(document.getElementById('chart').clientWidth, 600);
+            });
+        }
+        
+        // Parse CSV data
+        function parseCSV(csvText) {
+            const lines = csvText.trim().split('\n');
+            const headers = lines[0].split(',');
+            const data = [];
+            
+            for (let i = 1; i < lines.length; i++) {
+                const values = lines[i].split(',');
+                if (values.length < 5) continue;
+                
+                let timeStr = values[0];
+                // Handle ISO format with timezone
+                if (timeStr.includes('T')) {
+                    timeStr = timeStr.split('+')[0].replace('T', ' ');
+                    if (timeStr.includes('-04:00')) timeStr = timeStr.replace('-04:00', '');
+                    if (timeStr.includes('-05:00')) timeStr = timeStr.replace('-05:00', '');
+                }
+                
+                const date = new Date(timeStr);
+                if (isNaN(date.getTime())) continue;
+                
+                data.push({
+                    time: Math.floor(date.getTime() / 1000),
+                    open: parseFloat(values[1]),
+                    high: parseFloat(values[2]),
+                    low: parseFloat(values[3]),
+                    close: parseFloat(values[4]),
+                });
+            }
+            
+            return data;
+        }
+        
+        // Detect swings
+        function detectSwings(data, lookback) {
+            const swingHighs = [];
+            const swingLows = [];
+            
+            for (let i = lookback; i < data.length - lookback; i++) {
+                // Swing High
+                let isSwingHigh = true;
+                for (let j = i - lookback; j <= i + lookback; j++) {
+                    if (j !== i && data[j].high >= data[i].high) {
+                        isSwingHigh = false;
+                        break;
+                    }
+                }
+                if (isSwingHigh) {
+                    swingHighs.push({
+                        index: i,
+                        time: data[i].time,
+                        price: data[i].high,
+                        anchor: data[i].low
+                    });
+                }
+                
+                // Swing Low
+                let isSwingLow = true;
+                for (let j = i - lookback; j <= i + lookback; j++) {
+                    if (j !== i && data[j].low <= data[i].low) {
+                        isSwingLow = false;
+                        break;
+                    }
+                }
+                if (isSwingLow) {
+                    swingLows.push({
+                        index: i,
+                        time: data[i].time,
+                        price: data[i].low,
+                        anchor: data[i].high
+                    });
+                }
+            }
+            
+            return { swingHighs, swingLows };
+        }
+        
+        // Calculate effective range
+        function calcEffectiveRange(pivot, anchor, mult) {
+            return Math.log10(pivot) * Math.abs(pivot - anchor) * mult * 4;
+        }
+        
+        // Run backtest
+        function runBacktest(data, config) {
+            const { swingHighs, swingLows } = detectSwings(data, config.lookback);
+            const trades = [];
+            const projections = [];
+            
+            let inTrade = false;
+            let currentTrade = null;
+            let activeProjections = [];
+            
+            for (let i = 0; i < data.length; i++) {
+                const candle = data[i];
+                
+                // Add new projections
+                for (const sh of swingHighs) {
+                    if (sh.index === i) {
+                        const effRange = calcEffectiveRange(sh.price, sh.anchor, config.mult);
+                        const entry = sh.price - (config.entry * effRange);
+                        const tp = sh.price - (config.tp * effRange);
+                        const sl = sh.price + (config.sl * effRange);
+                        
+                        activeProjections.push({
+                            type: 'SHORT',
+                            entry, tp, sl,
+                            setupIdx: i,
+                            swingPrice: sh.price,
+                            anchor: sh.anchor,
+                            effRange
+                        });
+                        
+                        projections.push({
+                            time: candle.time,
+                            type: 'SHORT',
+                            swingPrice: sh.price,
+                            anchor: sh.anchor,
+                            entry, tp, sl,
+                            effRange,
+                            setupIdx: i
+                        });
+                    }
+                }
+                
+                for (const sl of swingLows) {
+                    if (sl.index === i) {
+                        const effRange = calcEffectiveRange(sl.price, sl.anchor, config.mult);
+                        const entry = sl.price + (config.entry * effRange);
+                        const tp = sl.price + (config.tp * effRange);
+                        const stop = sl.price - (config.sl * effRange);
+                        
+                        activeProjections.push({
+                            type: 'LONG',
+                            entry, tp, sl: stop,
+                            setupIdx: i,
+                            swingPrice: sl.price,
+                            anchor: sl.anchor,
+                            effRange
+                        });
+                        
+                        projections.push({
+                            time: candle.time,
+                            type: 'LONG',
+                            swingPrice: sl.price,
+                            anchor: sl.anchor,
+                            entry, tp, sl: stop,
+                            effRange,
+                            setupIdx: i
+                        });
+                    }
+                }
+                
+                // Check exits
+                if (inTrade && currentTrade) {
+                    if (currentTrade.type === 'SHORT') {
+                        if (candle.low <= currentTrade.tp) {
+                            const pnl = currentTrade.entry - currentTrade.tp;
+                            trades.push({
+                                ...currentTrade,
+                                exitTime: candle.time,
+                                exitPrice: currentTrade.tp,
+                                pnl,
+                                outcome: pnl > 0 ? 'WIN' : 'LOSS'
+                            });
+                            inTrade = false;
+                        } else if (candle.high >= currentTrade.sl) {
+                            const pnl = currentTrade.entry - currentTrade.sl;
+                            trades.push({
+                                ...currentTrade,
+                                exitTime: candle.time,
+                                exitPrice: currentTrade.sl,
+                                pnl,
+                                outcome: pnl > 0 ? 'WIN' : 'LOSS'
+                            });
+                            inTrade = false;
+                        }
+                    } else {
+                        if (candle.high >= currentTrade.tp) {
+                            const pnl = currentTrade.tp - currentTrade.entry;
+                            trades.push({
+                                ...currentTrade,
+                                exitTime: candle.time,
+                                exitPrice: currentTrade.tp,
+                                pnl,
+                                outcome: pnl > 0 ? 'WIN' : 'LOSS'
+                            });
+                            inTrade = false;
+                        } else if (candle.low <= currentTrade.sl) {
+                            const pnl = currentTrade.sl - currentTrade.entry;
+                            trades.push({
+                                ...currentTrade,
+                                exitTime: candle.time,
+                                exitPrice: currentTrade.sl,
+                                pnl,
+                                outcome: pnl > 0 ? 'WIN' : 'LOSS'
+                            });
+                            inTrade = false;
+                        }
+                    }
+                }
+                
+                // Check entries
+                if (!inTrade) {
+                    activeProjections = activeProjections.slice(-20);
+                    
+                    for (const proj of activeProjections) {
+                        if (proj.type === 'SHORT' && candle.low <= proj.entry && (i - proj.setupIdx) < 50) {
+                            inTrade = true;
+                            currentTrade = {
+                                type: 'SHORT',
+                                entry: proj.entry,
+                                tp: proj.tp,
+                                sl: proj.sl,
+                                entryTime: candle.time,
+                                setupIdx: proj.setupIdx
+                            };
+                            break;
+                        } else if (proj.type === 'LONG' && candle.high >= proj.entry && (i - proj.setupIdx) < 50) {
+                            inTrade = true;
+                            currentTrade = {
+                                type: 'LONG',
+                                entry: proj.entry,
+                                tp: proj.tp,
+                                sl: proj.sl,
+                                entryTime: candle.time,
+                                setupIdx: proj.setupIdx
+                            };
+                            break;
+                        }
+                    }
+                }
+            }
+            
+            return { trades, projections, swingHighs, swingLows };
+        }
+        
+        // Update stats
+        function updateStats(trades) {
+            if (trades.length === 0) return;
+            
+            const wins = trades.filter(t => t.outcome === 'WIN').length;
+            const wr = (wins / trades.length * 100).toFixed(2);
+            const totalPnl = trades.reduce((sum, t) => sum + t.pnl, 0);
+            const grossProfit = trades.filter(t => t.pnl > 0).reduce((sum, t) => sum + t.pnl, 0);
+            const grossLoss = Math.abs(trades.filter(t => t.pnl < 0).reduce((sum, t) => sum + t.pnl, 0));
+            const pf = grossLoss > 0 ? (grossProfit / grossLoss).toFixed(2) : '∞';
+            
+            // Best streak
+            let bestStreak = 0, currentStreak = 0;
+            for (const t of trades) {
+                if (t.outcome === 'WIN') {
+                    currentStreak++;
+                    bestStreak = Math.max(bestStreak, currentStreak);
+                } else {
+                    currentStreak = 0;
+                }
+            }
+            
+            document.getElementById('statWr').textContent = wr + '%';
+            document.getElementById('statPf').textContent = pf;
+            document.getElementById('statTrades').textContent = trades.length;
+            document.getElementById('statPnl').textContent = (totalPnl >= 0 ? '+' : '') + totalPnl.toFixed(2);
+            document.getElementById('statPnl').className = 'stat-value ' + (totalPnl >= 0 ? 'positive' : 'negative');
+            document.getElementById('statAvgPnl').textContent = (totalPnl / trades.length).toFixed(4);
+            document.getElementById('statStreak').textContent = bestStreak;
+        }
+        
+        // Update trades table
+        function updateTradesTable(trades) {
+            const tbody = document.getElementById('tradesBody');
+            tbody.innerHTML = '';
+            
+            trades.slice(-50).reverse().forEach((trade, i) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${trades.length - i}</td>
+                    <td><span class="badge badge-${trade.type.toLowerCase()}">${trade.type}</span></td>
+                    <td>${new Date(trade.entryTime * 1000).toLocaleString()}</td>
+                    <td>${new Date(trade.exitTime * 1000).toLocaleString()}</td>
+                    <td>${trade.entry.toFixed(4)}</td>
+                    <td>${trade.exitPrice.toFixed(4)}</td>
+                    <td style="color: ${trade.pnl >= 0 ? '#3fb950' : '#f85149'}">${trade.pnl >= 0 ? '+' : ''}${trade.pnl.toFixed(4)}</td>
+                    <td><span class="badge badge-${trade.outcome === 'WIN' ? 'win' : 'loss'}">${trade.outcome}</span></td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+        
+        // Plot data
+        function plotData(data, result) {
+            candleSeries.setData(data);
+            
+            // Markers for trades
+            const markers = [];
+            
+            // Add swing markers (limited for performance)
+            const recentSwingHighs = result.swingHighs.slice(-20);
+            const recentSwingLows = result.swingLows.slice(-20);
+            
+            recentSwingHighs.forEach(sh => {
+                markers.push({
+                    time: data[sh.index].time,
+                    position: 'aboveBar',
+                    color: '#f85149',
+                    shape: 'arrowDown',
+                    text: 'SH',
+                    size: 1
+                });
+            });
+            
+            recentSwingLows.forEach(sl => {
+                markers.push({
+                    time: data[sl.index].time,
+                    position: 'belowBar',
+                    color: '#3fb950',
+                    shape: 'arrowUp',
+                    text: 'SL',
+                    size: 1
+                });
+            });
+            
+            // Add trade markers
+            result.trades.forEach((trade, i) => {
+                markers.push({
+                    time: trade.entryTime,
+                    position: trade.type === 'LONG' ? 'belowBar' : 'aboveBar',
+                    color: trade.type === 'LONG' ? '#58a6ff' : '#a371f7',
+                    shape: trade.type === 'LONG' ? 'arrowUp' : 'arrowDown',
+                    text: trade.type === 'LONG' ? 'L' : 'S',
+                    size: 2
+                });
+            });
+            
+            candleSeries.setMarkers(markers);
+            
+            // Add projection lines
+            result.projections.slice(-50).forEach(proj => {
+                // Safety check: ensure setupIdx is valid
+                if (proj.setupIdx < 0 || proj.setupIdx >= data.length) return;
+                
+                // Entry line
+                const entryLine = chart.addLineSeries({
+                    color: proj.type === 'LONG' ? '#58a6ff' : '#a371f7',
+                    lineWidth: 1,
+                    lineStyle: 2,
+                    crosshairMarkerVisible: false,
+                    lastValueVisible: false,
+                    priceLineVisible: false,
+                });
+                
+                const endTimeIdx = Math.min(proj.setupIdx + 50, data.length - 1);
+                entryLine.setData([
+                    { time: data[proj.setupIdx].time, value: proj.entry },
+                    { time: data[endTimeIdx].time, value: proj.entry }
+                ]);
+            });
+        }
+        
+        // Load data
+        async function loadData() {
+            const instrument = document.getElementById('instrumentSelect').value;
+            const config = document.getElementById('configSelect').value;
+            
+            let filePath;
+            if (instrument === 'silver') {
+                filePath = '../data/OANDA_XAGUSD5.csv';
+                if (config === 'best') {
+                    document.getElementById('cfgLookback').value = 6;
+                    document.getElementById('cfgMult').value = 0.5;
+                    document.getElementById('cfgEntry').value = 0.382;
+                    document.getElementById('cfgTp').value = 1.272;
+                    document.getElementById('cfgSl').value = 1.618;
+                } else {
+                    document.getElementById('cfgLookback').value = 6;
+                    document.getElementById('cfgMult').value = 0.382;
+                    document.getElementById('cfgEntry').value = 0.382;
+                    document.getElementById('cfgTp').value = 1.272;
+                    document.getElementById('cfgSl').value = 1.0;
+                }
+            } else if (instrument === 'gold') {
+                filePath = '../data/OANDA_XAUUSD5.csv';
+                document.getElementById('cfgLookback').value = 8;
+                document.getElementById('cfgMult').value = 0.618;
+                document.getElementById('cfgEntry').value = 0.5;
+                document.getElementById('cfgTp').value = 1.0;
+                document.getElementById('cfgSl').value = 1.618;
+            } else if (instrument === 'nifty') {
+                filePath = './zerodha_data/NIFTY_50_5minute_20260319_20260518.csv';
+            }
+            
+            try {
+                const response = await fetch(filePath);
+                const csvText = await response.text();
+                candleData = parseCSV(csvText);
+                
+                const cfg = {
+                    lookback: parseInt(document.getElementById('cfgLookback').value),
+                    mult: parseFloat(document.getElementById('cfgMult').value),
+                    entry: parseFloat(document.getElementById('cfgEntry').value),
+                    tp: parseFloat(document.getElementById('cfgTp').value),
+                    sl: parseFloat(document.getElementById('cfgSl').value)
+                };
+                
+                const result = runBacktest(candleData, cfg);
+                currentTrades = result.trades;
+                
+                plotData(candleData, result);
+                updateStats(result.trades);
+                updateTradesTable(result.trades);
+                
+            } catch (error) {
+                alert('Error loading data: ' + error.message);
+                console.error(error);
+            }
+        }
+        
+        // Apply custom config
+        function applyConfig() {
+            if (candleData.length === 0) {
+                alert('Please load data first');
+                return;
+            }
+            
+            const cfg = {
+                lookback: parseInt(document.getElementById('cfgLookback').value),
+                mult: parseFloat(document.getElementById('cfgMult').value),
+                entry: parseFloat(document.getElementById('cfgEntry').value),
+                tp: parseFloat(document.getElementById('cfgTp').value),
+                sl: parseFloat(document.getElementById('cfgSl').value)
+            };
+            
+            const result = runBacktest(candleData, cfg);
+            currentTrades = result.trades;
+            
+            // Clear chart and replot
+            chart.removeSeries(candleSeries);
+            candleSeries = chart.addCandlestickSeries({
+                upColor: '#3fb950',
+                downColor: '#f85149',
+                borderUpColor: '#3fb950',
+                borderDownColor: '#f85149',
+                wickUpColor: '#3fb950',
+                wickDownColor: '#f85149',
+            });
+            
+            plotData(candleData, result);
+            updateStats(result.trades);
+            updateTradesTable(result.trades);
+        }
+        
+        // Export chart
+        function exportImage() {
+            const chartElement = document.getElementById('chart');
+            html2canvas ? html2canvas(chartElement).then(canvas => {
+                const link = document.createElement('a');
+                link.download = 'logfib-chart.png';
+                link.href = canvas.toDataURL();
+                link.click();
+            }) : alert('Please install html2canvas or use screenshot tool');
+        }
+        
+        // Initialize on load
+        initChart();
+        loadData();
+    </script>
+</body>
+</html>

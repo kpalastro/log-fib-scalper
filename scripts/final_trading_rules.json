@@ -1,0 +1,241 @@
+{
+  "timestamp": "2026-05-19T02:31:09.774284",
+  "recommended_config_silver": {
+    "name": "Balanced Silver (Recommended)",
+    "params": {
+      "lookback": 10,
+      "multiplier": 0.618,
+      "entry_ratio": 0.618,
+      "take_profit_ratio": 0.786,
+      "stop_loss_ratio": 1.618,
+      "direction": "both"
+    },
+    "metrics": {
+      "total_trades": 127,
+      "wins": 120,
+      "losses": 7,
+      "win_rate": 94.48818897637796,
+      "total_pnl": 6.642919156243536,
+      "avg_pnl": 0.05230645004916171,
+      "profit_factor": 1.4935282658896087,
+      "max_drawdown": 5.274246883539519,
+      "walk_forward": {
+        "avg_win_rate": 94.01297361049683,
+        "avg_profit_factor": 2.182956097973249,
+        "total_trades": 127,
+        "fold_results": [
+          {
+            "total_trades": 42,
+            "wins": 41,
+            "losses": 1,
+            "win_rate": 97.61904761904762,
+            "total_pnl": 4.761312844272169,
+            "avg_pnl": 0.11336459153028973,
+            "profit_factor": 6.180088077681528,
+            "max_drawdown": 0.9191567349571415,
+            "fold": 0
+          },
+          {
+            "total_trades": 19,
+            "wins": 16,
+            "losses": 3,
+            "win_rate": 84.21052631578947,
+            "total_pnl": -3.3015456799455905,
+            "avg_pnl": -0.1737655621023995,
+            "profit_factor": 0.3957948594267952,
+            "max_drawdown": 4.405834238355084,
+            "fold": 1
+          },
+          {
+            "total_trades": 34,
+            "wins": 32,
+            "losses": 2,
+            "win_rate": 94.11764705882352,
+            "total_pnl": 0.732956744043264,
+            "avg_pnl": 0.02155755129539012,
+            "profit_factor": 1.1904457924357588,
+            "max_drawdown": 3.7194993934652985,
+            "fold": 2
+          },
+          {
+            "total_trades": 17,
+            "wins": 16,
+            "losses": 1,
+            "win_rate": 94.11764705882352,
+            "total_pnl": -0.11137948235291617,
+            "avg_pnl": -0.0065517342560538925,
+            "profit_factor": 0.9654956623489132,
+            "max_drawdown": 3.227984941464541,
+            "fold": 3
+          },
+          {
+            "total_trades": 15,
+            "wins": 15,
+            "losses": 0,
+            "win_rate": 100.0,
+            "total_pnl": 4.56157473022661,
+            "avg_pnl": 0.30410498201510733,
+            "profit_factor": Infinity,
+            "max_drawdown": 0,
+            "fold": 4
+          }
+        ]
+      }
+    }
+  },
+  "alternative_config_silver": {
+    "name": "High WR Silver (Conservative)",
+    "params": {
+      "lookback": 14,
+      "multiplier": 0.618,
+      "entry_ratio": 0.786,
+      "take_profit_ratio": 1.272,
+      "stop_loss_ratio": 1.272,
+      "direction": "both"
+    },
+    "metrics": {
+      "total_trades": 87,
+      "wins": 80,
+      "losses": 7,
+      "win_rate": 91.95402298850574,
+      "total_pnl": 28.77439187815824,
+      "avg_pnl": 0.3307401365305545,
+      "profit_factor": 3.0313085325714195,
+      "max_drawdown": 3.7803423248733026,
+      "walk_forward": {
+        "avg_win_rate": 91.9513276578494,
+        "avg_profit_factor": 3.9302690353177354,
+        "total_trades": 87,
+        "fold_results": [
+          {
+            "total_trades": 24,
+            "wins": 23,
+            "losses": 1,
+            "win_rate": 95.83333333333334,
+            "total_pnl": 3.8602347872593157,
+            "avg_pnl": 0.16084311613580482,
+            "profit_factor": 2.0211336581505726,
+            "max_drawdown": 3.7803423248733026,
+            "fold": 0
+          },
+          {
+            "total_trades": 16,
+            "wins": 15,
+            "losses": 1,
+            "win_rate": 93.75,
+            "total_pnl": 5.553267775519885,
+            "avg_pnl": 0.3470792359699928,
+            "profit_factor": 3.751107439388576,
+            "max_drawdown": 2.0185572166363954,
+            "fold": 1
+          },
+          {
+            "total_trades": 23,
+            "wins": 20,
+            "losses": 3,
+            "win_rate": 86.95652173913044,
+            "total_pnl": 3.61739900115829,
+            "avg_pnl": 0.15727821744166479,
+            "profit_factor": 1.6657310936574645,
+            "max_drawdown": 2.4461043469997463,
+            "fold": 2
+          },
+          {
+            "total_trades": 11,
+            "wins": 10,
+            "losses": 1,
+            "win_rate": 90.9090909090909,
+            "total_pnl": 4.269335080825726,
+            "avg_pnl": 0.38812137098415694,
+            "profit_factor": 4.461096015052189,
+            "max_drawdown": 1.2335211338427285,
+            "fold": 3
+          },
+          {
+            "total_trades": 13,
+            "wins": 12,
+            "losses": 1,
+            "win_rate": 92.3076923076923,
+            "total_pnl": 11.474155233395024,
+            "avg_pnl": 0.8826273256457711,
+            "profit_factor": 7.7522769703398735,
+            "max_drawdown": 1.6993016257769824,
+            "fold": 4
+          }
+        ]
+      }
+    }
+  },
+  "optimal_gold": {
+    "name": "Optimal Gold (Short Only)",
+    "params": {
+      "lookback": 14,
+      "multiplier": 0.382,
+      "entry_ratio": 0.618,
+      "take_profit_ratio": 1.0,
+      "stop_loss_ratio": 1.272,
+      "direction": "short"
+    },
+    "metrics": {
+      "total_trades": 16,
+      "wins": 15,
+      "losses": 1,
+      "win_rate": 93.75,
+      "total_pnl": 140.1919933608624,
+      "avg_pnl": 8.7619995850539,
+      "profit_factor": 2.6615720500674698,
+      "max_drawdown": 84.37310518985305,
+      "walk_forward": {
+        "avg_win_rate": 95.83333333333334,
+        "avg_profit_factor": 0.5450528630106796,
+        "total_trades": 16,
+        "fold_results": [
+          {
+            "total_trades": 6,
+            "wins": 5,
+            "losses": 1,
+            "win_rate": 83.33333333333334,
+            "total_pnl": -38.38530264502242,
+            "avg_pnl": -6.39755044083707,
+            "profit_factor": 0.5450528630106796,
+            "max_drawdown": 84.37310518985305,
+            "fold": 0
+          },
+          {
+            "total_trades": 2,
+            "wins": 2,
+            "losses": 0,
+            "win_rate": 100.0,
+            "total_pnl": 43.865612937605874,
+            "avg_pnl": 21.932806468802937,
+            "profit_factor": Infinity,
+            "max_drawdown": 0,
+            "fold": 1
+          },
+          {
+            "total_trades": 4,
+            "wins": 4,
+            "losses": 0,
+            "win_rate": 100.0,
+            "total_pnl": 81.80210807255298,
+            "avg_pnl": 20.450527018138246,
+            "profit_factor": Infinity,
+            "max_drawdown": 0,
+            "fold": 3
+          },
+          {
+            "total_trades": 4,
+            "wins": 4,
+            "losses": 0,
+            "win_rate": 100.0,
+            "total_pnl": 52.90957499572596,
+            "avg_pnl": 13.22739374893149,
+            "profit_factor": Infinity,
+            "max_drawdown": 0,
+            "fold": 4
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "instrument": "silver",
+  "total_trades": 3,
+  "wins": 3,
+  "losses": 0,
+  "win_rate": 100.0,
+  "total_pnl": 1997.2240332550232,
+  "final_capital": 101997.22403325503,
+  "return_pct": 1.9972240332550282,
+  "profit_factor": Infinity,
+  "avg_pnl_per_trade": 665.7413444183411,
+  "trades": [
+    {
+      "entry_time": "2026-04-20 01:30:00+00:00",
+      "exit_time": "2026-04-21 14:40:00+00:00",
+      "direction": "SHORT",
+      "entry_price": 79.58590641974197,
+      "exit_price": 77.80569194749742,
+      "size": 124.78163309409365,
+      "pnl": 222.13806910441522,
+      "exit_reason": "TP",
+      "confluence": 80.0
+    },
+    {
+      "entry_time": "2026-04-21 14:45:00+00:00",
+      "exit_time": "2026-05-11 13:05:00+00:00",
+      "direction": "LONG",
+      "entry_price": 79.58129737502985,
+      "exit_price": 85.52542237555956,
+      "size": 128.9943219805185,
+      "pnl": 766.7583742107789,
+      "exit_reason": "TP",
+      "confluence": 80.0
+    },
+    {
+      "entry_time": "2026-05-11 13:10:00+00:00",
+      "exit_time": "2026-05-19 13:30:00+00:00",
+      "direction": "SHORT",
+      "entry_price": 82.27775290060494,
+      "exit_price": 73.72200106186895,
+      "size": 117.85376772788652,
+      "pnl": 1008.327589939829,
+      "exit_reason": "TP",
+      "confluence": 80.0
+    }
+  ]
+}

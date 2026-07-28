@@ -57,13 +57,28 @@ htmlcov/
 .ipynb_checkpoints/
 
 # Environment Variables (API Keys, Secrets)
+# Covers all .env variants: .env, .env.local, .env.neo, .env.zerodha, .env.production, etc.
+# Only .env.example files are tracked (placeholders only).
 .env
 .env.local
 .env.*.local
+.env.*
+!.env.example
+!**/.env.example
 
-# Production Configs (override locally)
+# Credentials & sensitive configs
 config.production.py
 secrets.py
+*credentials*
+*creds*.json
+*.pem
+*.key
+*.p12
+*.pfx
+
+# IDE / editor credential caches
+.cursor/
+.aider*
 
 # Model Checkpoints / Large Files
 *.pth

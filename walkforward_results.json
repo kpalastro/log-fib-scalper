@@ -1,0 +1,1707 @@
+{
+  "date": "2026-05-20T01:00:29.963506",
+  "num_folds": 5,
+  "configs_tested": 12,
+  "silver": {
+    "all_results": [
+      {
+        "config": {
+          "vector_lookback": 20,
+          "confluence_threshold": 40
+        },
+        "folds": [
+          {
+            "fold": 0,
+            "start_date": "2026-03-10 04:00:00+00:00",
+            "end_date": "2026-03-23 23:55:00+00:00",
+            "trades": 2,
+            "wins": 0,
+            "losses": 2,
+            "win_rate": 0.0,
+            "total_pnl": -2229.841410214808,
+            "profit_factor": 0.0,
+            "return_pct": -2.229841410214809
+          },
+          {
+            "fold": 1,
+            "trades": 0,
+            "pnl": 0,
+            "win_rate": 0,
+            "profit_factor": 0,
+            "error": "No trades"
+          },
+          {
+            "fold": 2,
+            "start_date": "2026-04-07 18:50:00+00:00",
+            "end_date": "2026-04-21 22:50:00+00:00",
+            "trades": 1,
+            "wins": 0,
+            "losses": 1,
+            "win_rate": 0.0,
+            "total_pnl": -1338.125535665319,
+            "profit_factor": 0.0,
+            "return_pct": -1.3381255356653128
+          },
+          {
+            "fold": 3,
+            "start_date": "2026-04-21 22:55:00+00:00",
+            "end_date": "2026-05-05 18:35:00+00:00",
+            "trades": 1,
+            "wins": 1,
+            "losses": 0,
+            "win_rate": 100.0,
+            "total_pnl": 210.1165055795106,
+            "profit_factor": Infinity,
+            "return_pct": 0.2101165055795136
+          },
+          {
+            "fold": 4,
+            "start_date": "2026-05-05 18:40:00+00:00",
+            "end_date": "2026-05-19 14:35:00+00:00",
+            "trades": 4,
+            "wins": 2,
+            "losses": 2,
+            "win_rate": 50.0,
+            "total_pnl": -715.5591514311579,
+            "profit_factor": 0.5930253033523425,
+            "return_pct": -0.7155591514311527
+          }
+        ],
+        "aggregate": {
+          "total_trades": 8,
+          "total_wins": 3,
+          "total_pnl": -4073.4095917317745,
+          "profitable_folds": 1,
+          "aggregate_win_rate": 37.5,
+          "aggregate_profit_factor": 0.05352268783112979
+        },
+        "validated": false
+      },
+      {
+        "config": {
+          "vector_lookback": 20,
+          "confluence_threshold": 50
+        },
+        "folds": [
+          {
+            "fold": 0,
+            "start_date": "2026-03-10 04:00:00+00:00",
+            "end_date": "2026-03-23 23:55:00+00:00",
+            "trades": 2,
+            "wins": 0,
+            "losses": 2,
+            "win_rate": 0.0,
+            "total_pnl": -2229.841410214808,
+            "profit_factor": 0.0,
+            "return_pct": -2.229841410214809
+          },
+          {
+            "fold": 1,
+            "trades": 0,
+            "pnl": 0,
+            "win_rate": 0,
+            "profit_factor": 0,
+            "error": "No trades"
+          },
+          {
+            "fold": 2,
+            "start_date": "2026-04-07 18:50:00+00:00",
+            "end_date": "2026-04-21 22:50:00+00:00",
+            "trades": 1,
+            "wins": 0,
+            "losses": 1,
+            "win_rate": 0.0,
+            "total_pnl": -1338.125535665319,
+            "profit_factor": 0.0,
+            "return_pct": -1.3381255356653128
+          },
+          {
+            "fold": 3,
+            "start_date": "2026-04-21 22:55:00+00:00",
+            "end_date": "2026-05-05 18:35:00+00:00",
+            "trades": 1,
+            "wins": 1,
+            "losses": 0,
+            "win_rate": 100.0,
+            "total_pnl": 210.1165055795106,
+            "profit_factor": Infinity,
+            "return_pct": 0.2101165055795136
+          },
+          {
+            "fold": 4,
+            "start_date": "2026-05-05 18:40:00+00:00",
+            "end_date": "2026-05-19 14:35:00+00:00",
+            "trades": 4,
+            "wins": 2,
+            "losses": 2,
+            "win_rate": 50.0,
+            "total_pnl": -715.5591514311579,
+            "profit_factor": 0.5930253033523425,
+            "return_pct": -0.7155591514311527
+          }
+        ],
+        "aggregate": {
+          "total_trades": 8,
+          "total_wins": 3,
+          "total_pnl": -4073.4095917317745,
+          "profitable_folds": 1,
+          "aggregate_win_rate": 37.5,
+          "aggregate_profit_factor": 0.05352268783112979
+        },
+        "validated": false
+      },
+      {
+        "config": {
+          "vector_lookback": 20,
+          "confluence_threshold": 60
+        },
+        "folds": [
+          {
+            "fold": 0,
+            "start_date": "2026-03-10 04:00:00+00:00",
+            "end_date": "2026-03-23 23:55:00+00:00",
+            "trades": 2,
+            "wins": 0,
+            "losses": 2,
+            "win_rate": 0.0,
+            "total_pnl": -2229.841410214808,
+            "profit_factor": 0.0,
+            "return_pct": -2.229841410214809
+          },
+          {
+            "fold": 1,
+            "trades": 0,
+            "pnl": 0,
+            "win_rate": 0,
+            "profit_factor": 0,
+            "error": "No trades"
+          },
+          {
+            "fold": 2,
+            "start_date": "2026-04-07 18:50:00+00:00",
+            "end_date": "2026-04-21 22:50:00+00:00",
+            "trades": 1,
+            "wins": 0,
+            "losses": 1,
+            "win_rate": 0.0,
+            "total_pnl": -1338.125535665319,
+            "profit_factor": 0.0,
+            "return_pct": -1.3381255356653128
+          },
+          {
+            "fold": 3,
+            "start_date": "2026-04-21 22:55:00+00:00",
+            "end_date": "2026-05-05 18:35:00+00:00",
+            "trades": 1,
+            "wins": 1,
+            "losses": 0,
+            "win_rate": 100.0,
+            "total_pnl": 210.1165055795106,
+            "profit_factor": Infinity,
+            "return_pct": 0.2101165055795136
+          },
+          {
+            "fold": 4,
+            "start_date": "2026-05-05 18:40:00+00:00",
+            "end_date": "2026-05-19 14:35:00+00:00",
+            "trades": 4,
+            "wins": 2,
+            "losses": 2,
+            "win_rate": 50.0,
+            "total_pnl": -715.5591514311579,
+            "profit_factor": 0.5930253033523425,
+            "return_pct": -0.7155591514311527
+          }
+        ],
+        "aggregate": {
+          "total_trades": 8,
+          "total_wins": 3,
+          "total_pnl": -4073.4095917317745,
+          "profitable_folds": 1,
+          "aggregate_win_rate": 37.5,
+          "aggregate_profit_factor": 0.05352268783112979
+        },
+        "validated": false
+      },
+      {
+        "config": {
+          "vector_lookback": 30,
+          "confluence_threshold": 40
+        },
+        "folds": [
+          {
+            "fold": 0,
+            "start_date": "2026-03-10 04:00:00+00:00",
+            "end_date": "2026-03-23 23:55:00+00:00",
+            "trades": 2,
+            "wins": 0,
+            "losses": 2,
+            "win_rate": 0.0,
+            "total_pnl": -2207.4794898634095,
+            "profit_factor": 0.0,
+            "return_pct": -2.2074794898634136
+          },
+          {
+            "fold": 1,
+            "start_date": "2026-03-24 00:00:00+00:00",
+            "end_date": "2026-04-07 18:45:00+00:00",
+            "trades": 1,
+            "wins": 1,
+            "losses": 0,
+            "win_rate": 100.0,
+            "total_pnl": 501.7142972352167,
+            "profit_factor": Infinity,
+            "return_pct": 0.5017142972352158
+          },
+          {
+            "fold": 2,
+            "trades": 0,
+            "pnl": 0,
+            "win_rate": 0,
+            "profit_factor": 0,
+            "error": "No trades"
+          },
+          {
+            "fold": 3,
+            "start_date": "2026-04-21 22:55:00+00:00",
+            "end_date": "2026-05-05 18:35:00+00:00",
+            "trades": 1,
+            "wins": 1,
+            "losses": 0,
+            "win_rate": 100.0,
+            "total_pnl": 173.0009390032451,
+            "profit_factor": Infinity,
+            "return_pct": 0.1730009390032501
+          },
+          {
+            "fold": 4,
+            "start_date": "2026-05-05 18:40:00+00:00",
+            "end_date": "2026-05-19 14:35:00+00:00",
+            "trades": 3,
+            "wins": 1,
+            "losses": 2,
+            "win_rate": 33.33333333333333,
+            "total_pnl": -776.2555915109176,
+            "profit_factor": 0.5582340979674153,
+            "return_pct": -0.7762555915109114
+          }
+        ],
+        "aggregate": {
+          "total_trades": 7,
+          "total_wins": 3,
+          "total_pnl": -2309.0198451358656,
+          "profitable_folds": 2,
+          "aggregate_win_rate": 42.857142857142854,
+          "aggregate_profit_factor": 0.2476034464712121
+        },
+        "validated": false
+      },
+      {
+        "config": {
+          "vector_lookback": 30,
+          "confluence_threshold": 50
+        },
+        "folds": [
+          {
+            "fold": 0,
+            "start_date": "2026-03-10 04:00:00+00:00",
+            "end_date": "2026-03-23 23:55:00+00:00",
+            "trades": 2,
+            "wins": 0,
+            "losses": 2,
+            "win_rate": 0.0,
+            "total_pnl": -2207.4794898634095,
+            "profit_factor": 0.0,
+            "return_pct": -2.2074794898634136
+          },
+          {
+            "fold": 1,
+            "start_date": "2026-03-24 00:00:00+00:00",
+            "end_date": "2026-04-07 18:45:00+00:00",
+            "trades": 1,
+            "wins": 1,
+            "losses": 0,
+            "win_rate": 100.0,
+            "total_pnl": 501.7142972352167,
+            "profit_factor": Infinity,
+            "return_pct": 0.5017142972352158
+          },
+          {
+            "fold": 2,
+            "trades": 0,
+            "pnl": 0,
+            "win_rate": 0,
+            "profit_factor": 0,
+            "error": "No trades"
+          },
+          {
+            "fold": 3,
+            "start_date": "2026-04-21 22:55:00+00:00",
+            "end_date": "2026-05-05 18:35:00+00:00",
+            "trades": 1,
+            "wins": 1,
+            "losses": 0,
+            "win_rate": 100.0,
+            "total_pnl": 173.0009390032451,
+            "profit_factor": Infinity,
+            "return_pct": 0.1730009390032501
+          },
+          {
+            "fold": 4,
+            "start_date": "2026-05-05 18:40:00+00:00",
+            "end_date": "2026-05-19 14:35:00+00:00",
+            "trades": 3,
+            "wins": 1,
+            "losses": 2,
+            "win_rate": 33.33333333333333,
+            "total_pnl": -776.2555915109176,
+            "profit_factor": 0.5582340979674153,
+            "return_pct": -0.7762555915109114
+          }
+        ],
+        "aggregate": {
+          "total_trades": 7,
+          "total_wins": 3,
+          "total_pnl": -2309.0198451358656,
+          "profitable_folds": 2,
+          "aggregate_win_rate": 42.857142857142854,
+          "aggregate_profit_factor": 0.2476034464712121
+        },
+        "validated": false
+      },
+      {
+        "config": {
+          "vector_lookback": 30,
+          "confluence_threshold": 60
+        },
+        "folds": [
+          {
+            "fold": 0,
+            "start_date": "2026-03-10 04:00:00+00:00",
+            "end_date": "2026-03-23 23:55:00+00:00",
+            "trades": 2,
+            "wins": 0,
+            "losses": 2,
+            "win_rate": 0.0,
+            "total_pnl": -2207.4794898634095,
+            "profit_factor": 0.0,
+            "return_pct": -2.2074794898634136
+          },
+          {
+            "fold": 1,
+            "start_date": "2026-03-24 00:00:00+00:00",
+            "end_date": "2026-04-07 18:45:00+00:00",
+            "trades": 1,
+            "wins": 1,
+            "losses": 0,
+            "win_rate": 100.0,
+            "total_pnl": 501.7142972352167,
+            "profit_factor": Infinity,
+            "return_pct": 0.5017142972352158
+          },
+          {
+            "fold": 2,
+            "trades": 0,
+            "pnl": 0,
+            "win_rate": 0,
+            "profit_factor": 0,
+            "error": "No trades"
+          },
+          {
+            "fold": 3,
+            "start_date": "2026-04-21 22:55:00+00:00",
+            "end_date": "2026-05-05 18:35:00+00:00",
+            "trades": 1,
+            "wins": 1,
+            "losses": 0,
+            "win_rate": 100.0,
+            "total_pnl": 173.0009390032451,
+            "profit_factor": Infinity,
+            "return_pct": 0.1730009390032501
+          },
+          {
+            "fold": 4,
+            "start_date": "2026-05-05 18:40:00+00:00",
+            "end_date": "2026-05-19 14:35:00+00:00",
+            "trades": 3,
+            "wins": 1,
+            "losses": 2,
+            "win_rate": 33.33333333333333,
+            "total_pnl": -776.2555915109176,
+            "profit_factor": 0.5582340979674153,
+            "return_pct": -0.7762555915109114
+          }
+        ],
+        "aggregate": {
+          "total_trades": 7,
+          "total_wins": 3,
+          "total_pnl": -2309.0198451358656,
+          "profitable_folds": 2,
+          "aggregate_win_rate": 42.857142857142854,
+          "aggregate_profit_factor": 0.2476034464712121
+        },
+        "validated": false
+      },
+      {
+        "config": {
+          "vector_lookback": 40,
+          "confluence_threshold": 40
+        },
+        "folds": [
+          {
+            "fold": 0,
+            "start_date": "2026-03-10 04:00:00+00:00",
+            "end_date": "2026-03-23 23:55:00+00:00",
+            "trades": 2,
+            "wins": 1,
+            "losses": 1,
+            "win_rate": 50.0,
+            "total_pnl": -1915.622699570047,
+            "profit_factor": 0.08787345357508276,
+            "return_pct": -1.9156226995700563
+          },
+          {
+            "fold": 1,
+            "start_date": "2026-03-24 00:00:00+00:00",
+            "end_date": "2026-04-07 18:45:00+00:00",
+            "trades": 1,
+            "wins": 1,
+            "losses": 0,
+            "win_rate": 100.0,
+            "total_pnl": 501.7142972352167,
+            "profit_factor": Infinity,
+            "return_pct": 0.5017142972352158
+          },
+          {
+            "fold": 2,
+            "trades": 0,
+            "pnl": 0,
+            "win_rate": 0,
+            "profit_factor": 0,
+            "error": "No trades"
+          },
+          {
+            "fold": 3,
+            "start_date": "2026-04-21 22:55:00+00:00",
+            "end_date": "2026-05-05 18:35:00+00:00",
+            "trades": 1,
+            "wins": 1,
+            "losses": 0,
+            "win_rate": 100.0,
+            "total_pnl": 194.53786528120327,
+            "profit_factor": Infinity,
+            "return_pct": 0.19453786528120692
+          },
+          {
+            "fold": 4,
+            "start_date": "2026-05-05 18:40:00+00:00",
+            "end_date": "2026-05-19 14:35:00+00:00",
+            "trades": 5,
+            "wins": 3,
+            "losses": 2,
+            "win_rate": 60.0,
+            "total_pnl": 660.1798935967014,
+            "profit_factor": 1.6745012949722373,
+            "return_pct": 0.6601798935966945
+          }
+        ],
+        "aggregate": {
+          "total_trades": 9,
+          "total_wins": 6,
+          "total_pnl": -559.1906434569256,
+          "profitable_folds": 3,
+          "aggregate_win_rate": 66.66666666666666,
+          "aggregate_profit_factor": 1.1404752083169785
+        },
+        "validated": false
+      },
+      {
+        "config": {
+          "vector_lookback": 40,
+          "confluence_threshold": 50
+        },
+        "folds": [
+          {
+            "fold": 0,
+            "start_date": "2026-03-10 04:00:00+00:00",
+            "end_date": "2026-03-23 23:55:00+00:00",
+            "trades": 2,
+            "wins": 1,
+            "losses": 1,
+            "win_rate": 50.0,
+            "total_pnl": -1915.622699570047,
+            "profit_factor": 0.08787345357508276,
+            "return_pct": -1.9156226995700563
+          },
+          {
+            "fold": 1,
+            "start_date": "2026-03-24 00:00:00+00:00",
+            "end_date": "2026-04-07 18:45:00+00:00",
+            "trades": 1,
+            "wins": 1,
+            "losses": 0,
+            "win_rate": 100.0,
+            "total_pnl": 501.7142972352167,
+            "profit_factor": Infinity,
+            "return_pct": 0.5017142972352158
+          },
+          {
+            "fold": 2,
+            "trades": 0,
+            "pnl": 0,
+            "win_rate": 0,
+            "profit_factor": 0,
+            "error": "No trades"
+          },
+          {
+            "fold": 3,
+            "start_date": "2026-04-21 22:55:00+00:00",
+            "end_date": "2026-05-05 18:35:00+00:00",
+            "trades": 1,
+            "wins": 1,
+            "losses": 0,
+            "win_rate": 100.0,
+            "total_pnl": 194.53786528120327,
+            "profit_factor": Infinity,
+            "return_pct": 0.19453786528120692
+          },
+          {
+            "fold": 4,
+            "start_date": "2026-05-05 18:40:00+00:00",
+            "end_date": "2026-05-19 14:35:00+00:00",
+            "trades": 5,
+            "wins": 3,
+            "losses": 2,
+            "win_rate": 60.0,
+            "total_pnl": 660.1798935967014,
+            "profit_factor": 1.6745012949722373,
+            "return_pct": 0.6601798935966945
+          }
+        ],
+        "aggregate": {
+          "total_trades": 9,
+          "total_wins": 6,
+          "total_pnl": -559.1906434569256,
+          "profitable_folds": 3,
+          "aggregate_win_rate": 66.66666666666666,
+          "aggregate_profit_factor": 1.1404752083169785
+        },
+        "validated": false
+      },
+      {
+        "config": {
+          "vector_lookback": 40,
+          "confluence_threshold": 60
+        },
+        "folds": [
+          {
+            "fold": 0,
+            "start_date": "2026-03-10 04:00:00+00:00",
+            "end_date": "2026-03-23 23:55:00+00:00",
+            "trades": 2,
+            "wins": 1,
+            "losses": 1,
+            "win_rate": 50.0,
+            "total_pnl": -1915.622699570047,
+            "profit_factor": 0.08787345357508276,
+            "return_pct": -1.9156226995700563
+          },
+          {
+            "fold": 1,
+            "start_date": "2026-03-24 00:00:00+00:00",
+            "end_date": "2026-04-07 18:45:00+00:00",
+            "trades": 1,
+            "wins": 1,
+            "losses": 0,
+            "win_rate": 100.0,
+            "total_pnl": 501.7142972352167,
+            "profit_factor": Infinity,
+            "return_pct": 0.5017142972352158
+          },
+          {
+            "fold": 2,
+            "trades": 0,
+            "pnl": 0,
+            "win_rate": 0,
+            "profit_factor": 0,
+            "error": "No trades"
+          },
+          {
+            "fold": 3,
+            "start_date": "2026-04-21 22:55:00+00:00",
+            "end_date": "2026-05-05 18:35:00+00:00",
+            "trades": 1,
+            "wins": 1,
+            "losses": 0,
+            "win_rate": 100.0,
+            "total_pnl": 194.53786528120327,
+            "profit_factor": Infinity,
+            "return_pct": 0.19453786528120692
+          },
+          {
+            "fold": 4,
+            "start_date": "2026-05-05 18:40:00+00:00",
+            "end_date": "2026-05-19 14:35:00+00:00",
+            "trades": 5,
+            "wins": 3,
+            "losses": 2,
+            "win_rate": 60.0,
+            "total_pnl": 660.1798935967014,
+            "profit_factor": 1.6745012949722373,
+            "return_pct": 0.6601798935966945
+          }
+        ],
+        "aggregate": {
+          "total_trades": 9,
+          "total_wins": 6,
+          "total_pnl": -559.1906434569256,
+          "profitable_folds": 3,
+          "aggregate_win_rate": 66.66666666666666,
+          "aggregate_profit_factor": 1.1404752083169785
+        },
+        "validated": false
+      },
+      {
+        "config": {
+          "vector_lookback": 50,
+          "confluence_threshold": 40
+        },
+        "folds": [
+          {
+            "fold": 0,
+            "start_date": "2026-03-10 04:00:00+00:00",
+            "end_date": "2026-03-23 23:55:00+00:00",
+            "trades": 2,
+            "wins": 1,
+            "losses": 1,
+            "win_rate": 50.0,
+            "total_pnl": -1930.6274241537867,
+            "profit_factor": 0.08058828253818177,
+            "return_pct": -1.9306274241537902
+          },
+          {
+            "fold": 1,
+            "start_date": "2026-03-24 00:00:00+00:00",
+            "end_date": "2026-04-07 18:45:00+00:00",
+            "trades": 1,
+            "wins": 1,
+            "losses": 0,
+            "win_rate": 100.0,
+            "total_pnl": 501.7142972352167,
+            "profit_factor": Infinity,
+            "return_pct": 0.5017142972352158
+          },
+          {
+            "fold": 2,
+            "start_date": "2026-04-07 18:50:00+00:00",
+            "end_date": "2026-04-21 22:50:00+00:00",
+            "trades": 2,
+            "wins": 2,
+            "losses": 0,
+            "win_rate": 100.0,
+            "total_pnl": 717.4603168966095,
+            "profit_factor": Infinity,
+            "return_pct": 0.7174603168965987
+          },
+          {
+            "fold": 3,
+            "start_date": "2026-04-21 22:55:00+00:00",
+            "end_date": "2026-05-05 18:35:00+00:00",
+            "trades": 1,
+            "wins": 1,
+            "losses": 0,
+            "win_rate": 100.0,
+            "total_pnl": 300.2231260334826,
+            "profit_factor": Infinity,
+            "return_pct": 0.30022312603348106
+          },
+          {
+            "fold": 4,
+            "start_date": "2026-05-05 18:40:00+00:00",
+            "end_date": "2026-05-19 14:35:00+00:00",
+            "trades": 5,
+            "wins": 3,
+            "losses": 2,
+            "win_rate": 60.0,
+            "total_pnl": 660.1798935967014,
+            "profit_factor": 1.6745012949722373,
+            "return_pct": 0.6601798935966945
+          }
+        ],
+        "aggregate": {
+          "total_trades": 11,
+          "total_wins": 8,
+          "total_pnl": 248.95020960822342,
+          "profitable_folds": 4,
+          "aggregate_win_rate": 72.72727272727273,
+          "aggregate_profit_factor": 1.9843348875694282
+        },
+        "validated": false
+      },
+      {
+        "config": {
+          "vector_lookback": 50,
+          "confluence_threshold": 50
+        },
+        "folds": [
+          {
+            "fold": 0,
+            "start_date": "2026-03-10 04:00:00+00:00",
+            "end_date": "2026-03-23 23:55:00+00:00",
+            "trades": 2,
+            "wins": 1,
+            "losses": 1,
+            "win_rate": 50.0,
+            "total_pnl": -1930.6274241537867,
+            "profit_factor": 0.08058828253818177,
+            "return_pct": -1.9306274241537902
+          },
+          {
+            "fold": 1,
+            "start_date": "2026-03-24 00:00:00+00:00",
+            "end_date": "2026-04-07 18:45:00+00:00",
+            "trades": 1,
+            "wins": 1,
+            "losses": 0,
+            "win_rate": 100.0,
+            "total_pnl": 501.7142972352167,
+            "profit_factor": Infinity,
+            "return_pct": 0.5017142972352158
+          },
+          {
+            "fold": 2,
+            "start_date": "2026-04-07 18:50:00+00:00",
+            "end_date": "2026-04-21 22:50:00+00:00",
+            "trades": 2,
+            "wins": 2,
+            "losses": 0,
+            "win_rate": 100.0,
+            "total_pnl": 717.4603168966095,
+            "profit_factor": Infinity,
+            "return_pct": 0.7174603168965987
+          },
+          {
+            "fold": 3,
+            "start_date": "2026-04-21 22:55:00+00:00",
+            "end_date": "2026-05-05 18:35:00+00:00",
+            "trades": 1,
+            "wins": 1,
+            "losses": 0,
+            "win_rate": 100.0,
+            "total_pnl": 300.2231260334826,
+            "profit_factor": Infinity,
+            "return_pct": 0.30022312603348106
+          },
+          {
+            "fold": 4,
+            "start_date": "2026-05-05 18:40:00+00:00",
+            "end_date": "2026-05-19 14:35:00+00:00",
+            "trades": 5,
+            "wins": 3,
+            "losses": 2,
+            "win_rate": 60.0,
+            "total_pnl": 660.1798935967014,
+            "profit_factor": 1.6745012949722373,
+            "return_pct": 0.6601798935966945
+          }
+        ],
+        "aggregate": {
+          "total_trades": 11,
+          "total_wins": 8,
+          "total_pnl": 248.95020960822342,
+          "profitable_folds": 4,
+          "aggregate_win_rate": 72.72727272727273,
+          "aggregate_profit_factor": 1.9843348875694282
+        },
+        "validated": false
+      },
+      {
+        "config": {
+          "vector_lookback": 50,
+          "confluence_threshold": 60
+        },
+        "folds": [
+          {
+            "fold": 0,
+            "start_date": "2026-03-10 04:00:00+00:00",
+            "end_date": "2026-03-23 23:55:00+00:00",
+            "trades": 2,
+            "wins": 1,
+            "losses": 1,
+            "win_rate": 50.0,
+            "total_pnl": -1930.6274241537867,
+            "profit_factor": 0.08058828253818177,
+            "return_pct": -1.9306274241537902
+          },
+          {
+            "fold": 1,
+            "start_date": "2026-03-24 00:00:00+00:00",
+            "end_date": "2026-04-07 18:45:00+00:00",
+            "trades": 1,
+            "wins": 1,
+            "losses": 0,
+            "win_rate": 100.0,
+            "total_pnl": 501.7142972352167,
+            "profit_factor": Infinity,
+            "return_pct": 0.5017142972352158
+          },
+          {
+            "fold": 2,
+            "start_date": "2026-04-07 18:50:00+00:00",
+            "end_date": "2026-04-21 22:50:00+00:00",
+            "trades": 2,
+            "wins": 2,
+            "losses": 0,
+            "win_rate": 100.0,
+            "total_pnl": 717.4603168966095,
+            "profit_factor": Infinity,
+            "return_pct": 0.7174603168965987
+          },
+          {
+            "fold": 3,
+            "start_date": "2026-04-21 22:55:00+00:00",
+            "end_date": "2026-05-05 18:35:00+00:00",
+            "trades": 1,
+            "wins": 1,
+            "losses": 0,
+            "win_rate": 100.0,
+            "total_pnl": 300.2231260334826,
+            "profit_factor": Infinity,
+            "return_pct": 0.30022312603348106
+          },
+          {
+            "fold": 4,
+            "start_date": "2026-05-05 18:40:00+00:00",
+            "end_date": "2026-05-19 14:35:00+00:00",
+            "trades": 5,
+            "wins": 3,
+            "losses": 2,
+            "win_rate": 60.0,
+            "total_pnl": 660.1798935967014,
+            "profit_factor": 1.6745012949722373,
+            "return_pct": 0.6601798935966945
+          }
+        ],
+        "aggregate": {
+          "total_trades": 11,
+          "total_wins": 8,
+          "total_pnl": 248.95020960822342,
+          "profitable_folds": 4,
+          "aggregate_win_rate": 72.72727272727273,
+          "aggregate_profit_factor": 1.9843348875694282
+        },
+        "validated": false
+      }
+    ],
+    "validated_configs": []
+  },
+  "gold": {
+    "all_results": [
+      {
+        "config": {
+          "vector_lookback": 20,
+          "confluence_threshold": 40
+        },
+        "folds": [
+          {
+            "fold": 0,
+            "start_date": "2026-03-10 04:00:00+00:00",
+            "end_date": "2026-03-24 00:05:00+00:00",
+            "trades": 1,
+            "wins": 1,
+            "losses": 0,
+            "win_rate": 100.0,
+            "total_pnl": 212.46111599019866,
+            "profit_factor": Infinity,
+            "return_pct": 0.21246111599019785
+          },
+          {
+            "fold": 1,
+            "trades": 0,
+            "pnl": 0,
+            "win_rate": 0,
+            "profit_factor": 0,
+            "error": "No trades"
+          },
+          {
+            "fold": 2,
+            "trades": 0,
+            "pnl": 0,
+            "win_rate": 0,
+            "profit_factor": 0,
+            "error": "No trades"
+          },
+          {
+            "fold": 3,
+            "start_date": "2026-04-21 23:25:00+00:00",
+            "end_date": "2026-05-05 18:30:00+00:00",
+            "trades": 1,
+            "wins": 1,
+            "losses": 0,
+            "win_rate": 100.0,
+            "total_pnl": 96.25925530683405,
+            "profit_factor": Infinity,
+            "return_pct": 0.09625925530683889
+          },
+          {
+            "fold": 4,
+            "start_date": "2026-05-05 18:35:00+00:00",
+            "end_date": "2026-05-19 14:45:00+00:00",
+            "trades": 2,
+            "wins": 2,
+            "losses": 0,
+            "win_rate": 100.0,
+            "total_pnl": 322.06056396306604,
+            "profit_factor": Infinity,
+            "return_pct": 0.32206056396306665
+          }
+        ],
+        "aggregate": {
+          "total_trades": 4,
+          "total_wins": 4,
+          "total_pnl": 630.7809352600988,
+          "profitable_folds": 3,
+          "aggregate_win_rate": 100.0,
+          "aggregate_profit_factor": Infinity
+        },
+        "validated": false
+      },
+      {
+        "config": {
+          "vector_lookback": 20,
+          "confluence_threshold": 50
+        },
+        "folds": [
+          {
+            "fold": 0,
+            "start_date": "2026-03-10 04:00:00+00:00",
+            "end_date": "2026-03-24 00:05:00+00:00",
+            "trades": 1,
+            "wins": 1,
+            "losses": 0,
+            "win_rate": 100.0,
+            "total_pnl": 212.46111599019866,
+            "profit_factor": Infinity,
+            "return_pct": 0.21246111599019785
+          },
+          {
+            "fold": 1,
+            "trades": 0,
+            "pnl": 0,
+            "win_rate": 0,
+            "profit_factor": 0,
+            "error": "No trades"
+          },
+          {
+            "fold": 2,
+            "trades": 0,
+            "pnl": 0,
+            "win_rate": 0,
+            "profit_factor": 0,
+            "error": "No trades"
+          },
+          {
+            "fold": 3,
+            "start_date": "2026-04-21 23:25:00+00:00",
+            "end_date": "2026-05-05 18:30:00+00:00",
+            "trades": 1,
+            "wins": 1,
+            "losses": 0,
+            "win_rate": 100.0,
+            "total_pnl": 96.25925530683405,
+            "profit_factor": Infinity,
+            "return_pct": 0.09625925530683889
+          },
+          {
+            "fold": 4,
+            "start_date": "2026-05-05 18:35:00+00:00",
+            "end_date": "2026-05-19 14:45:00+00:00",
+            "trades": 2,
+            "wins": 2,
+            "losses": 0,
+            "win_rate": 100.0,
+            "total_pnl": 322.06056396306604,
+            "profit_factor": Infinity,
+            "return_pct": 0.32206056396306665
+          }
+        ],
+        "aggregate": {
+          "total_trades": 4,
+          "total_wins": 4,
+          "total_pnl": 630.7809352600988,
+          "profitable_folds": 3,
+          "aggregate_win_rate": 100.0,
+          "aggregate_profit_factor": Infinity
+        },
+        "validated": false
+      },
+      {
+        "config": {
+          "vector_lookback": 20,
+          "confluence_threshold": 60
+        },
+        "folds": [
+          {
+            "fold": 0,
+            "start_date": "2026-03-10 04:00:00+00:00",
+            "end_date": "2026-03-24 00:05:00+00:00",
+            "trades": 1,
+            "wins": 1,
+            "losses": 0,
+            "win_rate": 100.0,
+            "total_pnl": 212.46111599019866,
+            "profit_factor": Infinity,
+            "return_pct": 0.21246111599019785
+          },
+          {
+            "fold": 1,
+            "trades": 0,
+            "pnl": 0,
+            "win_rate": 0,
+            "profit_factor": 0,
+            "error": "No trades"
+          },
+          {
+            "fold": 2,
+            "trades": 0,
+            "pnl": 0,
+            "win_rate": 0,
+            "profit_factor": 0,
+            "error": "No trades"
+          },
+          {
+            "fold": 3,
+            "start_date": "2026-04-21 23:25:00+00:00",
+            "end_date": "2026-05-05 18:30:00+00:00",
+            "trades": 1,
+            "wins": 1,
+            "losses": 0,
+            "win_rate": 100.0,
+            "total_pnl": 96.25925530683405,
+            "profit_factor": Infinity,
+            "return_pct": 0.09625925530683889
+          },
+          {
+            "fold": 4,
+            "start_date": "2026-05-05 18:35:00+00:00",
+            "end_date": "2026-05-19 14:45:00+00:00",
+            "trades": 2,
+            "wins": 2,
+            "losses": 0,
+            "win_rate": 100.0,
+            "total_pnl": 322.06056396306604,
+            "profit_factor": Infinity,
+            "return_pct": 0.32206056396306665
+          }
+        ],
+        "aggregate": {
+          "total_trades": 4,
+          "total_wins": 4,
+          "total_pnl": 630.7809352600988,
+          "profitable_folds": 3,
+          "aggregate_win_rate": 100.0,
+          "aggregate_profit_factor": Infinity
+        },
+        "validated": false
+      },
+      {
+        "config": {
+          "vector_lookback": 30,
+          "confluence_threshold": 40
+        },
+        "folds": [
+          {
+            "fold": 0,
+            "start_date": "2026-03-10 04:00:00+00:00",
+            "end_date": "2026-03-24 00:05:00+00:00",
+            "trades": 1,
+            "wins": 1,
+            "losses": 0,
+            "win_rate": 100.0,
+            "total_pnl": 212.46111599019866,
+            "profit_factor": Infinity,
+            "return_pct": 0.21246111599019785
+          },
+          {
+            "fold": 1,
+            "start_date": "2026-03-24 00:10:00+00:00",
+            "end_date": "2026-04-07 19:10:00+00:00",
+            "trades": 1,
+            "wins": 1,
+            "losses": 0,
+            "win_rate": 100.0,
+            "total_pnl": 312.55783897373544,
+            "profit_factor": Infinity,
+            "return_pct": 0.3125578389737348
+          },
+          {
+            "fold": 2,
+            "trades": 0,
+            "pnl": 0,
+            "win_rate": 0,
+            "profit_factor": 0,
+            "error": "No trades"
+          },
+          {
+            "fold": 3,
+            "start_date": "2026-04-21 23:25:00+00:00",
+            "end_date": "2026-05-05 18:30:00+00:00",
+            "trades": 1,
+            "wins": 1,
+            "losses": 0,
+            "win_rate": 100.0,
+            "total_pnl": 75.33195572488984,
+            "profit_factor": Infinity,
+            "return_pct": 0.07533195572489058
+          },
+          {
+            "fold": 4,
+            "trades": 0,
+            "pnl": 0,
+            "win_rate": 0,
+            "profit_factor": 0,
+            "error": "No trades"
+          }
+        ],
+        "aggregate": {
+          "total_trades": 3,
+          "total_wins": 3,
+          "total_pnl": 600.3509106888239,
+          "profitable_folds": 3,
+          "aggregate_win_rate": 100.0,
+          "aggregate_profit_factor": Infinity
+        },
+        "validated": false
+      },
+      {
+        "config": {
+          "vector_lookback": 30,
+          "confluence_threshold": 50
+        },
+        "folds": [
+          {
+            "fold": 0,
+            "start_date": "2026-03-10 04:00:00+00:00",
+            "end_date": "2026-03-24 00:05:00+00:00",
+            "trades": 1,
+            "wins": 1,
+            "losses": 0,
+            "win_rate": 100.0,
+            "total_pnl": 212.46111599019866,
+            "profit_factor": Infinity,
+            "return_pct": 0.21246111599019785
+          },
+          {
+            "fold": 1,
+            "start_date": "2026-03-24 00:10:00+00:00",
+            "end_date": "2026-04-07 19:10:00+00:00",
+            "trades": 1,
+            "wins": 1,
+            "losses": 0,
+            "win_rate": 100.0,
+            "total_pnl": 312.55783897373544,
+            "profit_factor": Infinity,
+            "return_pct": 0.3125578389737348
+          },
+          {
+            "fold": 2,
+            "trades": 0,
+            "pnl": 0,
+            "win_rate": 0,
+            "profit_factor": 0,
+            "error": "No trades"
+          },
+          {
+            "fold": 3,
+            "start_date": "2026-04-21 23:25:00+00:00",
+            "end_date": "2026-05-05 18:30:00+00:00",
+            "trades": 1,
+            "wins": 1,
+            "losses": 0,
+            "win_rate": 100.0,
+            "total_pnl": 75.33195572488984,
+            "profit_factor": Infinity,
+            "return_pct": 0.07533195572489058
+          },
+          {
+            "fold": 4,
+            "trades": 0,
+            "pnl": 0,
+            "win_rate": 0,
+            "profit_factor": 0,
+            "error": "No trades"
+          }
+        ],
+        "aggregate": {
+          "total_trades": 3,
+          "total_wins": 3,
+          "total_pnl": 600.3509106888239,
+          "profitable_folds": 3,
+          "aggregate_win_rate": 100.0,
+          "aggregate_profit_factor": Infinity
+        },
+        "validated": false
+      },
+      {
+        "config": {
+          "vector_lookback": 30,
+          "confluence_threshold": 60
+        },
+        "folds": [
+          {
+            "fold": 0,
+            "start_date": "2026-03-10 04:00:00+00:00",
+            "end_date": "2026-03-24 00:05:00+00:00",
+            "trades": 1,
+            "wins": 1,
+            "losses": 0,
+            "win_rate": 100.0,
+            "total_pnl": 212.46111599019866,
+            "profit_factor": Infinity,
+            "return_pct": 0.21246111599019785
+          },
+          {
+            "fold": 1,
+            "start_date": "2026-03-24 00:10:00+00:00",
+            "end_date": "2026-04-07 19:10:00+00:00",
+            "trades": 1,
+            "wins": 1,
+            "losses": 0,
+            "win_rate": 100.0,
+            "total_pnl": 312.55783897373544,
+            "profit_factor": Infinity,
+            "return_pct": 0.3125578389737348
+          },
+          {
+            "fold": 2,
+            "trades": 0,
+            "pnl": 0,
+            "win_rate": 0,
+            "profit_factor": 0,
+            "error": "No trades"
+          },
+          {
+            "fold": 3,
+            "start_date": "2026-04-21 23:25:00+00:00",
+            "end_date": "2026-05-05 18:30:00+00:00",
+            "trades": 1,
+            "wins": 1,
+            "losses": 0,
+            "win_rate": 100.0,
+            "total_pnl": 75.33195572488984,
+            "profit_factor": Infinity,
+            "return_pct": 0.07533195572489058
+          },
+          {
+            "fold": 4,
+            "trades": 0,
+            "pnl": 0,
+            "win_rate": 0,
+            "profit_factor": 0,
+            "error": "No trades"
+          }
+        ],
+        "aggregate": {
+          "total_trades": 3,
+          "total_wins": 3,
+          "total_pnl": 600.3509106888239,
+          "profitable_folds": 3,
+          "aggregate_win_rate": 100.0,
+          "aggregate_profit_factor": Infinity
+        },
+        "validated": false
+      },
+      {
+        "config": {
+          "vector_lookback": 40,
+          "confluence_threshold": 40
+        },
+        "folds": [
+          {
+            "fold": 0,
+            "start_date": "2026-03-10 04:00:00+00:00",
+            "end_date": "2026-03-24 00:05:00+00:00",
+            "trades": 2,
+            "wins": 1,
+            "losses": 1,
+            "win_rate": 50.0,
+            "total_pnl": -1504.2469036734828,
+            "profit_factor": 0.0770531448927691,
+            "return_pct": -1.5042469036734838
+          },
+          {
+            "fold": 1,
+            "trades": 0,
+            "pnl": 0,
+            "win_rate": 0,
+            "profit_factor": 0,
+            "error": "No trades"
+          },
+          {
+            "fold": 2,
+            "trades": 0,
+            "pnl": 0,
+            "win_rate": 0,
+            "profit_factor": 0,
+            "error": "No trades"
+          },
+          {
+            "fold": 3,
+            "start_date": "2026-04-21 23:25:00+00:00",
+            "end_date": "2026-05-05 18:30:00+00:00",
+            "trades": 1,
+            "wins": 1,
+            "losses": 0,
+            "win_rate": 100.0,
+            "total_pnl": 117.06915495210018,
+            "profit_factor": Infinity,
+            "return_pct": 0.1170691549520998
+          },
+          {
+            "fold": 4,
+            "trades": 0,
+            "pnl": 0,
+            "win_rate": 0,
+            "profit_factor": 0,
+            "error": "No trades"
+          }
+        ],
+        "aggregate": {
+          "total_trades": 3,
+          "total_wins": 2,
+          "total_pnl": -1387.1777487213826,
+          "profitable_folds": 1,
+          "aggregate_win_rate": 66.66666666666666,
+          "aggregate_profit_factor": 0.15565151527479776
+        },
+        "validated": false
+      },
+      {
+        "config": {
+          "vector_lookback": 40,
+          "confluence_threshold": 50
+        },
+        "folds": [
+          {
+            "fold": 0,
+            "start_date": "2026-03-10 04:00:00+00:00",
+            "end_date": "2026-03-24 00:05:00+00:00",
+            "trades": 2,
+            "wins": 1,
+            "losses": 1,
+            "win_rate": 50.0,
+            "total_pnl": -1504.2469036734828,
+            "profit_factor": 0.0770531448927691,
+            "return_pct": -1.5042469036734838
+          },
+          {
+            "fold": 1,
+            "trades": 0,
+            "pnl": 0,
+            "win_rate": 0,
+            "profit_factor": 0,
+            "error": "No trades"
+          },
+          {
+            "fold": 2,
+            "trades": 0,
+            "pnl": 0,
+            "win_rate": 0,
+            "profit_factor": 0,
+            "error": "No trades"
+          },
+          {
+            "fold": 3,
+            "start_date": "2026-04-21 23:25:00+00:00",
+            "end_date": "2026-05-05 18:30:00+00:00",
+            "trades": 1,
+            "wins": 1,
+            "losses": 0,
+            "win_rate": 100.0,
+            "total_pnl": 117.06915495210018,
+            "profit_factor": Infinity,
+            "return_pct": 0.1170691549520998
+          },
+          {
+            "fold": 4,
+            "trades": 0,
+            "pnl": 0,
+            "win_rate": 0,
+            "profit_factor": 0,
+            "error": "No trades"
+          }
+        ],
+        "aggregate": {
+          "total_trades": 3,
+          "total_wins": 2,
+          "total_pnl": -1387.1777487213826,
+          "profitable_folds": 1,
+          "aggregate_win_rate": 66.66666666666666,
+          "aggregate_profit_factor": 0.15565151527479776
+        },
+        "validated": false
+      },
+      {
+        "config": {
+          "vector_lookback": 40,
+          "confluence_threshold": 60
+        },
+        "folds": [
+          {
+            "fold": 0,
+            "start_date": "2026-03-10 04:00:00+00:00",
+            "end_date": "2026-03-24 00:05:00+00:00",
+            "trades": 2,
+            "wins": 1,
+            "losses": 1,
+            "win_rate": 50.0,
+            "total_pnl": -1504.2469036734828,
+            "profit_factor": 0.0770531448927691,
+            "return_pct": -1.5042469036734838
+          },
+          {
+            "fold": 1,
+            "trades": 0,
+            "pnl": 0,
+            "win_rate": 0,
+            "profit_factor": 0,
+            "error": "No trades"
+          },
+          {
+            "fold": 2,
+            "trades": 0,
+            "pnl": 0,
+            "win_rate": 0,
+            "profit_factor": 0,
+            "error": "No trades"
+          },
+          {
+            "fold": 3,
+            "start_date": "2026-04-21 23:25:00+00:00",
+            "end_date": "2026-05-05 18:30:00+00:00",
+            "trades": 1,
+            "wins": 1,
+            "losses": 0,
+            "win_rate": 100.0,
+            "total_pnl": 117.06915495210018,
+            "profit_factor": Infinity,
+            "return_pct": 0.1170691549520998
+          },
+          {
+            "fold": 4,
+            "trades": 0,
+            "pnl": 0,
+            "win_rate": 0,
+            "profit_factor": 0,
+            "error": "No trades"
+          }
+        ],
+        "aggregate": {
+          "total_trades": 3,
+          "total_wins": 2,
+          "total_pnl": -1387.1777487213826,
+          "profitable_folds": 1,
+          "aggregate_win_rate": 66.66666666666666,
+          "aggregate_profit_factor": 0.15565151527479776
+        },
+        "validated": false
+      },
+      {
+        "config": {
+          "vector_lookback": 50,
+          "confluence_threshold": 40
+        },
+        "folds": [
+          {
+            "fold": 0,
+            "start_date": "2026-03-10 04:00:00+00:00",
+            "end_date": "2026-03-24 00:05:00+00:00",
+            "trades": 2,
+            "wins": 1,
+            "losses": 1,
+            "win_rate": 50.0,
+            "total_pnl": -1760.886669224509,
+            "profit_factor": 0.08713222204550806,
+            "return_pct": -1.7608866692245064
+          },
+          {
+            "fold": 1,
+            "trades": 0,
+            "pnl": 0,
+            "win_rate": 0,
+            "profit_factor": 0,
+            "error": "No trades"
+          },
+          {
+            "fold": 2,
+            "trades": 0,
+            "pnl": 0,
+            "win_rate": 0,
+            "profit_factor": 0,
+            "error": "No trades"
+          },
+          {
+            "fold": 3,
+            "start_date": "2026-04-21 23:25:00+00:00",
+            "end_date": "2026-05-05 18:30:00+00:00",
+            "trades": 1,
+            "wins": 1,
+            "losses": 0,
+            "win_rate": 100.0,
+            "total_pnl": 168.6211902603944,
+            "profit_factor": Infinity,
+            "return_pct": 0.16862119026039726
+          },
+          {
+            "fold": 4,
+            "trades": 0,
+            "pnl": 0,
+            "win_rate": 0,
+            "profit_factor": 0,
+            "error": "No trades"
+          }
+        ],
+        "aggregate": {
+          "total_trades": 3,
+          "total_wins": 2,
+          "total_pnl": -1592.2654789641147,
+          "profitable_folds": 1,
+          "aggregate_win_rate": 66.66666666666666,
+          "aggregate_profit_factor": 0.19151850395307365
+        },
+        "validated": false
+      },
+      {
+        "config": {
+          "vector_lookback": 50,
+          "confluence_threshold": 50
+        },
+        "folds": [
+          {
+            "fold": 0,
+            "start_date": "2026-03-10 04:00:00+00:00",
+            "end_date": "2026-03-24 00:05:00+00:00",
+            "trades": 2,
+            "wins": 1,
+            "losses": 1,
+            "win_rate": 50.0,
+            "total_pnl": -1760.886669224509,
+            "profit_factor": 0.08713222204550806,
+            "return_pct": -1.7608866692245064
+          },
+          {
+            "fold": 1,
+            "trades": 0,
+            "pnl": 0,
+            "win_rate": 0,
+            "profit_factor": 0,
+            "error": "No trades"
+          },
+          {
+            "fold": 2,
+            "trades": 0,
+            "pnl": 0,
+            "win_rate": 0,
+            "profit_factor": 0,
+            "error": "No trades"
+          },
+          {
+            "fold": 3,
+            "start_date": "2026-04-21 23:25:00+00:00",
+            "end_date": "2026-05-05 18:30:00+00:00",
+            "trades": 1,
+            "wins": 1,
+            "losses": 0,
+            "win_rate": 100.0,
+            "total_pnl": 168.6211902603944,
+            "profit_factor": Infinity,
+            "return_pct": 0.16862119026039726
+          },
+          {
+            "fold": 4,
+            "trades": 0,
+            "pnl": 0,
+            "win_rate": 0,
+            "profit_factor": 0,
+            "error": "No trades"
+          }
+        ],
+        "aggregate": {
+          "total_trades": 3,
+          "total_wins": 2,
+          "total_pnl": -1592.2654789641147,
+          "profitable_folds": 1,
+          "aggregate_win_rate": 66.66666666666666,
+          "aggregate_profit_factor": 0.19151850395307365
+        },
+        "validated": false
+      },
+      {
+        "config": {
+          "vector_lookback": 50,
+          "confluence_threshold": 60
+        },
+        "folds": [
+          {
+            "fold": 0,
+            "start_date": "2026-03-10 04:00:00+00:00",
+            "end_date": "2026-03-24 00:05:00+00:00",
+            "trades": 2,
+            "wins": 1,
+            "losses": 1,
+            "win_rate": 50.0,
+            "total_pnl": -1760.886669224509,
+            "profit_factor": 0.08713222204550806,
+            "return_pct": -1.7608866692245064
+          },
+          {
+            "fold": 1,
+            "trades": 0,
+            "pnl": 0,
+            "win_rate": 0,
+            "profit_factor": 0,
+            "error": "No trades"
+          },
+          {
+            "fold": 2,
+            "trades": 0,
+            "pnl": 0,
+            "win_rate": 0,
+            "profit_factor": 0,
+            "error": "No trades"
+          },
+          {
+            "fold": 3,
+            "start_date": "2026-04-21 23:25:00+00:00",
+            "end_date": "2026-05-05 18:30:00+00:00",
+            "trades": 1,
+            "wins": 1,
+            "losses": 0,
+            "win_rate": 100.0,
+            "total_pnl": 168.6211902603944,
+            "profit_factor": Infinity,
+            "return_pct": 0.16862119026039726
+          },
+          {
+            "fold": 4,
+            "trades": 0,
+            "pnl": 0,
+            "win_rate": 0,
+            "profit_factor": 0,
+            "error": "No trades"
+          }
+        ],
+        "aggregate": {
+          "total_trades": 3,
+          "total_wins": 2,
+          "total_pnl": -1592.2654789641147,
+          "profitable_folds": 1,
+          "aggregate_win_rate": 66.66666666666666,
+          "aggregate_profit_factor": 0.19151850395307365
+        },
+        "validated": false
+      }
+    ],
+    "validated_configs": []
+  }
+}

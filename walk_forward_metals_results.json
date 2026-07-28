@@ -1,0 +1,60 @@
+{
+  "Gold (XAUUSD)": {
+    "instrument": "Gold (XAUUSD)",
+    "candles": 1584,
+    "folds": 2,
+    "agg_wr": 33.33333333333333,
+    "total_pnl": -9.98945999999978,
+    "avg_pf": 1.048729219893126,
+    "profitable_folds": 1,
+    "fold_summary": [
+      {
+        "fold": 1,
+        "params": {
+          "lookback": 15,
+          "fib": 0.786
+        },
+        "oos_wr": 42.857142857142854,
+        "oos_pnl": 16.67580000000089
+      },
+      {
+        "fold": 2,
+        "params": {
+          "lookback": 20,
+          "fib": 0.786
+        },
+        "oos_wr": 20.0,
+        "oos_pnl": -26.66526000000067
+      }
+    ]
+  },
+  "Silver (XAGUSD)": {
+    "instrument": "Silver (XAGUSD)",
+    "candles": 4387,
+    "folds": 2,
+    "agg_wr": 35.41666666666667,
+    "total_pnl": 7.057475099999991,
+    "avg_pf": 1.500789694789831,
+    "profitable_folds": 1,
+    "fold_summary": [
+      {
+        "fold": 1,
+        "params": {
+          "lookback": 5,
+          "fib": 0.886
+        },
+        "oos_wr": 25.49019607843137,
+        "oos_pnl": -1.4447942000000182
+      },
+      {
+        "fold": 2,
+        "params": {
+          "lookback": 5,
+          "fib": 0.886
+        },
+        "oos_wr": 46.666666666666664,
+        "oos_pnl": 8.502269300000009
+      }
+    ]
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "aggregate": {
+    "total_trades": 38,
+    "win_rate": 34.21052631578947,
+    "total_pnl": -383.5351000000155,
+    "avg_profit_factor": 0.5143767205488236,
+    "max_drawdown": 435.79530000001614,
+    "profitable_folds": 0,
+    "total_folds": 2
+  },
+  "per_fold": [
+    {
+      "fold": 1,
+      "params": {
+        "lookback": 20,
+        "fib": 0.618
+      },
+      "metrics": {
+        "total_trades": 3,
+        "wins": 1,
+        "losses": 2,
+        "win_rate": 33.33333333333333,
+        "total_pnl": -277.3879000000052,
+        "avg_pnl": -92.46263333333506,
+        "profit_factor": 0.15327724084543556,
+        "max_drawdown": 327.601800000004
+      }
+    },
+    {
+      "fold": 2,
+      "params": {
+        "lookback": 5,
+        "fib": 0.886
+      },
+      "metrics": {
+        "total_trades": 35,
+        "wins": 12,
+        "losses": 23,
+        "win_rate": 34.285714285714285,
+        "total_pnl": -106.14720000001034,
+        "avg_pnl": -3.0327771428574386,
+        "profit_factor": 0.8754762002522115,
+        "max_drawdown": 435.79530000001614
+      }
+    }
+  ]
+}

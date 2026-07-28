@@ -26,7 +26,7 @@ class IGClient:
         }
         """
         self.config = config
-        self.base_url = "https://demo-api.ig.com" if config.get("demo", True) else "https://api.ig.com"
+        self.base_url = "https://api.ig.com" if not config.get("demo", True) else "https://demo-api.ig.com"
         self.session = requests.Session()
         self.session.headers.update({
             "Content-Type": "application/json",
@@ -58,6 +58,14 @@ class IGClient:
                 json=payload,
                 headers=headers
             )
+            
+            # Check if we got HTML instead of JSON (invalid API key or endpoint)
+            content_type = response.headers.get("Content-Type", "")
+            if response.status_code == 200 and "text/html" in content_type:
+                print(f"❌ IG Login error: Invalid API key or wrong endpoint. Received HTML instead of JSON.")
+                print(f"   Make sure your API key is valid and not expired.")
+                print(f"   Generate a new key at: https://www.ig.com/uk/trading-api")
+                return False
             
             if response.status_code == 200:
                 data = response.json()

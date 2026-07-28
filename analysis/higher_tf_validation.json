@@ -1,0 +1,84 @@
+{
+  "silver": {
+    "5min": {
+      "candles": 4387,
+      "swings": 440,
+      "intervals": 439,
+      "exact_fib": 140,
+      "exact_fib_pct": 31.890660592255127,
+      "near_fib": 326,
+      "near_fib_pct": 74.25968109339408,
+      "alternations": 360,
+      "alternation_pct": 82.00455580865604,
+      "mean_interval": 9.917995444191344,
+      "median_interval": 9.0
+    },
+    "1h": {
+      "candles": 367,
+      "swings": 65,
+      "intervals": 64,
+      "exact_fib": 28,
+      "exact_fib_pct": 43.75,
+      "near_fib": 59,
+      "near_fib_pct": 92.1875,
+      "alternations": 46,
+      "alternation_pct": 71.875,
+      "mean_interval": 5.578125,
+      "median_interval": 5.0
+    },
+    "4h": {
+      "candles": 100,
+      "swings": 18,
+      "intervals": 17,
+      "exact_fib": 8,
+      "exact_fib_pct": 47.05882352941176,
+      "near_fib": 15,
+      "near_fib_pct": 88.23529411764706,
+      "alternations": 13,
+      "alternation_pct": 76.47058823529412,
+      "mean_interval": 5.117647058823529,
+      "median_interval": 4.0
+    }
+  },
+  "gold": {
+    "5min": {
+      "candles": 1584,
+      "swings": 118,
+      "intervals": 117,
+      "exact_fib": 23,
+      "exact_fib_pct": 19.65811965811966,
+      "near_fib": 71,
+      "near_fib_pct": 60.68376068376068,
+      "alternations": 96,
+      "alternation_pct": 82.05128205128204,
+      "mean_interval": 13.239316239316238,
+      "median_interval": 11.0
+    },
+    "1h": {
+      "candles": 133,
+      "swings": 22,
+      "intervals": 21,
+      "exact_fib": 10,
+      "exact_fib_pct": 47.61904761904761,
+      "near_fib": 18,
+      "near_fib_pct": 85.71428571428571,
+      "alternations": 13,
+      "alternation_pct": 61.904761904761905,
+      "mean_interval": 5.9523809523809526,
+      "median_interval": 4.0
+    },
+    "4h": {
+      "candles": 36,
+      "swings": 7,
+      "intervals": 6,
+      "exact_fib": 4,
+      "exact_fib_pct": 66.66666666666666,
+      "near_fib": 6,
+      "near_fib_pct": 100.0,
+      "alternations": 5,
+      "alternation_pct": 83.33333333333334,
+      "mean_interval": 4.166666666666667,
+      "median_interval": 3.5
+    }
+  }
+}

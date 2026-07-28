@@ -1,0 +1,176 @@
+{
+  "Silver_Silver_Best": {
+    "agg_wr": 99.36948297604036,
+    "total_pnl": 523.737469531368,
+    "avg_pf": 46.346653540439256,
+    "profitable_folds": 5,
+    "folds": [
+      {
+        "fold": 1,
+        "start": 0,
+        "end": 877,
+        "trades": 128,
+        "wins": 127,
+        "win_rate": 99.21875,
+        "total_pnl": 61.08960175636322,
+        "profit_factor": 39.47388888624794
+      },
+      {
+        "fold": 2,
+        "start": 877,
+        "end": 1754,
+        "trades": 147,
+        "wins": 146,
+        "win_rate": 99.31972789115646,
+        "total_pnl": 83.94261490249268,
+        "profit_factor": 45.00793217124616
+      },
+      {
+        "fold": 3,
+        "start": 1754,
+        "end": 2631,
+        "trades": 285,
+        "wins": 284,
+        "win_rate": 99.64912280701755,
+        "total_pnl": 154.5711579979921,
+        "profit_factor": 50.12055890140345
+      },
+      {
+        "fold": 4,
+        "start": 2631,
+        "end": 3508,
+        "trades": 54,
+        "wins": 53,
+        "win_rate": 98.14814814814815,
+        "total_pnl": 32.499087667601174,
+        "profit_factor": 11.898924844832495
+      },
+      {
+        "fold": 5,
+        "start": 3508,
+        "end": 4385,
+        "trades": 179,
+        "wins": 178,
+        "win_rate": 99.4413407821229,
+        "total_pnl": 191.63500720691883,
+        "profit_factor": 85.23196289846624
+      }
+    ]
+  },
+  "Silver_Silver_Alternative": {
+    "agg_wr": 98.85057471264368,
+    "total_pnl": 818.615555156676,
+    "avg_pf": 49.16839987721446,
+    "profitable_folds": 5,
+    "folds": [
+      {
+        "fold": 1,
+        "start": 0,
+        "end": 877,
+        "trades": 330,
+        "wins": 325,
+        "win_rate": 98.48484848484848,
+        "total_pnl": 112.34855660538109,
+        "profit_factor": 32.53841710592654
+      },
+      {
+        "fold": 2,
+        "start": 877,
+        "end": 1754,
+        "trades": 282,
+        "wins": 279,
+        "win_rate": 98.93617021276596,
+        "total_pnl": 112.83496423135867,
+        "profit_factor": 48.089126325839274
+      },
+      {
+        "fold": 3,
+        "start": 1754,
+        "end": 2631,
+        "trades": 405,
+        "wins": 401,
+        "win_rate": 99.01234567901234,
+        "total_pnl": 168.2855803973285,
+        "profit_factor": 53.69713240443721
+      },
+      {
+        "fold": 4,
+        "start": 2631,
+        "end": 3508,
+        "trades": 205,
+        "wins": 203,
+        "win_rate": 99.02439024390245,
+        "total_pnl": 118.2520727545271,
+        "profit_factor": 58.75822841958435
+      },
+      {
+        "fold": 5,
+        "start": 3508,
+        "end": 4385,
+        "trades": 344,
+        "wins": 340,
+        "win_rate": 98.83720930232558,
+        "total_pnl": 306.89438116808066,
+        "profit_factor": 52.759095130284926
+      }
+    ]
+  },
+  "Gold_Gold_Best": {
+    "agg_wr": 98.21428571428571,
+    "total_pnl": 1056.6073797155323,
+    "avg_pf": 7.592102752071431,
+    "profitable_folds": 5,
+    "folds": [
+      {
+        "fold": 1,
+        "start": 0,
+        "end": 316,
+        "trades": 1,
+        "wins": 1,
+        "win_rate": 100.0,
+        "total_pnl": 14.614159163661498,
+        "profit_factor": Infinity
+      },
+      {
+        "fold": 2,
+        "start": 316,
+        "end": 632,
+        "trades": 21,
+        "wins": 20,
+        "win_rate": 95.23809523809523,
+        "total_pnl": 285.2950037585997,
+        "profit_factor": 7.592102752071431
+      },
+      {
+        "fold": 3,
+        "start": 632,
+        "end": 948,
+        "trades": 7,
+        "wins": 7,
+        "win_rate": 100.0,
+        "total_pnl": 112.39988399126469,
+        "profit_factor": Infinity
+      },
+      {
+        "fold": 4,
+        "start": 948,
+        "end": 1264,
+        "trades": 26,
+        "wins": 26,
+        "win_rate": 100.0,
+        "total_pnl": 625.409394988962,
+        "profit_factor": Infinity
+      },
+      {
+        "fold": 5,
+        "start": 1264,
+        "end": 1580,
+        "trades": 1,
+        "wins": 1,
+        "win_rate": 100.0,
+        "total_pnl": 18.888937813044322,
+        "profit_factor": Infinity
+      }
+    ]
+  }
+}
